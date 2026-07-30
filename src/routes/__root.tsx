@@ -110,9 +110,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="es">
       <head>
         <HeadContent />
+        {/*
+          Espacios para scripts de marketing:
+          - Google Tag Manager / Google Analytics
+          - Píxel de Meta
+          Pega aquí las etiquetas cuando las tengas.
+        */}
       </head>
       <body>
         {children}
@@ -128,7 +134,11 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
+      <Toaster position="top-center" />
     </QueryClientProvider>
+
   );
 }
