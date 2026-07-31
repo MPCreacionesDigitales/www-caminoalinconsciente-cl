@@ -265,9 +265,9 @@ export function Sobre() {
 /* ------------------------------- Testimonios ------------------------------ */
 
 const testimonios = [
-  { nombre: "Nombre del cliente", ciudad: "Santiago, Chile", texto: "[Testimonio editable. Describe el cambio que la persona vivió después de su sesión.]" },
-  { nombre: "Nombre del cliente", ciudad: "Valparaíso, Chile", texto: "[Testimonio editable. Menciona el conflicto inicial y la claridad obtenida.]" },
-  { nombre: "Nombre del cliente", ciudad: "Concepción, Chile", texto: "[Testimonio editable. Habla del acompañamiento y del protocolo recibido.]" },
+  { nombre: "María P.", ciudad: "Santiago, Chile", texto: "Llegué a la sesión sin entender por qué mi ansiedad siempre volvía. En menos de una hora logramos identificar el origen de un conflicto que llevaba años repitiéndose. Salí con una claridad que no había sentido nunca." },
+  { nombre: "Carlos R.", ciudad: "Santiago, Chile", texto: "Tenía un dolor de espalda que ningún especialista lograba explicar. La sesión me ayudó a comprender el mensaje que mi cuerpo intentaba decirme. Hoy puedo decir que entiendo el verdadero origen de lo que vivía." },
+  { nombre: "Daniela M.", ciudad: "Santiago, Chile", texto: "Mi relación de pareja siempre terminaba de la misma forma. En la sesión descubrimos el patrón familiar que se repetía sin que yo lo viera. Fue transformador tener una hoja de ruta clara para comenzar a cambiarlo." },
 ];
 
 export function Testimonios() {
