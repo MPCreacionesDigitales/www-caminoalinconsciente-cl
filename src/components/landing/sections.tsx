@@ -422,23 +422,33 @@ const contactSchema = z.object({
 
 export function Formulario() {
   const [values, setValues] = useState({ nombre: "", email: "", whatsapp: "" });
+  const [website, setWebsite] = useState("");
   const [enviando, setEnviando] = useState(false);
   const enviar = useServerFn(enviarContacto);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (enviando) return;
     const result = contactSchema.safeParse(values);
     if (!result.success) {
       toast.error(result.error.issues[0].message);
       return;
     }
+    if (website) return; // honeypot anti-spam
     setEnviando(true);
     try {
-      await enviar({ data: result.data });
-      toast.success("¡Gracias! Te contactaremos muy pronto.");
+      await enviar({
+        data: {
+          ...result.data,
+          paginaDeOrigen: typeof window !== "undefined" ? window.location.href : undefined,
+        },
+      });
+      toast.success("¡Gracias! Hemos recibido tus datos. Me pondré en contacto contigo muy pronto.");
       setValues({ nombre: "", email: "", whatsapp: "" });
     } catch {
-      toast.error("Hubo un problema al enviar tus datos. Intenta nuevamente.");
+      toast.error(
+        "No pudimos enviar tus datos. Por favor, intenta nuevamente o escríbeme directamente por WhatsApp.",
+      );
     } finally {
       setEnviando(false);
     }
@@ -457,12 +467,13 @@ export function Formulario() {
             Déjame tus datos y te contacto para responder todas tus preguntas sobre la sesión.
           </p>
         </div>
-        <form onSubmit={onSubmit} className="grid gap-5 rounded-2xl border border-border bg-card p-7 shadow-soft sm:p-9">
+        <form onSubmit={onSubmit} noValidate className="grid gap-5 rounded-2xl border border-border bg-card p-7 shadow-soft sm:p-9">
           <div className="grid gap-2">
             <Label htmlFor="nombre">Nombre</Label>
             <Input
               id="nombre"
               name="nombre"
+              required
               autoComplete="name"
               maxLength={100}
               value={values.nombre}
@@ -476,6 +487,7 @@ export function Formulario() {
               id="email"
               name="email"
               type="email"
+              required
               autoComplete="email"
               maxLength={255}
               value={values.email}
@@ -489,11 +501,24 @@ export function Formulario() {
               id="whatsapp"
               name="whatsapp"
               type="tel"
+              required
               autoComplete="tel"
               maxLength={30}
               value={values.whatsapp}
               onChange={(e) => setValues((v) => ({ ...v, whatsapp: e.target.value }))}
               placeholder="+56 9 1234 5678"
+            />
+          </div>
+          <div className="hidden" aria-hidden="true">
+            <label htmlFor="website">No completar</label>
+            <input
+              id="website"
+              name="website"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              value={website}
+              onChange={(e) => setWebsite(e.target.value)}
             />
           </div>
           <button
@@ -503,7 +528,6 @@ export function Formulario() {
           >
             {enviando ? "Enviando…" : "Quiero más información"}
           </button>
-
         </form>
       </div>
     </section>
