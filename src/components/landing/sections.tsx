@@ -27,7 +27,7 @@ import {
   Check,
 } from "lucide-react";
 import { CtaButton } from "./cta-button";
-import { SITE, WHATSAPP_URL } from "@/lib/site-config";
+import { SITE } from "@/lib/site-config";
 import heroImage from "@/assets/hero.jpg";
 import aboutImage from "@/assets/about.jpg";
 
