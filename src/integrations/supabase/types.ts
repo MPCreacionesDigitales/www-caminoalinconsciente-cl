@@ -38,6 +38,39 @@ export type Database = {
         }
         Relationships: []
       }
+      leads: {
+        Row: {
+          correo: string
+          created_at: string
+          fecha_de_registro: string
+          id: string
+          nombre: string
+          pagina_de_origen: string | null
+          updated_at: string
+          whatsapp: string
+        }
+        Insert: {
+          correo: string
+          created_at?: string
+          fecha_de_registro?: string
+          id?: string
+          nombre: string
+          pagina_de_origen?: string | null
+          updated_at?: string
+          whatsapp: string
+        }
+        Update: {
+          correo?: string
+          created_at?: string
+          fecha_de_registro?: string
+          id?: string
+          nombre?: string
+          pagina_de_origen?: string | null
+          updated_at?: string
+          whatsapp?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
