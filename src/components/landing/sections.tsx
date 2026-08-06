@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useServerFn } from "@tanstack/react-start";
+import { enviarContacto } from "@/lib/contacto.functions";
+
 import {
   Accordion,
   AccordionContent,
@@ -24,7 +27,7 @@ import {
   Check,
 } from "lucide-react";
 import { CtaButton } from "./cta-button";
-import { SITE, WHATSAPP_URL } from "@/lib/site-config";
+import { SITE } from "@/lib/site-config";
 import heroImage from "@/assets/hero.jpg";
 import aboutImage from "@/assets/about.jpg";
 
@@ -419,19 +422,28 @@ const contactSchema = z.object({
 
 export function Formulario() {
   const [values, setValues] = useState({ nombre: "", email: "", whatsapp: "" });
+  const [enviando, setEnviando] = useState(false);
+  const enviar = useServerFn(enviarContacto);
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const result = contactSchema.safeParse(values);
     if (!result.success) {
       toast.error(result.error.issues[0].message);
       return;
     }
-    const msg = `Hola, soy ${result.data.nombre}. Quiero más información sobre la Sesión Online de Biodescodificación. Mi correo: ${result.data.email}`;
-    window.open(`${WHATSAPP_URL}?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
-    toast.success("¡Gracias! Te contactaremos muy pronto.");
-    setValues({ nombre: "", email: "", whatsapp: "" });
+    setEnviando(true);
+    try {
+      await enviar({ data: result.data });
+      toast.success("¡Gracias! Te contactaremos muy pronto.");
+      setValues({ nombre: "", email: "", whatsapp: "" });
+    } catch {
+      toast.error("Hubo un problema al enviar tus datos. Intenta nuevamente.");
+    } finally {
+      setEnviando(false);
+    }
   }
+
 
   return (
     <section id="contacto" className="py-20 sm:py-28">
@@ -486,10 +498,12 @@ export function Formulario() {
           </div>
           <button
             type="submit"
-            className="mt-2 inline-flex min-h-12 items-center justify-center rounded-full bg-primary px-8 text-sm font-medium text-primary-foreground shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:shadow-elevated focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none"
+            disabled={enviando}
+            className="mt-2 inline-flex min-h-12 items-center justify-center rounded-full bg-primary px-8 text-sm font-medium text-primary-foreground shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:shadow-elevated focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-60"
           >
-            Quiero más información
+            {enviando ? "Enviando…" : "Quiero más información"}
           </button>
+
         </form>
       </div>
     </section>
