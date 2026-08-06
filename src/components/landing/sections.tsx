@@ -422,23 +422,33 @@ const contactSchema = z.object({
 
 export function Formulario() {
   const [values, setValues] = useState({ nombre: "", email: "", whatsapp: "" });
+  const [website, setWebsite] = useState("");
   const [enviando, setEnviando] = useState(false);
   const enviar = useServerFn(enviarContacto);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (enviando) return;
     const result = contactSchema.safeParse(values);
     if (!result.success) {
       toast.error(result.error.issues[0].message);
       return;
     }
+    if (website) return; // honeypot anti-spam
     setEnviando(true);
     try {
-      await enviar({ data: result.data });
-      toast.success("¡Gracias! Te contactaremos muy pronto.");
+      await enviar({
+        data: {
+          ...result.data,
+          paginaDeOrigen: typeof window !== "undefined" ? window.location.href : undefined,
+        },
+      });
+      toast.success("¡Gracias! Hemos recibido tus datos. Me pondré en contacto contigo muy pronto.");
       setValues({ nombre: "", email: "", whatsapp: "" });
     } catch {
-      toast.error("Hubo un problema al enviar tus datos. Intenta nuevamente.");
+      toast.error(
+        "No pudimos enviar tus datos. Por favor, intenta nuevamente o escríbeme directamente por WhatsApp.",
+      );
     } finally {
       setEnviando(false);
     }
