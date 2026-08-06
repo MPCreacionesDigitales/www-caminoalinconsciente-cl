@@ -5,6 +5,9 @@ const contactoSchema = z.object({
   nombre: z.string().trim().min(2).max(100),
   email: z.string().trim().email().max(255),
   whatsapp: z.string().trim().min(6).max(30),
+  paginaDeOrigen: z.string().trim().max(500).optional(),
+  // Honeypot anti-spam: debe venir vacío
+  website: z.string().max(0).optional(),
 });
 
 export const enviarContacto = createServerFn({ method: "POST" })
@@ -12,14 +15,15 @@ export const enviarContacto = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
-    const { error } = await supabaseAdmin.from("contactos").insert({
+    const { error } = await supabaseAdmin.from("leads").insert({
       nombre: data.nombre,
-      email: data.email,
+      correo: data.email,
       whatsapp: data.whatsapp,
+      pagina_de_origen: data.paginaDeOrigen ?? null,
     });
 
     if (error) {
-      console.error("[contacto] error al guardar", error);
+      console.error("[leads] error al guardar", error);
       throw new Error("No se pudo registrar tu solicitud");
     }
 
