@@ -419,19 +419,28 @@ const contactSchema = z.object({
 
 export function Formulario() {
   const [values, setValues] = useState({ nombre: "", email: "", whatsapp: "" });
+  const [enviando, setEnviando] = useState(false);
+  const enviar = useServerFn(enviarContacto);
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const result = contactSchema.safeParse(values);
     if (!result.success) {
       toast.error(result.error.issues[0].message);
       return;
     }
-    const msg = `Hola, soy ${result.data.nombre}. Quiero más información sobre la Sesión Online de Biodescodificación. Mi correo: ${result.data.email}`;
-    window.open(`${WHATSAPP_URL}?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
-    toast.success("¡Gracias! Te contactaremos muy pronto.");
-    setValues({ nombre: "", email: "", whatsapp: "" });
+    setEnviando(true);
+    try {
+      await enviar({ data: result.data });
+      toast.success("¡Gracias! Te contactaremos muy pronto.");
+      setValues({ nombre: "", email: "", whatsapp: "" });
+    } catch {
+      toast.error("Hubo un problema al enviar tus datos. Intenta nuevamente.");
+    } finally {
+      setEnviando(false);
+    }
   }
+
 
   return (
     <section id="contacto" className="py-20 sm:py-28">
