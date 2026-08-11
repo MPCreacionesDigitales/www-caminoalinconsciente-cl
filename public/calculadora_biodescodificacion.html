@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Test de Preparación · Biodescodificación</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=DM+Sans:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #fbfbfa;
+        --fg: #22333d;
+        --muted: #6b7b85;
+        --primary: #2c5361;
+        --sage: #a9cbbb;
+        --gold: #d7b678;
+        --border: #e5e9ec;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        padding: 32px 20px 48px;
+        background: var(--bg);
+        color: var(--fg);
+        font-family: "DM Sans", system-ui, sans-serif;
+      }
+      .wrap { max-width: 720px; margin: 0 auto; }
+      h1, h2, h3 { font-family: "Outfit", system-ui, sans-serif; letter-spacing: -0.02em; margin: 0; }
+      h1 { font-size: 1.6rem; }
+      .eyebrow { font-size: .72rem; letter-spacing: .24em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px; }
+      p.lead { color: var(--muted); margin: 10px 0 28px; line-height: 1.6; }
+      .q {
+        background: #fff; border: 1px solid var(--border); border-radius: 16px;
+        padding: 18px 20px; margin-bottom: 14px;
+      }
+      .q p { margin: 0 0 12px; font-weight: 500; }
+      .opts { display: flex; flex-wrap: wrap; gap: 8px; }
+      label {
+        border: 1px solid var(--border); border-radius: 999px; padding: 8px 14px;
+        font-size: .88rem; cursor: pointer; color: var(--muted); background: #fff;
+      }
+      label:has(input:checked) { border-color: var(--primary); color: var(--primary); background: #f1f6f7; }
+      input[type="radio"] { display: none; }
+      button {
+        width: 100%; border: 0; border-radius: 999px; background: var(--primary); color: #fff;
+        padding: 14px 20px; font-size: 1rem; font-family: "Outfit", sans-serif; cursor: pointer;
+      }
+      button:hover { opacity: .92; }
+      #resultado {
+        display: none; margin-top: 22px; background: #fff; border: 1px solid var(--border);
+        border-left: 3px solid var(--gold); border-radius: 16px; padding: 22px;
+      }
+      #resultado h2 { font-size: 1.2rem; }
+      #resultado p { color: var(--muted); line-height: 1.65; }
+      .score { font-family: "Outfit", sans-serif; font-size: 2.4rem; color: var(--primary); }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <p class="eyebrow">Test de preparación</p>
+      <h1>¿Estás listo/a para una sesión de biodescodificación?</h1>
+      <p class="lead">Responde estas 6 preguntas honestamente. Toma menos de 2 minutos.</p>
+
+      <form id="form"></form>
+      <button type="button" id="calcular">Ver mi resultado</button>
+
+      <div id="resultado" role="status" aria-live="polite">
+        <div class="score" id="puntaje"></div>
+        <h2 id="titulo"></h2>
+        <p id="mensaje"></p>
+      </div>
+    </div>
+
+    <script>
+      const preguntas = [
+        "¿Sientes que hay síntomas o situaciones que se repiten en tu vida?",
+        "¿Estás dispuesto/a a mirar tu historia familiar y emocional?",
+        "¿Te comprometes a hacer cambios concretos después de la sesión?",
+        "¿Sientes que el estrés o la ansiedad afectan tu día a día?",
+        "¿Has intentado otras vías sin obtener los resultados que buscabas?",
+        "¿Puedes reservar un espacio tranquilo y sin interrupciones para la sesión?",
+      ];
+      const opciones = [
+        { t: "Sí, mucho", v: 3 },
+        { t: "A veces", v: 2 },
+        { t: "Poco", v: 1 },
+        { t: "No", v: 0 },
+      ];
+
+      const form = document.getElementById("form");
+      form.innerHTML = preguntas
+        .map(
+          (p, i) => `<div class="q"><p>${i + 1}. ${p}</p><div class="opts">${opciones
+            .map(
+              (o, j) =>
+                `<label><input type="radio" name="q${i}" value="${o.v}" ${j === 0 && false ? "checked" : ""}>${o.t}</label>`
+            )
+            .join("")}</div></div>`
+        )
+        .join("");
+
+      document.getElementById("calcular").addEventListener("click", () => {
+        let total = 0;
+        let respondidas = 0;
+        preguntas.forEach((_, i) => {
+          const sel = form.querySelector(`input[name="q${i}"]:checked`);
+          if (sel) { total += Number(sel.value); respondidas++; }
+        });
+
+        const res = document.getElementById("resultado");
+        if (respondidas < preguntas.length) {
+          res.style.display = "block";
+          document.getElementById("puntaje").textContent = "";
+          document.getElementById("titulo").textContent = "Faltan respuestas";
+          document.getElementById("mensaje").textContent =
+            "Por favor responde todas las preguntas para ver tu resultado.";
+          res.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          return;
+        }
+
+        const pct = Math.round((total / (preguntas.length * 3)) * 100);
+        let titulo, mensaje;
+        if (pct >= 70) {
+          titulo = "Estás muy preparado/a";
+          mensaje =
+            "Tienes la apertura y el compromiso necesarios para aprovechar al máximo una sesión. Es un excelente momento para agendar.";
+        } else if (pct >= 40) {
+          titulo = "Estás en buen camino";
+          mensaje =
+            "Hay temas que ya reconoces y otros por explorar. Una sesión puede darte claridad sobre por dónde empezar.";
+        } else {
+          titulo = "Quizás estés explorando aún";
+          mensaje =
+            "Tal vez este no sea tu momento, o necesites más información. Puedes escribirme por WhatsApp y conversamos sin compromiso.";
+        }
+
+        res.style.display = "block";
+        document.getElementById("puntaje").textContent = pct + "%";
+        document.getElementById("titulo").textContent = titulo;
+        document.getElementById("mensaje").textContent = mensaje;
+        res.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      });
+    </script>
+  </body>
+</html>
