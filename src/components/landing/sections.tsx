@@ -255,9 +255,20 @@ export function Sobre() {
             Un acompañamiento cercano y profesional
           </h2>
           <div className="mt-8 space-y-6 text-lg leading-relaxed text-muted-foreground">
-            <p>[Escribe aquí tu historia: cómo llegaste a la biodescodificación y por qué acompañas a otras personas.]</p>
-            <p>[Escribe aquí tu experiencia: años de práctica, tipo de consultantes, enfoque de trabajo.]</p>
-            <p>[Escribe aquí tu formación: estudios, certificaciones y especializaciones.]</p>
+            <p>
+              En mi constante búsqueda de sentido, sanar mis relaciones personales y problemas
+              económicos, llegué a la biodescodificación.
+            </p>
+            <p>
+              Dentro de todo lo que he estudiado y aprendido, creo que es el método más efectivo y
+              directo para transformar la forma en que pensamos. Gracias a las herramientas que
+              aporta, se pueden generar cambios desde el minuto 1.
+            </p>
+            <p>
+              Este aprendizaje me ha motivado a querer apoyar a personas que están viviendo en
+              estrés, y mi sueño es poder ser ese apoyo que necesitan a través de la
+              biodescodificación.
+            </p>
           </div>
         </div>
       </div>
