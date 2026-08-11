@@ -1,21 +1,24 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
-const trimmed = (max: number) =>
-  z.string().max(max + 50).transform((v) => v.trim());
-
 const contactoSchema = z.object({
-  nombre: trimmed(100).pipe(z.string().min(2).max(100)),
-  email: trimmed(255).pipe(z.string().email().max(255)),
-  whatsapp: trimmed(30).pipe(z.string().min(6).max(30)),
-  paginaDeOrigen: trimmed(500).pipe(z.string().max(500)).optional(),
+  nombre: z.string().min(2).max(100),
+  email: z.string().email().max(255),
+  whatsapp: z.string().min(6).max(30),
+  paginaDeOrigen: z.string().max(500).optional(),
   // Honeypot anti-spam: debe venir vacío
   website: z.string().max(0).optional(),
 });
 
 
 export const enviarContacto = createServerFn({ method: "POST" })
-  .inputValidator((data: unknown) => contactoSchema.parse(data))
+  .inputValidator((data: unknown) => {
+    const raw = (data ?? {}) as Record<string, unknown>;
+    const clean = Object.fromEntries(
+      Object.entries(raw).map(([k, v]) => [k, typeof v === "string" ? v.trim() : v]),
+    );
+    return contactoSchema.parse(clean);
+  })
   .handler(async ({ data }) => {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 

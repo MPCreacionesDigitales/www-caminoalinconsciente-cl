@@ -426,10 +426,11 @@ export function Faq() {
 /* -------------------------------- Formulario ------------------------------ */
 
 const contactSchema = z.object({
-  nombre: z.string().trim().min(2, "Ingresa tu nombre").max(100, "Máximo 100 caracteres"),
-  email: z.string().trim().email("Ingresa un correo válido").max(255),
-  whatsapp: z.string().trim().min(6, "Ingresa un número válido").max(30),
+  nombre: z.string().min(2, "Ingresa tu nombre").max(100, "Máximo 100 caracteres"),
+  email: z.string().email("Ingresa un correo válido").max(255),
+  whatsapp: z.string().min(6, "Ingresa un número válido").max(30),
 });
+
 
 export function Formulario() {
   const [values, setValues] = useState({ nombre: "", email: "", whatsapp: "" });
@@ -440,7 +441,11 @@ export function Formulario() {
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (enviando) return;
-    const result = contactSchema.safeParse(values);
+    const result = contactSchema.safeParse({
+      nombre: values.nombre.trim(),
+      email: values.email.trim(),
+      whatsapp: values.whatsapp.trim(),
+    });
     if (!result.success) {
       toast.error(result.error.issues[0].message);
       return;
