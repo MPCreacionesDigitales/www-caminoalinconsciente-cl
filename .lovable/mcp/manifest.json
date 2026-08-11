@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "sdk_version": "0.26.2",
+  "path": "/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://cfvuysclonhaevconnfq.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "inner-harmony-sessions",
+      "version": "0.1.0",
+      "title": "Inner Harmony Sessions"
+    },
+    "tools": [
+      {
+        "name": "info_sesion",
+        "title": "Información de la sesión",
+        "description": "Devuelve la información pública de la Sesión Online de Biodescodificación: nombre, precio y enlaces de compra y contacto.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "listar_leads",
+        "title": "Listar contactos",
+        "description": "Lista los contactos (leads) recibidos desde el formulario del sitio: nombre, correo, WhatsApp, fecha de registro y página de origen. Solo para la persona dueña del sitio.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "limite": {
+              "default": 20,
+              "description": "Cantidad máxima de contactos a devolver.",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            },
+            "buscar": {
+              "description": "Texto opcional para filtrar por nombre o correo.",
+              "type": "string"
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "resumen_leads",
+        "title": "Resumen de contactos",
+        "description": "Entrega un resumen de los contactos recibidos: total histórico y total en los últimos N días. Solo para la persona dueña del sitio.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "dias": {
+              "default": 7,
+              "description": "Ventana de días para el conteo reciente.",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 365
+            }
+          }
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
