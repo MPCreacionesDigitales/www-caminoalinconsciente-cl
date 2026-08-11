@@ -61,14 +61,23 @@ function Index() {
     <>
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
         <div className="section-shell grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-3">
-          <p className="font-display min-w-0 truncate text-sm font-medium tracking-tight sm:text-base">
-            Biodescodificación
-          </p>
+          <div className="flex min-w-0 items-center gap-4">
+            <p className="font-display min-w-0 truncate text-sm font-medium tracking-tight sm:text-base">
+              Biodescodificación
+            </p>
+            <Link
+              to="/test"
+              className="shrink-0 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground sm:text-sm"
+            >
+              Test de Preparación
+            </Link>
+          </div>
           <CtaButton size="md" className="shrink-0">
             Agendar
           </CtaButton>
         </div>
       </header>
+
 
       <Hero />
       <Problema />
