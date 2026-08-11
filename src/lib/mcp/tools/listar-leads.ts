@@ -9,7 +9,7 @@ export default defineTool({
     "Lista los contactos (leads) recibidos desde el formulario del sitio: nombre, correo, WhatsApp, fecha de registro y página de origen. Solo para la persona dueña del sitio.",
   inputSchema: {
     limite: z.number().int().min(1).max(100).default(20).describe("Cantidad máxima de contactos a devolver."),
-    buscar: z.string().trim().optional().describe("Texto opcional para filtrar por nombre o correo."),
+    buscar: z.string().optional().describe("Texto opcional para filtrar por nombre o correo."),
   },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: async ({ limite, buscar }, ctx) => {
