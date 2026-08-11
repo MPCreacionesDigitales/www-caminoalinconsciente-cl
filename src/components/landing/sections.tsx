@@ -441,7 +441,11 @@ export function Formulario() {
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (enviando) return;
-    const result = contactSchema.safeParse(values);
+    const result = contactSchema.safeParse({
+      nombre: values.nombre.trim(),
+      email: values.email.trim(),
+      whatsapp: values.whatsapp.trim(),
+    });
     if (!result.success) {
       toast.error(result.error.issues[0].message);
       return;
