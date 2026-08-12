@@ -12,3 +12,9 @@ Allow: /
 
 User-agent: *
 Allow: /
+Disallow: /gracias
+Disallow: /lovable/
+Disallow: /.mcp/
+Disallow: /.lovable/
+Disallow: /.well-known/
+
