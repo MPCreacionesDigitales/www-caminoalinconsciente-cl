@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AvisoLegalRouteImport } from './routes/aviso-legal'
+import { Route as GraciasRouteImport } from './routes/gracias'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as PoliticaDePrivacidadRouteImport } from './routes/politica-de-privacidad'
 import { Route as TerminosYCondicionesRouteImport } from './routes/terminos-y-condiciones'
@@ -28,6 +29,11 @@ const IndexRoute = IndexRouteImport.update({
 const AvisoLegalRoute = AvisoLegalRouteImport.update({
   id: '/aviso-legal',
   path: '/aviso-legal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GraciasRoute = GraciasRouteImport.update({
+  id: '/gracias',
+  path: '/gracias',
   getParentRoute: () => rootRouteImport,
 } as any)
 const McpRoute = McpRouteImport.update({
@@ -77,6 +83,7 @@ const Char91DotmcpChar93InvokeToolToolRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/aviso-legal': typeof AvisoLegalRoute
+  '/gracias': typeof GraciasRoute
   '/mcp': typeof McpRoute
   '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/terminos-y-condiciones': typeof TerminosYCondicionesRoute
@@ -89,6 +96,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/aviso-legal': typeof AvisoLegalRoute
+  '/gracias': typeof GraciasRoute
   '/mcp': typeof McpRoute
   '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/terminos-y-condiciones': typeof TerminosYCondicionesRoute
@@ -102,6 +110,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/aviso-legal': typeof AvisoLegalRoute
+  '/gracias': typeof GraciasRoute
   '/mcp': typeof McpRoute
   '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/terminos-y-condiciones': typeof TerminosYCondicionesRoute
@@ -116,6 +125,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/aviso-legal'
+    | '/gracias'
     | '/mcp'
     | '/politica-de-privacidad'
     | '/terminos-y-condiciones'
@@ -128,6 +138,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/aviso-legal'
+    | '/gracias'
     | '/mcp'
     | '/politica-de-privacidad'
     | '/terminos-y-condiciones'
@@ -140,6 +151,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/aviso-legal'
+    | '/gracias'
     | '/mcp'
     | '/politica-de-privacidad'
     | '/terminos-y-condiciones'
@@ -153,6 +165,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AvisoLegalRoute: typeof AvisoLegalRoute
+  GraciasRoute: typeof GraciasRoute
   McpRoute: typeof McpRoute
   PoliticaDePrivacidadRoute: typeof PoliticaDePrivacidadRoute
   TerminosYCondicionesRoute: typeof TerminosYCondicionesRoute
@@ -177,6 +190,13 @@ declare module '@tanstack/react-router' {
       path: '/aviso-legal'
       fullPath: '/aviso-legal'
       preLoaderRoute: typeof AvisoLegalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gracias': {
+      id: '/gracias'
+      path: '/gracias'
+      fullPath: '/gracias'
+      preLoaderRoute: typeof GraciasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mcp': {
@@ -241,6 +261,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AvisoLegalRoute: AvisoLegalRoute,
+  GraciasRoute: GraciasRoute,
   McpRoute: McpRoute,
   PoliticaDePrivacidadRoute: PoliticaDePrivacidadRoute,
   TerminosYCondicionesRoute: TerminosYCondicionesRoute,
