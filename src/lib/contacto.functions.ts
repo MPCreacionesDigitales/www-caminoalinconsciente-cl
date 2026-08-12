@@ -2,23 +2,42 @@ import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
 const contactoSchema = z.object({
-  nombre: z.string().min(2).max(100),
-  email: z.string().email().max(255),
-  whatsapp: z.string().min(6).max(30),
-  paginaDeOrigen: z.string().max(500).optional(),
+  nombre: z.string(),
+  email: z.string(),
+  whatsapp: z.string(),
+  paginaDeOrigen: z.string().optional(),
   // Honeypot anti-spam: debe venir vacío
-  website: z.string().max(0).optional(),
+  website: z.string().optional(),
 });
 
+function validateAndClean(data: unknown) {
+  const raw = (data ?? {}) as Record<string, unknown>;
+  const clean = Object.fromEntries(
+    Object.entries(raw).map(([k, v]) => [k, typeof v === "string" ? v.trim() : v]),
+  ) as Record<string, string | undefined>;
+
+  const nombre = (clean.nombre ?? "").trim();
+  const email = (clean.email ?? "").trim();
+  const whatsapp = (clean.whatsapp ?? "").trim();
+  const paginaDeOrigen = clean.paginaDeOrigen ? clean.paginaDeOrigen.trim().slice(0, 500) : undefined;
+  const website = clean.website ? clean.website.trim() : "";
+
+  if (nombre.length < 2 || nombre.length > 100) throw new Error("Ingresa tu nombre");
+  if (!email.includes("@") || email.length > 255) throw new Error("Ingresa un correo válido");
+  if (whatsapp.length < 6 || whatsapp.length > 30) throw new Error("Ingresa un número válido");
+  if (website.length > 0) throw new Error("Spam detectado");
+
+  return contactoSchema.parse({
+    nombre,
+    email,
+    whatsapp,
+    paginaDeOrigen,
+    website,
+  });
+}
 
 export const enviarContacto = createServerFn({ method: "POST" })
-  .inputValidator((data: unknown) => {
-    const raw = (data ?? {}) as Record<string, unknown>;
-    const clean = Object.fromEntries(
-      Object.entries(raw).map(([k, v]) => [k, typeof v === "string" ? v.trim() : v]),
-    );
-    return contactoSchema.parse(clean);
-  })
+  .inputValidator((data: unknown) => validateAndClean(data))
   .handler(async ({ data }) => {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 

@@ -11,7 +11,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
-import { z } from "zod";
 import {
   Activity,
   Brain,
@@ -28,8 +27,10 @@ import {
 } from "lucide-react";
 import { CtaButton } from "./cta-button";
 import { SITE } from "@/lib/site-config";
-import heroImage from "@/assets/hero.jpg";
-import aboutImage from "@/assets/about.jpg";
+import heroImage from "@/assets/hero.jpg.asset.json";
+import aboutAsset from "@/assets/mario-paredes.jpg.asset.json";
+
+const aboutImage = aboutAsset.url;
 
 /* ---------------------------------- Hero --------------------------------- */
 
@@ -66,7 +67,7 @@ export function Hero() {
         <div className="relative">
           <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-accent/50 blur-2xl" aria-hidden="true" />
           <img
-            src={heroImage}
+            src={heroImage.url}
             alt="Persona en calma durante una sesión online de biodescodificación"
             width={1280}
             height={1600}
@@ -425,11 +426,17 @@ export function Faq() {
 
 /* -------------------------------- Formulario ------------------------------ */
 
-const contactSchema = z.object({
-  nombre: z.string().min(2, "Ingresa tu nombre").max(100, "Máximo 100 caracteres"),
-  email: z.string().email("Ingresa un correo válido").max(255),
-  whatsapp: z.string().min(6, "Ingresa un número válido").max(30),
-});
+function validateContact(data: { nombre: string; email: string; whatsapp: string }) {
+  const nombre = data.nombre.trim();
+  const email = data.email.trim();
+  const whatsapp = data.whatsapp.trim();
+  if (nombre.length < 2) return { ok: false, error: "Ingresa tu nombre" as const };
+  if (nombre.length > 100) return { ok: false, error: "Máximo 100 caracteres" as const };
+  if (!email.includes("@") || email.length > 255) return { ok: false, error: "Ingresa un correo válido" as const };
+  if (whatsapp.length < 6) return { ok: false, error: "Ingresa un número válido" as const };
+  if (whatsapp.length > 30) return { ok: false, error: "Ingresa un número válido" as const };
+  return { ok: true, data: { nombre, email, whatsapp } } as const;
+}
 
 
 export function Formulario() {
@@ -441,13 +448,9 @@ export function Formulario() {
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (enviando) return;
-    const result = contactSchema.safeParse({
-      nombre: values.nombre.trim(),
-      email: values.email.trim(),
-      whatsapp: values.whatsapp.trim(),
-    });
-    if (!result.success) {
-      toast.error(result.error.issues[0].message);
+    const validated = validateContact(values);
+    if (!validated.ok) {
+      toast.error(validated.error);
       return;
     }
     if (website) return; // honeypot anti-spam
@@ -455,7 +458,7 @@ export function Formulario() {
     try {
       await enviar({
         data: {
-          ...result.data,
+          ...validated.data,
           paginaDeOrigen: typeof window !== "undefined" ? window.location.href : undefined,
         },
       });
