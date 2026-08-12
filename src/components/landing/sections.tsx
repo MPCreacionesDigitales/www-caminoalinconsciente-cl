@@ -455,13 +455,9 @@ export function Formulario() {
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (enviando) return;
-    const result = contactSchema.safeParse({
-      nombre: values.nombre.trim(),
-      email: values.email.trim(),
-      whatsapp: values.whatsapp.trim(),
-    });
-    if (!result.success) {
-      toast.error(result.error.issues[0].message);
+    const validated = validateContact(values);
+    if (!validated.ok) {
+      toast.error(validated.error);
       return;
     }
     if (website) return; // honeypot anti-spam
@@ -469,7 +465,7 @@ export function Formulario() {
     try {
       await enviar({
         data: {
-          ...result.data,
+          ...validated.data,
           paginaDeOrigen: typeof window !== "undefined" ? window.location.href : undefined,
         },
       });
