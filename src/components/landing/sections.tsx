@@ -426,12 +426,6 @@ export function Faq() {
 
 /* -------------------------------- Formulario ------------------------------ */
 
-const contactSchema = z.object({
-  nombre: z.string(),
-  email: z.string(),
-  whatsapp: z.string(),
-});
-
 function validateContact(data: { nombre: string; email: string; whatsapp: string }) {
   const nombre = data.nombre.trim();
   const email = data.email.trim();
