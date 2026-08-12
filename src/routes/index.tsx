@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CHECKOUT_URL } from "@/lib/site-config";
 import { CtaButton } from "@/components/landing/cta-button";
+import logoAsset from "@/assets/logo-mario-paredes.png.asset.json";
 import {
   Hero,
   Problema,
