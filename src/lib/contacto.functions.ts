@@ -41,17 +41,39 @@ export const enviarContacto = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
-    const { error } = await supabaseAdmin.from("leads").insert({
-      nombre: data.nombre,
-      correo: data.email,
-      whatsapp: data.whatsapp,
-      pagina_de_origen: data.paginaDeOrigen ?? null,
-    });
+    const { data: lead, error } = await supabaseAdmin
+      .from("leads")
+      .insert({
+        nombre: data.nombre,
+        correo: data.email,
+        whatsapp: data.whatsapp,
+        pagina_de_origen: data.paginaDeOrigen ?? null,
+      })
+      .select("id")
+      .single();
 
     if (error) {
       console.error("[leads] error al guardar", error);
       throw new Error("No se pudo registrar tu solicitud");
     }
 
+    // Aviso por correo — nunca debe romper el registro del lead.
+    try {
+      const { sendTemplateEmail } = await import("@/lib/email-templates/send-email");
+      await sendTemplateEmail("nuevo-lead", "contacto@caminoalinconsciente.cl", {
+        templateData: {
+          nombre: data.nombre,
+          correo: data.email,
+          whatsapp: data.whatsapp,
+          paginaDeOrigen: data.paginaDeOrigen ?? "—",
+          fecha: new Date().toLocaleString("es-CL", { timeZone: "America/Santiago" }),
+        },
+        idempotencyKey: `nuevo-lead-${lead?.id ?? data.email}`,
+      });
+    } catch (e) {
+      console.error("[leads] no se pudo enviar el aviso por correo", e);
+    }
+
     return { ok: true as const };
   });
+
