@@ -8,7 +8,14 @@ export function SiteFooter() {
     <footer className="border-t border-border bg-background py-14">
       <div className="section-shell grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
-          <p className="font-display text-lg font-medium">{SITE.name}</p>
+          <a href="/" aria-label="Inicio">
+            <img
+              src={logoAsset.url}
+              alt="Mario Paredes Biodescodificación"
+              className="h-9 max-w-[12rem] object-contain"
+              loading="lazy"
+            />
+          </a>
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">
             Acompañamiento privado para comprender el origen emocional y biológico de lo que hoy
             te limita.
