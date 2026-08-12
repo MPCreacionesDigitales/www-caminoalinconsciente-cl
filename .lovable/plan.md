@@ -1,39 +1,29 @@
-Resolver configuración de registros NS para notify.caminoalinconsciente.cl
+Crear /gracias con mensaje optimista, logo visible y energía alineada al trabajo
 
-## Situación actual
-- El dominio `notify.caminoalinconsciente.cl` está en estado "Verifying DNS".
-- Lovable requiere dos registros NS para delegar el subdominio:
-  - `notify.caminoalinconsciente.cl NS ns3.lovable.cloud`
-  - `notify.caminoalinconsciente.cl NS ns4.lovable.cloud`
-- El usuario pudo agregar solo `ns3.lovable.cloud`. Ya tiene 4 NS del proveedor actual (ns1–ns4.tecnoweb.net) para el dominio raíz.
-- El proveedor de DNS no permite agregar el segundo registro NS `ns4.lovable.cloud` al subdominio.
+## Alcance
+Diseñar y construir la página de agradecimiento post-compra (`/gracias`) que sirva como URL de gracias en Hotmart. Dejar la integración de correo en standby.
 
-## Plan de acción
+## Requisitos de contenido
+- Mensaje principal entusiasta y optimista: celebrar el paso que el usuario acaba de dar, usando un tono cálido y alineado con el espíritu de acompañamiento y biodescodificación.
+- Logo de Mario Paredes Biodescodificación visible y en buen tamaño (más prominente que el diseño actual), centrado en la parte superior del hero de la página.
+- Pasos siguientes claros: revisar correo de Hotmart, escribir por WhatsApp para agendar, recibir enlace de videollamada.
+- CTA principal: botón grande de WhatsApp con el número +56 9 9022 9732.
+- Sin menú de venta ni botones de pago (ya compró).
+- Marcada como noindex para buscadores.
 
-### Opción A (recomendada): mover DNS a un proveedor que permita NS records
-1. Crear una cuenta gratuita en Cloudflare.
-2. Transferir la gestión DNS del dominio `caminoalinconsciente.cl` desde tecnoweb.net a Cloudflare (el registro del dominio puede seguir en el registrador actual).
-3. Replicar los registros A/CNAME/MX/TXT existentes en Cloudflare para que la web y el correo actual no se interrumpan.
-4. Agregar los dos registros NS para el subdominio `notify.caminoalinconsciente.cl`:
-   - `ns3.lovable.cloud`
-   - `ns4.lovable.cloud`
-5. Esperar propagación DNS (hasta 72 h).
-6. Revisar en Cloud → Emails el estado de verificación.
+## Requisitos visuales
+- Fondo limpio, colores del sistema de diseño actual (blanco, gris claro, verde suave, azul petróleo, dorado).
+- Logo en tamaño grande, con buen espaciado alrededor.
+- Tipografía sans-serif elegante (Outfit / DM Sans).
+- Iconos de celebración y de pasos: check, WhatsApp, correo, calendario.
+- Diseño premium, centrado y mobile-first.
 
-### Opción B: delegar/gestionar el dominio desde Lovable
-1. Ir a Workspace settings → Workspace domains.
-2. Transferir la gestión del dominio `caminoalinconsciente.cl` a Lovable.
-3. Cuando Lovable gestiona el dominio, la configuración de NS para email se crea automáticamente sin pasos manuales de DNS.
-4. Verificar que el resto de registros necesarios (web, correo) sigan funcionando.
+## Archivos a modificar
+- `src/routes/gracias.tsx`: reescribir componente y metadatos.
+- `src/lib/site-config.ts`: asegurar que `WHATSAPP_URL` apunte a +56 9 9022 9732 con mensaje de agendamiento.
+- Posiblemente `src/styles.css` si se necesita un ajuste de color/tono menor.
 
-### Opción C: consultar al proveedor actual
-1. Contactar a soporte de tecnoweb.net y solicitar que habiliten el segundo registro NS para `notify.caminoalinconsciente.cl`.
-2. Si no es posible, aplicar la Opción A o B.
-
-## Nota técnica
-- Los 4 NS `ns1–ns4.tecnoweb.net` son para el dominio raíz (`caminoalinconsciente.cl`). No deben eliminarse mientras el DNS esté gestionado por tecnoweb.
-- Los registros NS para `notify.caminoalinconsciente.cl` son solo para el subdominio de email y no reemplazan los NS del dominio raíz.
-- Sin ambos registros NS (`ns3.lovable.cloud` y `ns4.lovable.cloud`), Lovable no puede gestionar la zona del subdominio y la verificación no avanzará.
-
-## Próximo paso sugerido
-Elegir entre Opción A o B y proceder con la migración del DNS, ya que el proveedor actual parece limitar la cantidad de NS records para el subdominio.
+## Validación
+- Verificar que la ruta `/gracias` cargue correctamente en preview.
+- Confirmar que el logo se vea claro y bien dimensionado.
+- Revisar metadatos `robots: noindex` y `head()` correctos.
