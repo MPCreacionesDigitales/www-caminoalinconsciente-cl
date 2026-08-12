@@ -105,7 +105,7 @@ function Gracias() {
               rel="noopener noreferrer"
               className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-primary px-10 text-base font-medium text-primary-foreground shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:shadow-elevated"
             >
-              <MessageCircle className="size-5" aria-hidden="true" />
+              <MessageCircle className="size-5 text-primary-foreground" aria-hidden="true" />
               Agendar mi sesión por WhatsApp
             </a>
             <p className="max-w-md text-sm text-muted-foreground">
