@@ -428,10 +428,22 @@ export function Faq() {
 /* -------------------------------- Formulario ------------------------------ */
 
 const contactSchema = z.object({
-  nombre: z.string().min(2, "Ingresa tu nombre").max(100, "Máximo 100 caracteres"),
-  email: z.string().email("Ingresa un correo válido").max(255),
-  whatsapp: z.string().min(6, "Ingresa un número válido").max(30),
+  nombre: z.string(),
+  email: z.string(),
+  whatsapp: z.string(),
 });
+
+function validateContact(data: { nombre: string; email: string; whatsapp: string }) {
+  const nombre = data.nombre.trim();
+  const email = data.email.trim();
+  const whatsapp = data.whatsapp.trim();
+  if (nombre.length < 2) return { ok: false, error: "Ingresa tu nombre" as const };
+  if (nombre.length > 100) return { ok: false, error: "Máximo 100 caracteres" as const };
+  if (!email.includes("@") || email.length > 255) return { ok: false, error: "Ingresa un correo válido" as const };
+  if (whatsapp.length < 6) return { ok: false, error: "Ingresa un número válido" as const };
+  if (whatsapp.length > 30) return { ok: false, error: "Ingresa un número válido" as const };
+  return { ok: true, data: { nombre, email, whatsapp } } as const;
+}
 
 
 export function Formulario() {
