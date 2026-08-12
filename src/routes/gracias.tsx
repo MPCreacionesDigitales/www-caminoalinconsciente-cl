@@ -49,17 +49,18 @@ function Gracias() {
   return (
     <>
       <header className="border-b border-border/60 bg-background">
-        <div className="section-shell flex items-center justify-center py-6">
+        <div className="section-shell flex items-center justify-center py-8">
           <a href="/" className="inline-flex items-center" aria-label="Inicio">
             <img
               src={logoAsset.url}
               alt="Mario Paredes Biodescodificación"
-              className="h-16 max-w-[20rem] object-contain"
+              className="h-20 max-w-[24rem] object-contain"
               loading="eager"
             />
           </a>
         </div>
       </header>
+
 
 
       <main className="relative overflow-hidden py-16 sm:py-24">
