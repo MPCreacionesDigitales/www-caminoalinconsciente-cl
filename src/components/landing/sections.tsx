@@ -27,7 +27,7 @@ import {
 } from "lucide-react";
 import { CtaButton } from "./cta-button";
 import { SITE } from "@/lib/site-config";
-import heroImage from "@/assets/hero.jpg";
+import heroImage from "@/assets/hero.jpg.asset.json";
 import aboutAsset from "@/assets/mario-paredes.jpg.asset.json";
 
 const aboutImage = aboutAsset.url;
