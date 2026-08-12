@@ -1,13 +1,12 @@
 /**
  * Configuración editable del sitio.
- * Reemplaza CHECKOUT_URL por la URL de tu Checkout de Hotmart.
  */
-export const CHECKOUT_URL = "https://pay.hotmart.com/TU-CHECKOUT";
+export const CHECKOUT_URL = "https://pay.hotmart.com/E107122530K";
 
 export const WHATSAPP_URL = "https://wa.me/56900000000";
 
 export const SITE = {
   name: "Sesión Online de Biodescodificación",
-  price: "$30.000 CLP",
+  price: "45 USD",
   youtubeEmbedUrl: "", // Ej: "https://www.youtube.com/embed/XXXXXXXXXXX"
 };

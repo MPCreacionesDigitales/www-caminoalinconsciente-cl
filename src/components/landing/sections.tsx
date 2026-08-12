@@ -29,7 +29,9 @@ import {
 import { CtaButton } from "./cta-button";
 import { SITE } from "@/lib/site-config";
 import heroImage from "@/assets/hero.jpg";
-import aboutImage from "@/assets/about.jpg";
+import aboutAsset from "@/assets/mario-paredes.jpg.asset.json";
+
+const aboutImage = aboutAsset.url;
 
 /* ---------------------------------- Hero --------------------------------- */
 
