@@ -67,7 +67,7 @@ export function Hero() {
         <div className="relative">
           <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-accent/50 blur-2xl" aria-hidden="true" />
           <img
-            src={heroImage}
+            src={heroImage.url}
             alt="Persona en calma durante una sesión online de biodescodificación"
             width={1280}
             height={1600}
