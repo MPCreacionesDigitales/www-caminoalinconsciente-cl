@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { MessageCircle, Instagram, Facebook } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { WHATSAPP_URL, SITE } from "@/lib/site-config";
 import logoAsset from "@/assets/logo-mario-paredes.png.asset.json";
 
@@ -37,17 +37,8 @@ export function SiteFooter() {
                 <MessageCircle className="size-4" aria-hidden="true" /> WhatsApp
               </a>
             </li>
-            <li>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 transition-colors hover:text-foreground">
-                <Instagram className="size-4" aria-hidden="true" /> Instagram
-              </a>
-            </li>
-            <li>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 transition-colors hover:text-foreground">
-                <Facebook className="size-4" aria-hidden="true" /> Facebook
-              </a>
-            </li>
           </ul>
+
         </div>
       </div>
       <div className="section-shell mt-10 border-t border-border pt-6 text-xs text-muted-foreground">
