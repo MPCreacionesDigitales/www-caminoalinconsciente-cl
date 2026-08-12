@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { MessageCircle, Instagram, Facebook } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import { WHATSAPP_URL, SITE } from "@/lib/site-config";
 import logoAsset from "@/assets/logo-mario-paredes.png.asset.json";
 
