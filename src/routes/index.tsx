@@ -1,9 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { CHECKOUT_URL } from "@/lib/site-config";
-import { CtaButton } from "@/components/landing/cta-button";
-import logoAsset from "@/assets/logo-mario-paredes.png.asset.json";
+import { SiteHeader } from "@/components/landing/site-header";
 import {
   Hero,
+  QueEs,
   Problema,
   Solucion,
   Beneficios,
@@ -60,32 +60,11 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
-        <div className="section-shell grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-3">
-          <div className="flex min-w-0 items-center gap-4">
-            <a href="/" className="inline-flex min-w-0 items-center py-1">
-              <img
-                src={logoAsset.url}
-                alt="Mario Paredes Biodescodificación"
-                className="h-8 max-w-[10rem] object-contain sm:h-9"
-                loading="eager"
-              />
-            </a>
-            <Link
-              to="/test"
-              className="shrink-0 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground sm:text-sm"
-            >
-              Test de Preparación
-            </Link>
-          </div>
-          <CtaButton size="md" className="shrink-0">
-            Agendar
-          </CtaButton>
-        </div>
-      </header>
+      <SiteHeader />
 
 
       <Hero />
+      <QueEs />
       <Problema />
       <Solucion />
       <Beneficios />

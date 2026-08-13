@@ -1,5 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { CtaButton } from "@/components/landing/cta-button";
+import { createFileRoute } from "@tanstack/react-router";
+import { SiteHeader } from "@/components/landing/site-header";
 import { SiteFooter } from "@/components/landing/site-footer";
 
 const title = "Test de Preparación | Sesión Online de Biodescodificación";
@@ -23,19 +23,7 @@ export const Route = createFileRoute("/test")({
 function TestPage() {
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
-        <div className="section-shell grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 py-3">
-          <Link
-            to="/"
-            className="font-display min-w-0 truncate text-sm font-medium tracking-tight sm:text-base"
-          >
-            Biodescodificación
-          </Link>
-          <CtaButton size="md" className="shrink-0">
-            Agendar
-          </CtaButton>
-        </div>
-      </header>
+      <SiteHeader />
 
       <section className="py-12 sm:py-16">
         <div className="section-shell">
