@@ -1,71 +1,76 @@
-# Dejar caminoalinconsciente.cl operativo con Cloudflare (web + Gmail)
+# Activar DKIM en Gmail/Google Workspace para caminoalinconsciente.cl
 
-Ya creaste la cuenta en Cloudflare y ahí aparecen los registros importados desde tecnoweb. Cloudflare te permite borrar lo que en tecnoweb no podías, así que este es el camino correcto.
+El DKIM es una firma digital que le dice a los servidores de correo (Gmail, Outlook, etc.) que el mensaje realmente viene de tu dominio y no de un impostor. Con él, tus correos llegan mejor a la bandeja de entrada y no a spam.
 
-## Paso 0 — Activar Cloudflare (imprescindible)
+## Antes de empezar: ¿qué tipo de Gmail tienes?
 
-Cloudflare solo controla tu DNS cuando cambias los **nameservers** en tecnoweb (donde tienes registrado el dominio):
+Hay dos posibilidades y la ruta cambia un poco. Mira cuál es la tuya:
 
-1. En Cloudflare, panel del dominio → verás dos nameservers tipo `algo.ns.cloudflare.com`.
-2. En tecnoweb, reemplaza los cuatro `ns1..ns4.tecnoweb.net` por los dos de Cloudflare.
-3. Cloudflare pasará a estado "Active" (suele tardar de minutos a algunas horas).
+**A) Gmail con tu dominio propio usando Google Workspace** (la versión de pago, con usuarios tipo `tú@caminoalinconsciente.cl`).
 
-Mientras los nameservers sigan en tecnoweb, lo que edites en Cloudflare no tiene efecto.
+**B) Gmail personal gratuito** (`@gmail.com`) al que reenvías correos de `contacto@caminoalinconsciente.cl` o `mparedes@caminoalinconsciente.cl` desde tu proveedor de hosting/correo.
 
-## Paso 1 — Arreglar los registros de la web
+Si es la opción **B**, DKIM no se configura directamente en Gmail porque Gmail personal no permite dominios propios. En ese caso, el DKIM se configura en el servicio que envía el correo (Google Workspace, Zoho, Cloudflare Email Routing, o tu hosting). Si me dices cuál es tu servicio de correo real, te indico exactamente.
 
-En la tabla que me mostraste hay que hacer estos cambios:
+A continuación asumo que tienes **Google Workspace** (la opción más común para usar Gmail con dominio propio).
 
-| Registro actual | Acción |
+## Paso 1: Entrar al panel de administración de Google Workspace
+
+1. Ve a https://admin.google.com/ (con tu cuenta de administrador de Google Workspace).
+2. Inicia sesión con tu correo de `caminoalinconsciente.cl` (por ejemplo, `mparedes@caminoalinconsciente.cl`).
+
+## Paso 2: Abrir la sección de DKIM
+
+1. En el panel de administración, haz clic en el menú (☰) arriba a la izquierda.
+2. Ve a **Aplicaciones → Google Workspace → Gmail**.
+3. Haz clic en **Autenticar correo** (o en inglés, **Authenticate email**).
+
+## Paso 3: Generar el registro DKIM
+
+1. Selecciona el dominio: `caminoalinconsciente.cl`.
+2. Presiona el botón **Generar nuevo registro** (Generate new record).
+3. Te aparecerá una ventana con dos cosas:
+   - **Nombre del selector** (por ejemplo, `google`). Puedes dejar `google`.
+   - **Valor del registro TXT** (un texto largo que empieza con `v=DKIM1;`).
+4. Copia exactamente ese texto largo.
+
+## Paso 4: Crear el registro en Cloudflare
+
+1. Entra a Cloudflare, selecciona el dominio `caminoalinconsciente.cl`.
+2. Ve a la pestaña **DNS** → **Records**.
+3. Presiona **Add record**.
+4. Completa así:
+
+| Campo | Valor |
 |---|---|
-| A `caminoalinconsciente.cl` → 185.158.133.1 (Proxied) | **Dejar**, pero cambiar Proxy status a **DNS only** (nube gris) |
-| CNAME `www` → caminoalinconsciente.cl (Proxied) | **Borrar** y reemplazar por: A · `www` · `185.158.133.1` · **DNS only** |
-| CNAME `ftp` | **Borrar** (apunta al hosting antiguo, ya no se usa) |
-| CNAME `mail` | **Borrar** (Gmail no lo necesita; el correo funciona con el MX) |
-| MX `smtp.google.com` (prioridad 10) | **Dejar tal cual** |
-| TXT `_dmarc` | **Dejar tal cual** |
+| Tipo | TXT |
+| Nombre | `google._domainkey` |
+| Contenido | Pega aquí el texto largo que copiaste de Google Workspace |
+| TTL | Auto |
+| Proxy status | DNS only |
 
-Además, agregar el registro de verificación de Lovable (hoy no está en Cloudflare, estaba en tecnoweb):
+5. Guarda el registro.
 
-| Tipo | Nombre | Contenido | Proxy |
-|---|---|---|---|
-| TXT | `_lovable` | `lovable_verify=e7bfcea5d7ead22abf823cc73e00e32aba93f90e1f39825c784f1b02089451ec` | DNS only |
+> Si el selector de Google Workspace fue distinto a `google`, cambia `google` por el que te aparezca. El nombre del registro siempre es `<selector>._domainkey`.
 
-Importante sobre el **proxy naranja**: la conexión con Lovable se hace en modo directo. Si dejas la nube naranja activa en `@` y `www`, el certificado puede volver a fallar. Deja ambos en **DNS only**.
+## Paso 5: Volver a Google Workspace y activar DKIM
 
-## Paso 2 — Correo Gmail: agregar lo que falta
+1. Regresa a la misma ventana de Google Workspace donde generaste el registro.
+2. Presiona **Iniciar autenticación** (Start authentication).
+3. Google revisará si el registro TXT está presente. Si Cloudflare ya está activo como DNS del dominio, la verificación es casi inmediata.
+4. Cuando aparezca verde/activo, el DKIM queda funcionando.
 
-Hoy tu dominio tiene el MX de Google y el DMARC, pero **no tiene registro SPF**, lo que hace que tus correos puedan caer en spam. Agrega en Cloudflare:
+## Paso 6: Verificar desde fuera (opcional)
 
-| Tipo | Nombre | Contenido | Proxy |
-|---|---|---|---|
-| TXT | `@` | `v=spf1 include:_spf.google.com ~all` | DNS only |
+Una vez activo, puedes confirmar que el registro existe con este comando:
 
-Y, opcionalmente pero recomendado, activa **DKIM** en Google Workspace (Apps → Google Workspace → Gmail → Autenticar correo): Google te dará un registro TXT con nombre `google._domainkey` que agregas también en Cloudflare.
+```text
+dig TXT google._domainkey.caminoalinconsciente.cl
+```
 
-Si usas Gmail gratuito con reenvío (no Google Workspace), avísame y ajustamos: en ese caso el SPF puede variar.
+Debe aparecer una respuesta que empiece con `v=DKIM1;`.
 
-## Paso 3 — Correo de avisos del formulario (Lovable)
-
-El subdominio `notify.caminoalinconsciente.cl` estaba delegado a Lovable con registros NS. Al mover el DNS a Cloudflare hay que volver a crearlos allí:
-
-| Tipo | Nombre | Contenido |
-|---|---|---|
-| NS | `notify` | `ns3.lovable.cloud` |
-| NS | `notify` | `ns4.lovable.cloud` |
-
-Cloudflare sí permite dos NS para un subdominio (era justo el problema que tenías en tecnoweb). Esto no interfiere con Gmail: solo afecta al subdominio `notify`, no al dominio principal.
-
-## Paso 4 — Reintentar el dominio en Lovable
-
-Cuando Cloudflare esté activo y los registros estén como arriba:
-
-1. Yo verifico el DNS desde fuera y te confirmo que está limpio.
-2. En Configuración del proyecto → Dominios, pulsamos **Retry** en `caminoalinconsciente.cl` y `www.caminoalinconsciente.cl`.
-3. El estado pasará a **Setting up** → **Active**.
-4. Dejamos `www.caminoalinconsciente.cl` como dominio primario, y la raíz redirigirá al `www`.
-
-## Resumen del estado final esperado
+## Resumen de lo que ya debería tener en Cloudflare
 
 ```text
 A     @        185.158.133.1        DNS only
@@ -76,10 +81,15 @@ TXT   _dmarc   v=DMARC1; p=none;
 MX    @        smtp.google.com (10)
 NS    notify   ns3.lovable.cloud
 NS    notify   ns4.lovable.cloud
+TXT   google._domainkey   <texto de Google Workspace>
 (borrados: CNAME ftp, CNAME mail, CNAME www)
 ```
 
+## ¿No tienes Google Workspace y solo usas Gmail personal?
+
+Si tu correo es `contacto@caminoalinconsciente.cl` pero llega a una bandeja de Gmail personal, necesito saber qué servicio realmente administra ese correo (¿Zoho, el hosting de tecnoweb, Cloudflare Email Routing, etc.?). Ahí es donde se genera el DKIM. Avísame y te lo explico.
+
 ## Detalles técnicos
-- No requiere cambios de código: todo es configuración DNS más el reintento de aprovisionamiento del certificado.
-- Si prefirieras mantener el proxy naranja de Cloudflare, habría que reconectar el dominio en Lovable marcando la opción "el dominio usa Cloudflare o proxy similar" (usa verificación por CNAME en lugar de A). Recomiendo la vía simple: DNS only.
-- Con el correo verificado, después podemos reactivar el aviso automático de cada formulario a contacto@caminoalinconsciente.cl.
+- DKIM solo se configura en el servicio que envía correos con tu dominio. Gmail personal no envía como `@caminoalinconsciente.cl`, por eso no tiene DKIM propio para dominios ajenos.
+- No necesitas tocar nada en Lovable para esto; el DKIM es solo para el proveedor de correo del dominio.
+- El registro de Cloudflare debe quedar en DNS only, no en proxied.
