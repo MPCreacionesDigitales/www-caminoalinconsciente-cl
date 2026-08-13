@@ -29,7 +29,7 @@ import { CtaButton } from "./cta-button";
 import { SITE } from "@/lib/site-config";
 import heroImage from "@/assets/hero.jpg.asset.json";
 import aboutAsset from "@/assets/mario-paredes.jpg.asset.json";
-import procesoImage from "@/assets/proceso-sesion.jpg";
+import procesoAsset from "@/assets/proceso-sesion.jpg.asset.json";
 
 
 const aboutImage = aboutAsset.url;
@@ -374,7 +374,7 @@ export function VideoSection() {
         </h2>
         <div className="mt-10 overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
           <img
-            src={procesoImage}
+            src={procesoAsset.url}
             alt="Proceso de la sesión en 5 pasos: identificación de la situación de estrés, sentimiento y emoción oculta, creencia limitante, reimpronta y seguimiento post sesión"
             width={1600}
             height={912}
