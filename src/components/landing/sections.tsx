@@ -79,6 +79,40 @@ export function Hero() {
   );
 }
 
+/* ------------------------- ¿Qué es la Biodescodificación? ------------------------ */
+
+export function QueEs() {
+  return (
+    <section id="que-es" className="border-y border-border bg-card py-20 sm:py-28">
+      <div className="section-shell max-w-3xl">
+        <p className="eyebrow">Definición</p>
+        <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+          ¿Qué es la Biodescodificación?
+        </h2>
+        <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted-foreground">
+          <p>
+            La Biodescodificación es un proceso de acompañamiento y entrenamiento mental profundo
+            orientado a explorar y comprender el posible origen emocional, biológico y psicológico
+            que una persona asocia con determinados síntomas, conflictos o situaciones que se
+            repiten en su vida.
+          </p>
+          <p>
+            Parte de una mirada integrativa: además de observar qué te está ocurriendo, busca
+            profundizar en qué experiencias, emociones, creencias y aprendizajes inconscientes
+            pueden estar relacionados con la manera en que estás viviendo ese conflicto.
+          </p>
+          <p>
+            Desde esta perspectiva, aquello que hoy experimentas —un síntoma, una dificultad
+            emocional, un conflicto de pareja, una relación compleja con el dinero, un miedo
+            persistente o un patrón que parece repetirse una y otra vez— puede convertirse en una
+            puerta de entrada para conocerte con mayor profundidad.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* -------------------------------- Problema -------------------------------- */
 
 const problemas = [

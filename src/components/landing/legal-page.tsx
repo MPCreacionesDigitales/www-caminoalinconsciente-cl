@@ -1,11 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { SiteFooter } from "./site-footer";
+import { SiteHeader } from "./site-header";
 
 type Section = { heading: string; body: string };
 
 export function LegalPage({ title, sections }: { title: string; sections: Section[] }) {
   return (
     <>
+      <SiteHeader />
       <div className="section-shell max-w-3xl py-20 sm:py-28">
         <Link to="/" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
           ← Volver al inicio
