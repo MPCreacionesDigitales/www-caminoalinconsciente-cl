@@ -51,6 +51,25 @@ Si no los agregaste todavía, por favor añádelos en Cloudflare ahora mismo. Si
 4. **Definimos `www.caminoalinconsciente.cl` como dominio primario**.
 5. **Probamos el envío del aviso del formulario** a `contacto@caminoalinconsciente.cl`.
 
+## Sobre el mensaje de DNSSEC que estás viendo
+
+Eso es **DNSSEC** (Security Extensions del DNS). Es un sistema de seguridad adicional que certifica que las respuestas DNS no fueron modificadas por un tercero.
+
+### ¿Qué es el DS record que te muestra Cloudflare?
+
+Es un registro criptográfico (Delegation Signer) que debe ir en tu **registrador de dominio** (tecnoweb), no en Cloudflare. Cloudflare te genera ese valor y tú lo copias en el panel de tecnoweb, en la sección de DNSSEC o "DS records".
+
+### ¿Debes configurarlo?
+
+**No es obligatorio.** Lovable no requiere DNSSEC para funcionar.
+
+- **Opción recomendada (más simple):** Desactiva DNSSEC en tecnoweb y no agregues el DS record. Con eso el dominio funciona perfectamente con Cloudflare y Lovable.
+- **Opción avanzada:** Si quieres tener DNSSEC activo, activa DNSSEC dentro del panel de Cloudflare y copia el DS record que te entregue en tecnoweb. Pero si lo haces mal, el sitio puede dejar de resolver en algunos proveedores.
+
+### Mi consejo práctico
+
+Como ya estás en medio de una migración de DNS, lo más seguro es **mantener DNSSEC apagado**. Si tecnoweb lo tiene activado, pídeles que lo desactiven para `caminoalinconsciente.cl`. No agregues el DS record en Cloudflare a menos que sepas que tecnoweb te lo está pidiendo explícitamente para activarlo.
+
 ## Si pasan 24 horas y no cambia nada
 
 Es posible que tecnoweb no haya aplicado el cambio de nameservers. Escríbeles directamente pidiendo que actualicen los nameservers de `caminoalinconsciente.cl` a los dos de Cloudflare. Si no cooperan, avísame y vemos alternativas.
