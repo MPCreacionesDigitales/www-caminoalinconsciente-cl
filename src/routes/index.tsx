@@ -62,9 +62,8 @@ function Index() {
     <>
       <SiteHeader />
 
-
-      <Hero />
       <QueEs />
+      <Hero />
       <Problema />
       <Solucion />
       <Beneficios />
@@ -74,9 +73,9 @@ function Index() {
       <VideoSection />
       <Precio />
       <Faq />
-      <Formulario />
       <CtaFinal />
       <SiteFooter />
+
     </>
   );
 }
