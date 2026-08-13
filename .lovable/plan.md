@@ -1,50 +1,65 @@
-# Estado actual y próximos pasos
+# Resumen DNS: qué borrar y qué dejar para validar caminoalinconsciente.cl
 
-## 1. Dominio caminoalinconsciente.cl — bloqueado por DNS duplicado
+## Estado actual que estoy viendo desde internet
 
-Estado en Lovable: `caminoalinconsciente.cl` y `www.caminoalinconsciente.cl` están en **provisioning_failed** (no se pudo emitir el certificado SSL).
-
-Causa detectada al consultar el DNS público:
+El dominio ya tiene la verificación de Lovable (TXT `_lovable`), pero hay **registros A duplicados** que rompen la emisión del certificado SSL:
 
 ```text
-caminoalinconsciente.cl      A  185.158.133.1   (Lovable, correcto)
-caminoalinconsciente.cl      A  179.61.12.61    (hosting antiguo, sobra)
-www.caminoalinconsciente.cl  A  185.158.133.1   (Lovable, correcto)
-www.caminoalinconsciente.cl  A  179.61.12.61    (hosting antiguo, sobra)
-TXT _lovable                 = lovable_verify=... (correcto)
+caminoalinconsciente.cl      A  185.158.133.1   (correcto, Lovable)
+caminoalinconsciente.cl      A  179.61.12.61    (incorrecto, hosting antiguo)
+www.caminoalinconsciente.cl  A  185.158.133.1   (correcto, Lovable)
+www.caminoalinconsciente.cl  A  179.61.12.61    (incorrecto, hosting antiguo)
 ```
 
-La verificación de propiedad (TXT) está bien. El problema es que cada dominio tiene **dos registros A**: la mitad del tráfico llega al hosting viejo y por eso falla la emisión del certificado.
+## Qué debes dejar exactamente
 
-Qué hacer (en tecnoweb.net):
-1. Eliminar el registro A de `@` con valor `179.61.12.61`.
-2. Eliminar el registro A de `www` con valor `179.61.12.61`.
-3. Dejar únicamente `185.158.133.1` en ambos y no tocar el TXT `_lovable`.
-4. Esperar la propagación (normalmente 1–4 horas).
-5. Avisarme: verifico el DNS y pulsamos **Retry** en Configuración del proyecto → Dominios para reintentar el SSL.
-6. Con ambos activos, dejar `www.caminoalinconsciente.cl` como dominio primario.
+Solo estos tres registros:
 
-Mientras tanto el sitio funciona en https://www-caminoalinconsciente-cl.lovable.app
+| Tipo | Nombre | Valor | ¿Qué hace? |
+|------|--------|-------|------------|
+| A | @ | 185.158.133.1 | Apunta la raíz a Lovable |
+| A | www | 185.158.133.1 | Apunta www a Lovable |
+| TXT | _lovable | lovable_verify=e7bfcea5d7ead22abf823cc73e00e32aba93f90e1f39825c784f1b02089451ec | Verifica propiedad para Lovable |
 
-## 2. Correo de avisos — ya está verificado
+## Qué debes borrar
 
-`notify.caminoalinconsciente.cl` figura como **verificado**: la delegación NS quedó operativa. Es decir, ya se puede salir del standby y activar el envío del aviso de cada formulario a `contacto@caminoalinconsciente.cl`.
+Borra **todos** los registros que coincidan con esto:
 
-Trabajo pendiente cuando lo autorices:
-- Reactivar el envío del correo tras guardar el lead en la base de datos.
-- Probar con un envío real desde el formulario y confirmar la recepción.
+| Tipo | Nombre | Valor | Motivo |
+|------|--------|-------|--------|
+| A | @ | 179.61.12.61 | Duplicado: manda tráfico a otro servidor |
+| A | www | 179.61.12.61 | Duplicado: manda tráfico a otro servidor |
 
-## 3. Sitio — todo lo pedido está implementado
+Si tuvieras CNAME, ALIAS o redirecciones para `@` o `www` apuntando a otro lugar, también debes quitarlos; solo deben existir los dos A de arriba y el TXT.
 
-- Logo tipo banner en la parte superior de inicio, test y páginas legales, adaptado a móvil y escritorio.
-- Sección "¿Qué es la Biodescodificación?" al inicio, seguida del hero y del primer botón de agendar.
-- Imagen del proceso de 5 pasos en "Conoce cómo trabajamos en la sesión".
-- Formulario y bloque "¿Aún tienes dudas?" eliminados de la portada.
-- Contacto: solo WhatsApp (+56 9 9022 9732) y mparedes@caminoalinconsciente.cl.
-- Aviso legal sin la sección de Titularidad.
-- Precio 45 USD y botones apuntando al checkout de Hotmart.
-- Página `/gracias` con logo grande, mensaje entusiasta y `noindex`.
+## Si tecnoweb.net no te deja borrar los viejos
 
-## Detalles técnicos
-- Sin cambios de código requeridos para el dominio: es solo limpieza de registros A en el proveedor DNS.
-- Para el correo: reactivar el envío en `src/lib/contacto.functions.ts` usando la plantilla existente `src/lib/email-templates/nuevo-lead.tsx`, manteniendo el guardado del lead aunque el correo falle.
+Pasa a menudo. La causa más común es que el panel antiguo del hosting tenga un registro predefinido. Estas son las opciones:
+
+1. **Contactar a soporte de tecnoweb.net** y pedirles que eliminen los registros A duplicados:  
+   - `179.61.12.61` en `@`  
+   - `179.61.12.61` en `www`  
+   Diles que ya no usas ese hosting y que el dominio debe apuntar solo a `185.158.133.1`.
+
+2. **Migrar el DNS a Cloudflare** (gratuito y más flexible):  
+   - Creas una cuenta en Cloudflare, agregas `caminoalinconsciente.cl`.
+   - Cloudflare importa los registros; tú borras los duplicados y dejas solo los tres de arriba.
+   - Cambias los nameservers del dominio en tecnoweb.net a los que te dé Cloudflare.
+   - Esperas propagación (generalmente minutos/horas, máximo 24h).
+   - Esta opción resuelve de una vez el límite que tenías con los NS records para correo también.
+
+3. **Si el dominio aún está apuntado a hosting antiguo**, tecnoweb a veces requiere que primero canceles o migres el servicio web para soltar los A. Si es tu caso, confirma con ellos que el dominio está "liberado".
+
+## Después de limpiar el DNS
+
+1. Vuelve a consultar el estado en Configuración del proyecto → Dominios.
+2. El dominio pasará a: **Verificando → Configurando → Activo**.
+3. Cuando ambos estén activos, define **www.caminoalinconsciente.cl** como dominio primario para que `caminoalinconsciente.cl` redirija automáticamente.
+
+## Correo: ya está verificado
+
+`notify.caminoalinconsciente.cl` ya está verificado, así que no hay que tocar nada de DNS de correo ahora.
+
+## En una sola frase
+
+Debes tener **solo dos A y un TXT**: nada más; los dos A que apuntan a `179.61.12.61` son los que deben desaparecer.
