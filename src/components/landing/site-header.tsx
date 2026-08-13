@@ -1,0 +1,31 @@
+import { Link } from "@tanstack/react-router";
+import { CtaButton } from "./cta-button";
+import logoAsset from "@/assets/logo-mario-paredes.png.asset.json";
+
+export function SiteHeader() {
+  return (
+    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/90 backdrop-blur">
+      <div className="section-shell flex flex-wrap items-center justify-between gap-x-4 gap-y-2 py-3 sm:py-4">
+        <a href="/" className="flex min-w-0 items-center" aria-label="Inicio">
+          <img
+            src={logoAsset.url}
+            alt="Mario Paredes · Biodescodificación"
+            className="h-12 w-auto max-w-[15rem] object-contain sm:h-16 sm:max-w-[20rem]"
+            loading="eager"
+          />
+        </a>
+        <div className="flex shrink-0 items-center gap-4">
+          <Link
+            to="/test"
+            className="text-xs font-medium text-muted-foreground transition-colors hover:text-foreground sm:text-sm"
+          >
+            Test de Preparación
+          </Link>
+          <CtaButton size="md" className="shrink-0">
+            Agendar
+          </CtaButton>
+        </div>
+      </div>
+    </header>
+  );
+}
