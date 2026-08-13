@@ -1,53 +1,64 @@
-# Verificación de DNS — falta un paso clave
+# Estado tras tu cambio de nameservers
 
-Acabo de consultar tu dominio desde internet. Los cambios que hiciste en Cloudflare **todavía no están activos**, porque el dominio sigue usando los nameservers de tecnoweb.
+Todavía no se ve la propagación. Desde internet el dominio sigue respondiendo con los nameservers de tecnoweb y con los registros viejos.
 
-## Lo que veo publicado hoy
+## Lo que veo ahora
 
-| Registro | Estado real | Comentario |
+| Registro | Estado | Comentario |
 |---|---|---|
-| Nameservers | `ns1..ns4.tecnoweb.net` | ❌ Cloudflare aún no controla el DNS |
-| A `@` | 185.158.133.1 | ✅ correcto |
-| `www` | CNAME → caminoalinconsciente.cl | ⚠️ resuelve bien, pero es el registro viejo de tecnoweb |
+| Nameservers | `ns1..ns4.tecnoweb.net` | ❌ Aún no apuntan a Cloudflare |
+| A `@` | 185.158.133.1 | ✅ correcto (registro viejo) |
+| `www` | CNAME → caminoalinconsciente.cl | ⚠️ registro viejo de tecnoweb |
 | TXT `_lovable` | presente | ✅ correcto |
 | MX | smtp.google.com (10) | ✅ correcto |
-| TXT SPF (`@`) | **no existe** | ❌ falta |
-| TXT `google._domainkey` (DKIM) | **no existe** | ❌ falta |
-| NS `notify` | **no existe** | ❌ falta (correo de avisos Lovable) |
-| TXT `_dmarc` | v=DMARC1; p=none; | ✅ correcto |
+| TXT SPF | **no existe** | ❌ agregado en Cloudflare, no publicado |
+| TXT DKIM (`google._domainkey`) | **no existe** | ❌ agregado en Cloudflare, no publicado |
+| NS `notify` | **no existe** | ❌ agregado en Cloudflare, no publicado |
+| Dominios Lovable | `provisioning_failed` | ❌ aún no se puede emitir el certificado |
 
-Lo que agregaste en Cloudflare (SPF, DKIM, NS de notify, A de www) está bien guardado, pero **no se publica** hasta que el dominio apunte a Cloudflare. Por eso Google Workspace no puede verificar el DKIM: literalmente no ve el registro.
+## ¿Cuánto esperar?
 
-## El único paso que falta
+El cambio de nameservers puede demorar entre **minutos y 48 horas**, según el proveedor del dominio y el TTL que tenga en su zona. A esta hora debería ser normal que no se vea todavía.
 
-Cambiar los nameservers en tecnoweb (donde tienes registrado el dominio):
+## Cómo saber tú mismo que ya está listo
 
-1. En Cloudflare, panel del dominio → sección **DNS** u **Overview** → verás dos nameservers tipo:
-   ```text
-   xxxx.ns.cloudflare.com
-   yyyy.ns.cloudflare.com
-   ```
-2. Entra al panel de tecnoweb → gestión del dominio `caminoalinconsciente.cl` → **Nameservers / DNS**.
-3. **Borra** los cuatro `ns1.tecnoweb.net` … `ns4.tecnoweb.net`.
-4. **Agrega** los dos de Cloudflare.
-5. Guarda.
+Desde Cloudflare, en el panel del dominio, cuando los nameservers se reconozcan aparecerá una banda o mensaje que dice **"Great news! Cloudflare is now protecting your site"** o **"Active"**. Hasta entonces, no activa.
 
-Si tecnoweb no te deja hacerlo desde el panel, escríbeles pidiendo específicamente: *"Por favor cambien los nameservers de caminoalinconsciente.cl a xxxx.ns.cloudflare.com y yyyy.ns.cloudflare.com"*. Es una solicitud estándar y no pueden negarse: el dominio es tuyo.
+También puedes comprobarlo con cualquier herramienta online de "DNS lookup" o en tu terminal con:
 
-## Después del cambio (yo me encargo de verificar)
+```text
+dig NS caminoalinconsciente.cl
+```
 
-1. Cloudflare pasará a estado **Active** (minutos a algunas horas, máximo 24-48 h).
-2. Yo vuelvo a revisar el DNS y te confirmo que SPF, DKIM y el resto ya están publicados.
-3. En Google Workspace vuelves a pulsar **Iniciar autenticación** para el DKIM (con Cloudflare activo verifica rápido, no espera 48 h).
-4. En Configuración del proyecto → Dominios pulsamos **Retry** para que Lovable emita el certificado de `caminoalinconsciente.cl` y `www.caminoalinconsciente.cl`.
-5. Dejamos `www.caminoalinconsciente.cl` como dominio primario.
-6. Reactivamos el aviso por correo de cada formulario a contacto@caminoalinconsciente.cl.
+Cuando los dos nameservers digan `.ns.cloudflare.com` en lugar de `.tecnoweb.net`, ya estamos en Cloudflare.
 
-## Lo que necesito de ti ahora
+## Advertencia importante sobre el correo de avisos
 
-- Solo el cambio de nameservers en tecnoweb.
-- Avísame cuando lo hayas hecho (o si tecnoweb pone problemas) y sigo desde ahí.
+El dominio de email `notify.caminoalinconsciente.cl` ahora figura como verificado en Lovable, pero cuando los nameservers migren a Cloudflare, ese subdominio **solo seguirá funcionando si en Cloudflare creaste los dos registros NS**:
+
+| Tipo | Nombre | Valor |
+|---|---|---|
+| NS | `notify` | `ns3.lovable.cloud` |
+| NS | `notify` | `ns4.lovable.cloud` |
+
+Si no los agregaste todavía, por favor añádelos en Cloudflare ahora mismo. Sin ellos, los avisos del formulario dejarán de enviarse cuando el DNS se mueva.
+
+## Próximos pasos cuando la propagación termine
+
+1. **Yo reviso el DNS** para confirmar que SPF, DKIM, NS notify y los dos A están correctos.
+2. **En Google Workspace** vuelves a pulsar **Iniciar autenticación** del DKIM. Con Cloudflare activo suele verificar en pocos minutos.
+3. **En Lovable**, Configuración del proyecto → Dominios, pulsamos **Retry** en ambos dominios para reemitir el certificado SSL.
+4. **Definimos `www.caminoalinconsciente.cl` como dominio primario**.
+5. **Probamos el envío del aviso del formulario** a `contacto@caminoalinconsciente.cl`.
+
+## Si pasan 24 horas y no cambia nada
+
+Es posible que tecnoweb no haya aplicado el cambio de nameservers. Escríbeles directamente pidiendo que actualicen los nameservers de `caminoalinconsciente.cl` a los dos de Cloudflare. Si no cooperan, avísame y vemos alternativas.
+
+## Resumen
+
+Por ahora: **esperar**. No hay nada más que yo pueda hacer de mi lado hasta que el DNS de internet refleje los nameservers de Cloudflare. Una vez eso ocurra, los certificados SSL y el resto se resuelven en minutos.
 
 ## Detalles técnicos
-- No hay cambios de código pendientes; todo lo que falta es propagación de DNS y el reintento de aprovisionamiento del certificado.
-- El correo de avisos del formulario ya está implementado en el código y volverá a funcionar en cuanto los NS de `notify` se publiquen desde Cloudflare.
+- No necesito tocar código del sitio; todo está listo.
+- Recuerda: asegúrate de tener los NS `notify` en Cloudflare antes de que la propagación termine, para no perder el envío de correos de aviso.
