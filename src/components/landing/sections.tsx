@@ -29,6 +29,8 @@ import { CtaButton } from "./cta-button";
 import { SITE } from "@/lib/site-config";
 import heroImage from "@/assets/hero.jpg.asset.json";
 import aboutAsset from "@/assets/mario-paredes.jpg.asset.json";
+import procesoImage from "@/assets/proceso-sesion.jpg";
+
 
 const aboutImage = aboutAsset.url;
 
@@ -371,24 +373,16 @@ export function VideoSection() {
           Conoce cómo trabajamos en la sesión
         </h2>
         <div className="mt-10 overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
-          <div className="aspect-video w-full">
-            {SITE.youtubeEmbedUrl ? (
-              <iframe
-                src={SITE.youtubeEmbedUrl}
-                title="Video de presentación"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                loading="lazy"
-                className="size-full"
-              />
-            ) : (
-              <div className="flex size-full flex-col items-center justify-center gap-3 bg-accent/40 text-accent-foreground">
-                <PlayCircle className="size-12" aria-hidden="true" />
-                <p className="text-sm">Espacio reservado para el video de presentación</p>
-              </div>
-            )}
-          </div>
+          <img
+            src={procesoImage}
+            alt="Proceso de la sesión en 5 pasos: identificación de la situación de estrés, sentimiento y emoción oculta, creencia limitante, reimpronta y seguimiento post sesión"
+            width={1600}
+            height={912}
+            loading="lazy"
+            className="w-full"
+          />
         </div>
+
       </div>
     </section>
   );
