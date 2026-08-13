@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { MessageCircle } from "lucide-react";
+import { Mail, MessageCircle } from "lucide-react";
 import { WHATSAPP_URL, SITE } from "@/lib/site-config";
 import logoAsset from "@/assets/logo-mario-paredes.png.asset.json";
 
@@ -35,6 +35,11 @@ export function SiteFooter() {
             <li>
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 transition-colors hover:text-foreground">
                 <MessageCircle className="size-4" aria-hidden="true" /> WhatsApp
+              </a>
+            </li>
+            <li>
+              <a href="mailto:mparedes@caminoalinconsciente.cl" className="inline-flex items-center gap-2 transition-colors hover:text-foreground">
+                <Mail className="size-4" aria-hidden="true" /> mparedes@caminoalinconsciente.cl
               </a>
             </li>
           </ul>
