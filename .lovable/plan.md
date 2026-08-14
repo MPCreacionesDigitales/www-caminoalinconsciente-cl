@@ -1,83 +1,40 @@
-# Estado tras tu cambio de nameservers
+# Estado actual y pasos para dejar todo operativo
 
-Todavía no se ve la propagación. Desde internet el dominio sigue respondiendo con los nameservers de tecnoweb y con los registros viejos.
+## Lo que revisé ahora (consulta DNS real)
 
-## Lo que veo ahora
+| Elemento | Estado |
+|---|---|
+| A `caminoalinconsciente.cl` → 185.158.133.1 | OK |
+| `www` → apunta al dominio raíz → 185.158.133.1 | OK |
+| TXT `_lovable` (verificación) | OK, presente |
+| Registros CAA que bloqueen el certificado | Ninguno (bien) |
+| Nameservers activos | Siguen siendo `tecnoweb.net` (Cloudflare aún no toma control) |
+| Dominio de correo `notify.caminoalinconsciente.cl` | **Verificado** en Lovable |
+| Dominios en Lovable | `provisioning_failed` (falta reintentar) |
+| Formulario de leads en la web | Quitado de la página, el código sigue existiendo |
 
-| Registro | Estado | Comentario |
-|---|---|---|
-| Nameservers | `ns1..ns4.tecnoweb.net` | ❌ Aún no apuntan a Cloudflare |
-| A `@` | 185.158.133.1 | ✅ correcto (registro viejo) |
-| `www` | CNAME → caminoalinconsciente.cl | ⚠️ registro viejo de tecnoweb |
-| TXT `_lovable` | presente | ✅ correcto |
-| MX | smtp.google.com (10) | ✅ correcto |
-| TXT SPF | **no existe** | ❌ agregado en Cloudflare, no publicado |
-| TXT DKIM (`google._domainkey`) | **no existe** | ❌ agregado en Cloudflare, no publicado |
-| NS `notify` | **no existe** | ❌ agregado en Cloudflare, no publicado |
-| Dominios Lovable | `provisioning_failed` | ❌ aún no se puede emitir el certificado |
+Conclusión: los registros que Lovable necesita para el sitio ya están correctos y publicados, aunque sigan sirviéndose desde tecnoweb. El estado `provisioning_failed` quedó del intento anterior (cuando había registros A duplicados) y necesita un **reintento manual**.
 
-## ¿Cuánto esperar?
+## Lo que haces tú (2 minutos)
 
-El cambio de nameservers puede demorar entre **minutos y 48 horas**, según el proveedor del dominio y el TTL que tenga en su zona. A esta hora debería ser normal que no se vea todavía.
+1. Abre **Configuración del proyecto → Dominios**.
+2. En `caminoalinconsciente.cl` pulsa **Retry**, y luego lo mismo en `www.caminoalinconsciente.cl`.
+3. Espera unos minutos: pasan por `Verifying` → `Setting up` → `Active`.
+4. Cuando ambos estén `Active`, marca **`www.caminoalinconsciente.cl` como Primary**.
 
-## Cómo saber tú mismo que ya está listo
+Si el retry vuelve a fallar, te lo diagnostico con el detalle del error.
 
-Desde Cloudflare, en el panel del dominio, cuando los nameservers se reconozcan aparecerá una banda o mensaje que dice **"Great news! Cloudflare is now protecting your site"** o **"Active"**. Hasta entonces, no activa.
+Nota sobre Cloudflare: como los registros ya son correctos en tecnoweb, no es urgente terminar la migración. Si igual la completas más adelante, hay que replicar allí: A `@`, A `www` (DNS only, nube gris), TXT `_lovable`, SPF, DKIM de Google y los NS `notify` → `ns3.lovable.cloud` y `ns4.lovable.cloud`.
 
-También puedes comprobarlo con cualquier herramienta online de "DNS lookup" o en tu terminal con:
+## Lo que hago yo en el sitio
 
-```text
-dig NS caminoalinconsciente.cl
-```
+**Volver a poner el formulario de contacto** para captar leads:
 
-Cuando los dos nameservers digan `.ns.cloudflare.com` en lugar de `.tecnoweb.net`, ya estamos en Cloudflare.
-
-## Advertencia importante sobre el correo de avisos
-
-El dominio de email `notify.caminoalinconsciente.cl` ahora figura como verificado en Lovable, pero cuando los nameservers migren a Cloudflare, ese subdominio **solo seguirá funcionando si en Cloudflare creaste los dos registros NS**:
-
-| Tipo | Nombre | Valor |
-|---|---|---|
-| NS | `notify` | `ns3.lovable.cloud` |
-| NS | `notify` | `ns4.lovable.cloud` |
-
-Si no los agregaste todavía, por favor añádelos en Cloudflare ahora mismo. Sin ellos, los avisos del formulario dejarán de enviarse cuando el DNS se mueva.
-
-## Próximos pasos cuando la propagación termine
-
-1. **Yo reviso el DNS** para confirmar que SPF, DKIM, NS notify y los dos A están correctos.
-2. **En Google Workspace** vuelves a pulsar **Iniciar autenticación** del DKIM. Con Cloudflare activo suele verificar en pocos minutos.
-3. **En Lovable**, Configuración del proyecto → Dominios, pulsamos **Retry** en ambos dominios para reemitir el certificado SSL.
-4. **Definimos `www.caminoalinconsciente.cl` como dominio primario**.
-5. **Probamos el envío del aviso del formulario** a `contacto@caminoalinconsciente.cl`.
-
-## Sobre el mensaje de DNSSEC que estás viendo
-
-Eso es **DNSSEC** (Security Extensions del DNS). Es un sistema de seguridad adicional que certifica que las respuestas DNS no fueron modificadas por un tercero.
-
-### ¿Qué es el DS record que te muestra Cloudflare?
-
-Es un registro criptográfico (Delegation Signer) que debe ir en tu **registrador de dominio** (tecnoweb), no en Cloudflare. Cloudflare te genera ese valor y tú lo copias en el panel de tecnoweb, en la sección de DNSSEC o "DS records".
-
-### ¿Debes configurarlo?
-
-**No es obligatorio.** Lovable no requiere DNSSEC para funcionar.
-
-- **Opción recomendada (más simple):** Desactiva DNSSEC en tecnoweb y no agregues el DS record. Con eso el dominio funciona perfectamente con Cloudflare y Lovable.
-- **Opción avanzada:** Si quieres tener DNSSEC activo, activa DNSSEC dentro del panel de Cloudflare y copia el DS record que te entregue en tecnoweb. Pero si lo haces mal, el sitio puede dejar de resolver en algunos proveedores.
-
-### Mi consejo práctico
-
-Como ya estás en medio de una migración de DNS, lo más seguro es **mantener DNSSEC apagado**. Si tecnoweb lo tiene activado, pídeles que lo desactiven para `caminoalinconsciente.cl`. No agregues el DS record en Cloudflare a menos que sepas que tecnoweb te lo está pidiendo explícitamente para activarlo.
-
-## Si pasan 24 horas y no cambia nada
-
-Es posible que tecnoweb no haya aplicado el cambio de nameservers. Escríbeles directamente pidiendo que actualicen los nameservers de `caminoalinconsciente.cl` a los dos de Cloudflare. Si no cooperan, avísame y vemos alternativas.
-
-## Resumen
-
-Por ahora: **esperar**. No hay nada más que yo pueda hacer de mi lado hasta que el DNS de internet refleje los nameservers de Cloudflare. Una vez eso ocurra, los certificados SSL y el resto se resuelven en minutos.
+- Se reincorpora la sección "¿Aún tienes dudas?" con el formulario (nombre, correo, WhatsApp) justo antes del CTA final en la página de inicio.
+- El envío sigue guardando en la base de datos y, como el dominio de correo ya está verificado, ahora sí enviará el aviso a **contacto@caminoalinconsciente.cl** con los datos del contacto y la página de origen.
+- Se mantiene la protección anti-spam (campo trampa) y el mensaje de éxito/error para el visitante.
 
 ## Detalles técnicos
-- No necesito tocar código del sitio; todo está listo.
-- Recuerda: asegúrate de tener los NS `notify` en Cloudflare antes de que la propagación termine, para no perder el envío de correos de aviso.
+- `src/routes/index.tsx`: reimportar y renderizar `Formulario` antes de `CtaFinal`.
+- `src/lib/contacto.functions.ts` y `src/lib/email-templates/nuevo-lead.tsx` ya están listos; no requieren cambios.
+- Prueba posterior: envío real del formulario y verificación del correo recibido.
