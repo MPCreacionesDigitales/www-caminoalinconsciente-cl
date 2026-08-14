@@ -13,7 +13,7 @@ import {
   VideoSection,
   Precio,
   Faq,
-
+  Formulario,
   CtaFinal,
 } from "@/components/landing/sections";
 import { SiteFooter } from "@/components/landing/site-footer";
@@ -73,6 +73,7 @@ function Index() {
       <VideoSection />
       <Precio />
       <Faq />
+      <Formulario />
       <CtaFinal />
       <SiteFooter />
 

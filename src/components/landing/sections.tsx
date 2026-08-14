@@ -475,8 +475,10 @@ export function Formulario() {
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    console.log("[form] onSubmit iniciado", values);
     if (enviando) return;
     const validated = validateContact(values);
+    console.log("[form] validación", validated);
     if (!validated.ok) {
       toast.error(validated.error);
       return;
@@ -484,19 +486,24 @@ export function Formulario() {
     if (website) return; // honeypot anti-spam
     setEnviando(true);
     try {
-      await enviar({
+      console.log("[form] llamando server function", validated.data);
+      const result = await enviar({
         data: {
           ...validated.data,
           paginaDeOrigen: typeof window !== "undefined" ? window.location.href : undefined,
         },
       });
+      console.log("[form] server function result", result);
       toast.success("¡Gracias! Hemos recibido tus datos. Me pondré en contacto contigo muy pronto.");
+      console.log("[form] toast success llamado");
       setValues({ nombre: "", email: "", whatsapp: "" });
-    } catch {
+    } catch (err) {
+      console.error("[form] error enviando", err);
       toast.error(
         "No pudimos enviar tus datos. Por favor, intenta nuevamente o escríbeme directamente por WhatsApp.",
       );
     } finally {
+      console.log("[form] enviando false");
       setEnviando(false);
     }
   }
