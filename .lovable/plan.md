@@ -1,28 +1,27 @@
 # Reconectar www.caminoalinconsciente.cl
 
-El mensaje "Offline" solo afecta al subdominio `www`. El dominio principal `caminoalinconsciente.cl` sigue **Live** y funcionando normalmente.
+## Situación actual (verificada ahora)
 
-## Qué revisé
+- `caminoalinconsciente.cl` → apunta correctamente a `185.158.133.1` y está **activo**.
+- `www.caminoalinconsciente.cl` → también apunta a `185.158.133.1`, y su TXT de verificación `_lovable.www` ya está publicado.
+- Los nameservers del dominio ya son de Cloudflare (`aida.ns.cloudflare.com`, `devin.ns.cloudflare.com`).
+- En el panel de Lovable, `www.caminoalinconsciente.cl` sigue marcado como **drifted** (desconectado), que es el origen del mensaje que te aparece.
 
-- `caminoalinconsciente.cl` → apunta correctamente a `185.158.133.1`
-- `www.caminoalinconsciente.cl` → también apunta correctamente a `185.158.133.1`
-- TXT `_lovable.www.caminoalinconsciente.cl` → **no existe**
+Es decir: el DNS ya está correcto; lo único que falta es que Lovable vuelva a verificarlo.
 
-Ese TXT de verificación es lo único que falta. Sin él, Lovable no puede confirmar la propiedad del subdominio y lo marca como Offline.
+## Qué hacer
 
-## Pasos a seguir (los haces tú en Cloudflare)
+1. En Lovable: **Project Settings → Domains**, buscar `www.caminoalinconsciente.cl` y presionar **Recover** (o **Retry**).
+2. Esperar unos segundos a que pase a **Active / Live**.
+3. Si vuelve a fallar: en Cloudflare, revisar que los registros A de `@` y `www` estén en modo **DNS only** (nube gris, sin proxy naranjo). El proxy de Cloudflare impide que Lovable emita el certificado SSL y provoca justamente el estado "drifted".
+4. Volver a presionar **Recover** tras desactivar el proxy.
 
-1. En Cloudflare → DNS → Add record:
-   - Tipo: **TXT**
-   - Nombre: `_lovable.www`
-   - Contenido: el valor completo `lovable_verify=4f4a868fa83999d51646508cccb5ae568e853…` que aparece en el panel de Lovable (cópialo con el botón de copiar, está truncado en pantalla)
-   - TTL: Auto
-2. Confirmar que el registro A de `www` → `185.158.133.1` está en modo **DNS only** (nube gris), no proxied.
-3. Esperar 10–30 minutos de propagación.
-4. Volver al panel de dominios de Lovable y presionar **Recover** en `www.caminoalinconsciente.cl`.
+## Verificación
 
-## Después
+Una vez presionado Recover, confirmo desde mi lado que:
+- `www.caminoalinconsciente.cl` figura como dominio activo.
+- Ambas URLs sirven la versión publicada del sitio.
 
-Cuando me digas que ya lo agregaste, verifico la propagación del TXT desde mi lado y te confirmo si ya puedes darle Recover.
+## Nota
 
-No hay cambios de código involucrados: esto es únicamente configuración DNS.
+No se requiere ningún cambio de código para esto; es solo configuración de dominio.
