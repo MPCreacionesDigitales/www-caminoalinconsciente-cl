@@ -1,45 +1,28 @@
-# Revisar y corregir el dominio de email de Lovable (notify.caminoalinconsciente.cl)
+# Reconectar www.caminoalinconsciente.cl
 
-## Estado actual confirmado
-- El dominio de correo `notify.caminoalinconsciente.cl` está marcado como **Drifted** en Lovable: la verificación DNS ya no pasa.
-- Lovable espera que en Cloudflare existan los siguientes registros delegados:
+El mensaje "Offline" solo afecta al subdominio `www`. El dominio principal `caminoalinconsciente.cl` sigue **Live** y funcionando normalmente.
 
-| Tipo | Host | Valor esperado |
-|------|------|----------------|
-| TXT | `_lovable-email.caminoalinconsciente.cl` | `lovable_email_verify=82d789c71f5316654dba622fe1d654f14a1cb7616ec352606a636e990c22e94b` |
-| NS | `notify.caminoalinconsciente.cl` | `ns3.lovable.cloud` |
-| NS | `notify.caminoalinconsciente.cl` | `ns4.lovable.cloud` |
+## Qué revisé
 
-## Hallazgo del usuario
-El usuario confirmó que en Cloudflare tiene:
-- ✅ Los dos registros NS de `notify` hacia `ns3.lovable.cloud` y `ns4.lovable.cloud`.
-- ❌ El TXT existente es `_lovable.caminoalinconsciente.cl` con valor `lovable_verify=...`. Este es el registro de **verificación del dominio del sitio web**, no del email.
-- ⚠️ **Falta** el TXT `_lovable-email.caminoalinconsciente.cl` con valor `lovable_email_verify=...`.
+- `caminoalinconsciente.cl` → apunta correctamente a `185.158.133.1`
+- `www.caminoalinconsciente.cl` → también apunta correctamente a `185.158.133.1`
+- TXT `_lovable.www.caminoalinconsciente.cl` → **no existe**
 
-## Plan
+Ese TXT de verificación es lo único que falta. Sin él, Lovable no puede confirmar la propiedad del subdominio y lo marca como Offline.
 
-### 1. Agregar el TXT de verificación de email en Cloudflare
-- Ir a Cloudflare → DNS → Records.
-- Añadir un nuevo registro TXT:
-  - **Name:** `_lovable-email.caminoalinconsciente.cl`
-  - **Content:** `lovable_email_verify=82d789c71f5316654dba622fe1d654f14a1cb7616ec352606a636e990c22e94b`
-  - **Proxy status:** DNS Only (gris).
+## Pasos a seguir (los haces tú en Cloudflare)
 
-### 2. No eliminar el TXT existente
-- Mantener `_lovable.caminoalinconsciente.cl` con `lovable_verify=...` porque es necesario para la verificación del dominio del sitio web.
+1. En Cloudflare → DNS → Add record:
+   - Tipo: **TXT**
+   - Nombre: `_lovable.www`
+   - Contenido: el valor completo `lovable_verify=4f4a868fa83999d51646508cccb5ae568e853…` que aparece en el panel de Lovable (cópialo con el botón de copiar, está truncado en pantalla)
+   - TTL: Auto
+2. Confirmar que el registro A de `www` → `185.158.133.1` está en modo **DNS only** (nube gris), no proxied.
+3. Esperar 10–30 minutos de propagación.
+4. Volver al panel de dominios de Lovable y presionar **Recover** en `www.caminoalinconsciente.cl`.
 
-### 3. Esperar propagación
-- Esperar 15-30 minutos para que el registro se propague.
+## Después
 
-### 4. Re-verificar en Lovable
-- Ir a **Cloud → Emails → Manage Domains**.
-- Presionar **Retry** en `notify.caminoalinconsciente.cl`.
-- Confirmar que el estado pasa a **Active / Verificado**.
+Cuando me digas que ya lo agregaste, verifico la propagación del TXT desde mi lado y te confirmo si ya puedes darle Recover.
 
-### 5. Probar el flujo de leads
-- Enviar un lead de prueba desde el formulario de la landing.
-- Confirmar que el registro se guarda en `public.leads`.
-- Confirmar que el aviso llega a `contacto@caminoalinconsciente.cl`.
-
-## Nota importante
-Si después de agregar el TXT correcto y esperar propagación el estado sigue Drifted, el problema puede estar del lado de Lovable. En ese caso no se deben seguir modificando registros; hay que contactar a soporte de Lovable para que reprovisionen `notify.caminoalinconsciente.cl`.
+No hay cambios de código involucrados: esto es únicamente configuración DNS.
