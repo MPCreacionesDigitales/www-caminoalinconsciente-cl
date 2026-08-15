@@ -1,15 +1,8 @@
-# Verificar y corregir drift de DNS para email y dominio www
+# Revisar y corregir el dominio de email de Lovable (notify.caminoalinconsciente.cl)
 
-## Estado actual
-- Dominio raíz `caminoalinconsciente.cl`: activo y funcionando como URL principal del sitio publicado.
-- Subdominio de correo `notify.caminoalinconsciente.cl`: estado **Drifted** en Lovable — la verificación DNS falla.
-- Subdominio `www.caminoalinconsciente.cl`: estado **Drifted** como dominio personalizado adicional.
-- Cloudflare ya envió el "ok inicial" de activación, lo que indica que el tráfico está siendo proxyado pero la propagación de los registros DNS puede aún estar en curso.
-
-## Pasos a seguir
-
-### 1. Revisar registros en Cloudflare
-Verificar que en Cloudflare existan exactamente los registros que Lovable espera para `notify.caminoalinconsciente.cl`:
+## Estado actual confirmado
+- El dominio de correo `notify.caminoalinconsciente.cl` está marcado como **Drifted** en Lovable: la verificación DNS ya no pasa.
+- Lovable espera que en Cloudflare existan los siguientes registros delegados:
 
 | Tipo | Host | Valor esperado |
 |------|------|----------------|
@@ -17,22 +10,30 @@ Verificar que en Cloudflare existan exactamente los registros que Lovable espera
 | NS | `notify.caminoalinconsciente.cl` | `ns3.lovable.cloud` |
 | NS | `notify.caminoalinconsciente.cl` | `ns4.lovable.cloud` |
 
-Para el sitio web (raíz y www):
-- A `@` → `185.158.133.1` (modo DNS Only, no proxy)
-- A `www` → `185.158.133.1` (modo DNS Only, no proxy)
-- TXT `_lovable` con el valor de verificación que Lovable mostró al conectar el dominio.
+- La configuración de SPF, DKIM y DMARC que el usuario está haciendo para Gmail corresponde al dominio raíz y **no afecta** el subdominio delegado de Lovable. Lovable gestiona SPF/DKIM/MX dentro de la subzona `notify.caminoalinconsciente.cl`.
 
-### 2. Esperar propagación (si acabas de agregar o cambiar algo)
-- DNS puede tardar hasta 72 horas, aunque con Cloudflare suele ser minutos.
-- No re-verificar repetidamente; espera al menos 15-30 minutos antes de dar Retry.
+## Plan
 
-### 3. Dar Retry en Lovable
-- Para email: **Cloud → Emails → Manage Domains → Retry** sobre `notify.caminoalinconsciente.cl`.
-- Para dominio: **Project Settings → Domains → Retry** sobre `www.caminoalinconsciente.cl`.
+### 1. Verificar Cloudflare
+Ir a Cloudflare → DNS → Records y confirmar que existen exactamente los registros anteriores. No deben faltar ni sobrar registros NS en `notify`.
 
-### 4. Verificar funcionamiento
-- Confirmar que el formulario de la landing sigue enviando avisos a `contacto@caminoalinconsciente.cl`.
-- Probar que `https://www.caminoalinconsciente.cl` redirige correctamente a `https://caminoalinconsciente.cl`.
+### 2. Corregir o completar registros si es necesario
+- Si falta el TXT de verificación, agregarlo.
+- Si falta algún NS (`ns3.lovable.cloud` o `ns4.lovable.cloud`), agregarlo.
+- Si hay registros extra (A, CNAME, TXT, MX) directamente en `notify.caminoalinconsciente.cl`, eliminarlos; solo deben existir los dos NS.
+
+### 3. Esperar propagación
+- Aunque Cloudflare suele ser rápido, esperar 15-30 minutos para evitar re-verificar antes de tiempo.
+
+### 4. Re-verificar en Lovable
+- Ir a **Cloud → Emails → Manage Domains**.
+- Presionar **Retry** en `notify.caminoalinconsciente.cl`.
+- Confirmar que el estado pasa a **Active / Verificado**.
+
+### 5. Probar el flujo de leads
+- Enviar un lead de prueba desde el formulario de la landing.
+- Confirmar que el registro se guarda en `public.leads`.
+- Confirmar que el aviso llega a `contacto@caminoalinconsciente.cl`.
 
 ## Nota importante
-Si los registros en Cloudflare ya coinciden exactamente con los que Lovable espera y el estado sigue Drifted, el problema puede estar del lado de Lovable. En ese caso no hay que seguir modificando DNS; conviene contactar a soporte de Lovable para que reprovisionen el subdominio de correo.
+Si los registros en Cloudflare ya coinciden exactamente con los que Lovable espera y el estado sigue Drifted, el problema está del lado de Lovable. En ese caso no se deben seguir modificando registros; hay que contactar a soporte de Lovable para que reprovisionen `notify.caminoalinconsciente.cl`.
