@@ -13,10 +13,10 @@ export const Route = createFileRoute("/politica-de-privacidad")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "article" },
-      { property: "og:url", content: "/politica-de-privacidad" },
+      { property: "og:url", content: "https://caminoalinconsciente.cl/politica-de-privacidad" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/politica-de-privacidad" }],
+    links: [{ rel: "canonical", href: "https://caminoalinconsciente.cl/politica-de-privacidad" }],
   }),
   component: () => (
     <LegalPage

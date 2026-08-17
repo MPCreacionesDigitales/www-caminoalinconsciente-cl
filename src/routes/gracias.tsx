@@ -17,11 +17,11 @@ export const Route = createFileRoute("/gracias")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://caminoalinconsciente-cl.lovable.app/gracias" },
+      { property: "og:url", content: "https://caminoalinconsciente.cl/gracias" },
       { name: "twitter:card", content: "summary" },
     ],
     links: [
-      { rel: "canonical", href: "https://caminoalinconsciente-cl.lovable.app/gracias" },
+      { rel: "canonical", href: "https://caminoalinconsciente.cl/gracias" },
     ],
   }),
   component: Gracias,

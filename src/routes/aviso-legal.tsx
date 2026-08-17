@@ -13,10 +13,10 @@ export const Route = createFileRoute("/aviso-legal")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "article" },
-      { property: "og:url", content: "/aviso-legal" },
+      { property: "og:url", content: "https://caminoalinconsciente.cl/aviso-legal" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/aviso-legal" }],
+    links: [{ rel: "canonical", href: "https://caminoalinconsciente.cl/aviso-legal" }],
   }),
   component: () => (
     <LegalPage
