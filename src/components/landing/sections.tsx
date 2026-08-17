@@ -104,10 +104,8 @@ export function QueEs() {
             pueden estar relacionados con la manera en que estás viviendo ese conflicto.
           </p>
           <p>
-            Desde esta perspectiva, aquello que hoy experimentas —un síntoma, una dificultad
-            emocional, un conflicto de pareja, una relación compleja con el dinero, un miedo
-            persistente o un patrón que parece repetirse una y otra vez— puede convertirse en una
-            puerta de entrada para conocerte con mayor profundidad.
+            Desde esta perspectiva, aquello que hoy experimentas puede convertirse en una puerta
+            de entrada para conocerte con mayor profundidad.
           </p>
         </div>
       </div>
@@ -165,7 +163,7 @@ export function Solucion() {
         <div>
           <p className="eyebrow">La solución</p>
           <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-            Sesión Online de Biodescodificación
+            Una nueva lectura de tu propia historia
           </h2>
           <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
             En un encuentro privado por videollamada revisamos juntos tu historia para encontrar
@@ -173,24 +171,27 @@ export function Solucion() {
             trabajamos sobre su raíz.
           </p>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Al finalizar obtienes claridad sobre el origen de tu situación y un protocolo práctico
-            para comenzar un proceso de transformación consciente.
+            Atiendo desde Santiago de Chile y, al ser online, puedes tomar la sesión desde
+            cualquier región del país o del extranjero, en español y en tu propio horario.
           </p>
         </div>
-        <ul className="grid gap-4 self-center">
-          {[
-            "Identificamos la raíz emocional del conflicto",
-            "Comprendemos la razón biológica del síntoma",
-            "Reconocemos creencias y programas inconscientes",
-            "Observamos conflictos familiares que se repiten",
-            "Definimos un protocolo práctico para tu proceso",
-          ].map((item) => (
-            <li key={item} className="flex items-start gap-3 rounded-xl bg-accent/40 px-5 py-4">
-              <Check className="mt-0.5 size-5 shrink-0 text-accent-foreground" aria-hidden="true" />
-              <span className="text-base text-foreground">{item}</span>
-            </li>
-          ))}
-        </ul>
+        <div className="self-center">
+          <h3 className="text-lg font-medium">Situaciones con las que se puede trabajar</h3>
+          <ul className="mt-5 grid gap-4">
+            {[
+              "Ansiedad, estrés sostenido y angustia",
+              "Síntomas físicos persistentes sin explicación clara",
+              "Relaciones de pareja que terminan siempre igual",
+              "Dificultades y bloqueos con el dinero",
+              "Historias familiares que se repiten entre generaciones",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-3 rounded-xl bg-accent/40 px-5 py-4">
+                <Check className="mt-0.5 size-5 shrink-0 text-accent-foreground" aria-hidden="true" />
+                <span className="text-base text-foreground">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );
@@ -199,12 +200,12 @@ export function Solucion() {
 /* ------------------------------- Beneficios ------------------------------- */
 
 const beneficios = [
-  { icon: Compass, title: "Comprende el origen de tu conflicto", text: "Deja de dar vueltas sobre lo mismo y entiende dónde comenzó realmente." },
-  { icon: Activity, title: "Descubre la razón biológica de tu síntoma", text: "Tu cuerpo no se equivoca: expresa aquello que aún no ha sido resuelto." },
-  { icon: Brain, title: "Identifica creencias inconscientes", text: "Reconoce las ideas heredadas que hoy condicionan tus decisiones." },
-  { icon: Repeat, title: "Rompe patrones repetitivos", text: "Comprende por qué ciertas historias vuelven una y otra vez a tu vida." },
-  { icon: Sparkles, title: "Obtén claridad emocional", text: "Sal de la sesión con una lectura ordenada y comprensible de tu proceso." },
-  { icon: HeartHandshake, title: "Comienza un cambio profundo", text: "Recibe herramientas concretas para avanzar desde el primer día." },
+  { icon: Sparkles, title: "Claridad sobre lo que te ocurre", text: "Sales con una lectura ordenada y comprensible de tu propia historia." },
+  { icon: Compass, title: "Un protocolo concreto", text: "Herramientas prácticas para aplicar desde el mismo día de la sesión." },
+  { icon: Activity, title: "Otra relación con tu cuerpo", text: "Dejas de pelear con el síntoma y empiezas a escuchar lo que expresa." },
+  { icon: Brain, title: "Decisiones más libres", text: "Al ver las creencias heredadas, dejas de decidir en piloto automático." },
+  { icon: Repeat, title: "El ciclo deja de repetirse", text: "Reconoces la señal a tiempo y puedes elegir una respuesta distinta." },
+  { icon: HeartHandshake, title: "Un espacio seguro y sin juicio", text: "Un encuentro confidencial donde puedes hablar con total libertad." },
 ];
 
 export function Beneficios() {
@@ -253,9 +254,9 @@ export function ComoFunciona() {
     <section id="como-funciona" className="py-20 sm:py-28">
       <div className="section-shell">
         <div className="max-w-2xl">
-          <p className="eyebrow">Cómo funciona</p>
+          <p className="eyebrow">Cómo reservar</p>
           <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-            Cuatro pasos simples
+            De la compra a tu sesión, en cuatro pasos
           </h2>
         </div>
         <ol className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -280,7 +281,7 @@ export function Sobre() {
       <div className="section-shell grid items-center gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
         <img
           src={aboutImage}
-          alt="Retrato del acompañante en biodescodificación"
+          alt="Mario Paredes, acompañante en biodescodificación en Santiago de Chile"
           loading="lazy"
           width={1024}
           height={1280}
@@ -289,7 +290,7 @@ export function Sobre() {
         <div>
           <p className="eyebrow">Quién te acompaña</p>
           <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-            Un acompañamiento cercano y profesional
+            Soy Mario Paredes y te acompaño desde Santiago de Chile
           </h2>
           <div className="mt-8 space-y-6 text-lg leading-relaxed text-muted-foreground">
             <p>
@@ -368,9 +369,9 @@ export function VideoSection() {
   return (
     <section className="bg-secondary/60 py-20 sm:py-28">
       <div className="section-shell max-w-3xl text-center">
-        <p className="eyebrow">Presentación</p>
+        <p className="eyebrow">El proceso</p>
         <h2 className="mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-          Conoce cómo trabajamos en la sesión
+          Qué hacemos, paso a paso, dentro de la sesión
         </h2>
         <div className="mt-10 overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
           <img
@@ -383,6 +384,23 @@ export function VideoSection() {
           />
         </div>
 
+        <ol className="mt-10 grid gap-4 text-left sm:grid-cols-2">
+          {[
+            { t: "Situación de estrés", d: "Identificamos el hecho concreto que hoy te tiene en conflicto." },
+            { t: "Sentimiento y emoción oculta", d: "Reconocemos qué emoción quedó atrapada bajo esa situación." },
+            { t: "Creencia limitante", d: "Descubrimos la idea aprendida que sostiene ese modo de reaccionar." },
+            { t: "Reimpronta", d: "Trabajamos una nueva impresión emocional frente al mismo hecho." },
+            { t: "Seguimiento post sesión", d: "Te llevas un protocolo práctico para sostener el cambio." },
+          ].map((p, i) => (
+            <li key={p.t} className="rounded-2xl border border-border bg-card p-6">
+              <span className="font-display text-sm tracking-[0.2em] text-gold">
+                0{i + 1}
+              </span>
+              <h3 className="mt-2 text-base font-medium">{p.t}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.d}</p>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );
@@ -420,12 +438,14 @@ export function Precio() {
 
 /* ----------------------------------- FAQ ---------------------------------- */
 
-const faqs = [
+export const faqs: { q: string; a: string }[] = [
   { q: "¿La sesión es online?", a: "Sí. Se realiza por videollamada, desde donde estés, solo necesitas conexión a internet y un lugar tranquilo." },
   { q: "¿Cuánto dura?", a: "La sesión es un encuentro privado 1 a 1 con el tiempo necesario para revisar tu historia y entregarte un protocolo práctico." },
   { q: "¿Necesito conocimientos previos?", a: "No. Yo te guío paso a paso con un lenguaje simple y cercano durante todo el proceso." },
   { q: "¿Qué ocurre después de comprar?", a: "Después del pago podrás agendar el día y la hora de tu sesión, y recibirás el enlace de la videollamada." },
   { q: "¿Sirve para cualquier conflicto?", a: "Se puede trabajar con síntomas físicos, ansiedad, estrés, relaciones, dinero, familia y patrones que se repiten." },
+  { q: "¿Desde qué países puedo tomar la sesión?", a: "Atiendo desde Santiago de Chile y, al ser por videollamada, puedes conectarte desde cualquier región de Chile o desde el extranjero. Coordinamos el horario según tu zona horaria." },
+  { q: "¿La biodescodificación reemplaza un tratamiento médico o psicológico?", a: "No. Es un acompañamiento emocional complementario y no sustituye diagnóstico, tratamiento ni indicación de un profesional de la salud." },
   { q: "¿Qué pasa si tengo dudas?", a: "Puedes escribirme antes de reservar mediante el formulario o WhatsApp y con gusto te oriento." },
 ];
 

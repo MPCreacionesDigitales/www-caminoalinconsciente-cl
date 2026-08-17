@@ -18,3 +18,5 @@ Disallow: /.mcp/
 Disallow: /.lovable/
 Disallow: /.well-known/
 
+Sitemap: https://caminoalinconsciente.cl/sitemap.xml
+

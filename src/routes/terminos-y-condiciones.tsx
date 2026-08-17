@@ -13,10 +13,10 @@ export const Route = createFileRoute("/terminos-y-condiciones")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "article" },
-      { property: "og:url", content: "/terminos-y-condiciones" },
+      { property: "og:url", content: "https://caminoalinconsciente.cl/terminos-y-condiciones" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/terminos-y-condiciones" }],
+    links: [{ rel: "canonical", href: "https://caminoalinconsciente.cl/terminos-y-condiciones" }],
   }),
   component: () => (
     <LegalPage

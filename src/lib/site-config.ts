@@ -3,6 +3,8 @@
  */
 export const CHECKOUT_URL = "https://pay.hotmart.com/E107122530K";
 
+export const SITE_URL = "https://caminoalinconsciente.cl";
+
 export const WHATSAPP_NUMBER = "56990229732";
 
 export const WHATSAPP_URL =
@@ -11,6 +13,6 @@ export const WHATSAPP_URL =
 
 export const SITE = {
   name: "Sesión Online de Biodescodificación",
-  price: "45 USD",
+  price: "35 USD",
   youtubeEmbedUrl: "", // Ej: "https://www.youtube.com/embed/XXXXXXXXXXX"
 };
