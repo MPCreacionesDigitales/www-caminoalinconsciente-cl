@@ -23,9 +23,9 @@ export const Route = createFileRoute("/terminos-y-condiciones")({
       title="Términos y Condiciones"
       sections={[
         { heading: "El servicio", body: "La Sesión Online de Biodescodificación es un encuentro privado 1 a 1 realizado por videollamada." },
-        { heading: "Compra y agendamiento", body: "La compra se realiza mediante Hotmart. Una vez confirmado el pago, podrás agendar el día y la hora de tu sesión." },
-        { heading: "Reprogramación", body: "[Indica aquí con cuánta anticipación se puede reprogramar una sesión.]" },
-        { heading: "Reembolsos", body: "[Indica aquí tu política de reembolso, considerando también las condiciones de Hotmart.]" },
+        { heading: "Compra y agendamiento", body: "La compra se realiza mediante Hotmart. Una vez confirmado el pago, recibirás un enlace a mi calendario para agendar el día y la hora de tu sesión. Tienes 15 días desde la compra para solicitar reembolso si lo necesitas." },
+        { heading: "Reprogramación", body: "Si necesitas reprogramar una sesión ya agendada, escríbeme con la mayor anticipación posible por WhatsApp para coordinar una nueva fecha." },
+        { heading: "Reembolsos", body: "Tienes 15 días desde la compra a través de Hotmart para solicitar reembolso. Pasado ese plazo, la sesión queda confirmada y no aplica devolución." },
         { heading: "Alcance", body: "El servicio es un acompañamiento emocional y no reemplaza tratamientos médicos ni psicológicos." },
       ]}
     />
