@@ -442,11 +442,11 @@ export const faqs: { q: string; a: string }[] = [
   { q: "¿La sesión es online?", a: "Sí. Se realiza por videollamada, desde donde estés, solo necesitas conexión a internet y un lugar tranquilo." },
   { q: "¿Cuánto dura?", a: "La sesión dura entre 25 y 40 minutos, dependiendo de lo que esté experimentando el consultante. Es un encuentro privado 1 a 1 con el tiempo necesario para revisar tu historia y entregarte un protocolo práctico." },
   { q: "¿Necesito conocimientos previos?", a: "No. Yo te guío paso a paso con un lenguaje simple y cercano durante todo el proceso." },
-  { q: "¿Qué ocurre después de comprar?", a: "Después del pago podrás agendar el día y la hora de tu sesión, y recibirás el enlace de la videollamada." },
+  { q: "¿Qué ocurre después de comprar?", a: "Después de comprar a través de Hotmart recibirás un enlace a mi calendario para agendar tu sesión. Tienes 15 días desde la compra para solicitar reembolso si lo necesitas." },
   { q: "¿Sirve para cualquier conflicto?", a: "Se puede trabajar con síntomas físicos, ansiedad, estrés, relaciones, dinero, familia y patrones que se repiten." },
   { q: "¿Desde qué países puedo tomar la sesión?", a: "Atiendo desde Santiago de Chile y, al ser por videollamada, puedes conectarte desde cualquier región de Chile o desde el extranjero. Coordinamos el horario según tu zona horaria." },
   { q: "¿La biodescodificación reemplaza un tratamiento médico o psicológico?", a: "No. Es un acompañamiento emocional complementario y no sustituye diagnóstico, tratamiento ni indicación de un profesional de la salud." },
-  { q: "¿Qué pasa si tengo dudas?", a: "Puedes escribirme antes de reservar mediante el formulario o WhatsApp y con gusto te oriento." },
+  { q: "¿Qué pasa si tengo dudas?", a: "Si tienes dudas antes de reservar, completa el formulario con tus datos y me pondré en contacto contigo para orientarte." },
 ];
 
 export function Faq() {
