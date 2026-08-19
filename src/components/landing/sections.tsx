@@ -426,10 +426,18 @@ export function Precio() {
               Reservar Mi Sesión
             </CtaButton>
           </div>
-          <p className="mt-5 flex items-center justify-center gap-2 text-sm text-muted-foreground">
-            <ShieldCheck className="size-4 text-sage" aria-hidden="true" />
-            Pago seguro mediante Hotmart
-          </p>
+          <ul className="mt-5 inline-flex flex-col items-start gap-2 text-sm text-muted-foreground">
+            {[
+              { icon: ShieldCheck, label: "Pago seguro mediante Hotmart" },
+              { icon: Check, label: "Pagos en moneda local" },
+              { icon: Check, label: "Garantía 15 días" },
+            ].map(({ icon: Icon, label }) => (
+              <li key={label} className="flex items-center gap-2">
+                <Icon className="size-4 text-sage" aria-hidden="true" />
+                {label}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
