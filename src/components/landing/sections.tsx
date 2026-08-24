@@ -41,6 +41,12 @@ export function Hero() {
     <section className="relative overflow-hidden bg-background pt-16 pb-20 sm:pt-24 sm:pb-28">
       <div className="section-shell grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
         <div className="reveal">
+          <img
+            src={logoAsset.url}
+            alt="Mario Paredes · Biodescodificación"
+            className="mb-8 h-28 w-auto object-contain sm:h-36 lg:h-44"
+            loading="eager"
+          />
           <p className="eyebrow">{SITE.name}</p>
           <h1 className="mt-6 text-4xl leading-[1.08] font-medium text-foreground sm:text-5xl lg:text-6xl">
             Descubre el origen emocional de lo que hoy limita tu vida
@@ -49,9 +55,7 @@ export function Hero() {
             Una sesión privada 1 a 1 donde te acompaño a encontrar la raíz emocional y biológica
             de aquello que te genera estrés, síntomas o situaciones que se repiten.
           </p>
-          <div className="mt-9">
-            <CtaButton size="xl">Quiero Agendar Mi Sesión</CtaButton>
-          </div>
+
           <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
             {[
               { icon: ShieldCheck, label: "Pago seguro" },
