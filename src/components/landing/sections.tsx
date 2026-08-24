@@ -30,6 +30,8 @@ import { SITE } from "@/lib/site-config";
 import heroImage from "@/assets/hero.jpg.asset.json";
 import aboutAsset from "@/assets/mario-paredes.jpg.asset.json";
 import procesoAsset from "@/assets/proceso-sesion.jpg.asset.json";
+import logoAsset from "@/assets/logo-mario-paredes-v2.png.asset.json";
+
 
 
 const aboutImage = aboutAsset.url;
