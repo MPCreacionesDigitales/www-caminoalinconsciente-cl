@@ -293,7 +293,7 @@ export function Sobre() {
         <div>
           <p className="eyebrow">Quién te acompaña</p>
           <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-            Soy Mario Paredes y te acompaño desde Santiago de Chile
+            Mario Paredes, acompañante en biodescodificación
           </h2>
           <div className="mt-8 space-y-6 text-lg leading-relaxed text-muted-foreground">
             <p>
@@ -301,7 +301,7 @@ export function Sobre() {
               económicos, llegué a la biodescodificación.
             </p>
             <p>
-              Dentro de todo lo que he estudiado y aprendido, creo que es el método más efectivo y
+              Dentro de todo lo que he estudiado y aprendido, siento que es el método más efectivo y
               directo para transformar la forma en que pensamos. Gracias a las herramientas que
               aporta, se pueden generar cambios desde el minuto 1.
             </p>

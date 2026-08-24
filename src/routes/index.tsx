@@ -112,8 +112,8 @@ function Index() {
     <>
       <SiteHeader />
 
-      <QueEs />
       <Hero />
+      <QueEs />
       <Problema />
       <Solucion />
       <Beneficios />
