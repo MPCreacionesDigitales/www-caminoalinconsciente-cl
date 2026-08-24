@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Sparkles, MessageCircle, Mail, CalendarCheck } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/site-config";
 import { SiteFooter } from "@/components/landing/site-footer";
-import logoAsset from "@/assets/logo-mario-paredes-v2.png.asset.json";
+import logoAsset from "@/assets/logo-camino-inconsciente.png.asset.json";
 
 const title = "¡Bienvenido! Tu transformación empieza ahora | Mario Paredes";
 const description =

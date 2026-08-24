@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, MessageCircle } from "lucide-react";
 import { WHATSAPP_URL, SITE } from "@/lib/site-config";
-import logoAsset from "@/assets/logo-mario-paredes-v2.png.asset.json";
+import logoAsset from "@/assets/logo-camino-inconsciente.png.asset.json";
 
 export function SiteFooter() {
   return (
