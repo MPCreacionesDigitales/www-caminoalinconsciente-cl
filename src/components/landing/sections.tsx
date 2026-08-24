@@ -177,8 +177,7 @@ export function Solucion() {
             trabajamos sobre su raíz.
           </p>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Atiendo desde Santiago de Chile y, al ser online, puedes tomar la sesión desde
-            cualquier región del país o del extranjero, en español y en tu propio horario.
+            
           </p>
         </div>
         <div className="self-center">
