@@ -55,14 +55,14 @@ export function Hero() {
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
             Una sesión privada 1 a 1 donde te acompaño a encontrar la raíz emocional y biológica
-            de aquello que te genera estrés, síntomas o situaciones que se repiten.
+            de aquello que te genera estrés, síntomas o patrones inconscientes repetidos.
           </p>
 
           <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
             {[
-              { icon: ShieldCheck, label: "Pago seguro" },
-              { icon: Video, label: "Sesión online" },
-              { icon: UserRound, label: "Atención personalizada" },
+              { icon: ShieldCheck, label: "" },
+              { icon: Video, label: "" },
+              { icon: UserRound, label: "" },
             ].map(({ icon: Icon, label }) => (
               <li key={label} className="flex items-center gap-2">
                 <Icon className="size-4 shrink-0 text-sage" aria-hidden="true" />
