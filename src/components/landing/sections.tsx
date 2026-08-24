@@ -55,14 +55,14 @@ export function Hero() {
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
             Una sesión privada 1 a 1 donde te acompaño a encontrar la raíz emocional y biológica
-            de aquello que te genera estrés, síntomas o situaciones que se repiten.
+            de aquello que te genera estrés, síntomas o patrones inconscientes repetidos.
           </p>
 
           <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
             {[
-              { icon: ShieldCheck, label: "Pago seguro" },
-              { icon: Video, label: "Sesión online" },
-              { icon: UserRound, label: "Atención personalizada" },
+              { icon: ShieldCheck, label: "" },
+              { icon: Video, label: "" },
+              { icon: UserRound, label: "" },
             ].map(({ icon: Icon, label }) => (
               <li key={label} className="flex items-center gap-2">
                 <Icon className="size-4 shrink-0 text-sage" aria-hidden="true" />
@@ -177,8 +177,7 @@ export function Solucion() {
             trabajamos sobre su raíz.
           </p>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            Atiendo desde Santiago de Chile y, al ser online, puedes tomar la sesión desde
-            cualquier región del país o del extranjero, en español y en tu propio horario.
+            
           </p>
         </div>
         <div className="self-center">
@@ -259,7 +258,7 @@ export function ComoFunciona() {
         <div className="max-w-2xl">
           <p className="eyebrow">Cómo reservar</p>
           <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-            De la compra a tu sesión, en cuatro pasos
+            En sólo cuatro pasos
           </h2>
         </div>
         <ol className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -372,9 +371,9 @@ export function VideoSection() {
   return (
     <section className="bg-secondary/60 py-20 sm:py-28">
       <div className="section-shell max-w-3xl text-center">
-        <p className="eyebrow">El proceso</p>
+        <p className="eyebrow">EL PROTOCOLO</p>
         <h2 className="mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-          Qué hacemos, paso a paso, dentro de la sesión
+          ¿Cómo es una sesión?
         </h2>
         <div className="mt-10 overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
           <img
