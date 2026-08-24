@@ -371,9 +371,9 @@ export function VideoSection() {
   return (
     <section className="bg-secondary/60 py-20 sm:py-28">
       <div className="section-shell max-w-3xl text-center">
-        <p className="eyebrow">El proceso</p>
+        <p className="eyebrow">EL PROTOCOLO</p>
         <h2 className="mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-          Qué hacemos, paso a paso, dentro de la sesión
+          ¿Cómo es una sesión?
         </h2>
         <div className="mt-10 overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
           <img
