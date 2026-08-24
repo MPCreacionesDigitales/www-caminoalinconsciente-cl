@@ -238,9 +238,6 @@ export function Beneficios() {
             </article>
           ))}
         </div>
-        <div className="mt-14">
-          <CtaButton>Quiero Agendar Mi Sesión</CtaButton>
-        </div>
       </div>
     </section>
   );
