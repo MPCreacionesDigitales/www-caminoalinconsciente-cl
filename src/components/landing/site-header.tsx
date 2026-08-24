@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { CtaButton } from "./cta-button";
-import logoAsset from "@/assets/logo-mario-paredes.png.asset.json";
+import logoAsset from "@/assets/logo-mario-paredes-v2.png.asset.json";
 
 export function SiteHeader() {
   return (
@@ -10,7 +10,7 @@ export function SiteHeader() {
           <img
             src={logoAsset.url}
             alt="Mario Paredes · Biodescodificación"
-            className="h-12 w-auto max-w-[15rem] object-contain sm:h-16 sm:max-w-[20rem]"
+            className="h-9 w-auto max-w-[11rem] object-contain sm:h-10 sm:max-w-[14rem]"
             loading="eager"
           />
         </a>
