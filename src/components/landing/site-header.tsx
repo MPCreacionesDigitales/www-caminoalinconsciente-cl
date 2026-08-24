@@ -10,7 +10,7 @@ export function SiteHeader() {
           <img
             src={logoAsset.url}
             alt="Mario Paredes · Biodescodificación"
-            className="h-12 w-auto max-w-[15rem] object-contain sm:h-16 sm:max-w-[20rem]"
+            className="h-9 w-auto max-w-[11rem] object-contain sm:h-10 sm:max-w-[14rem]"
             loading="eager"
           />
         </a>
