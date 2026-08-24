@@ -258,7 +258,7 @@ export function ComoFunciona() {
         <div className="max-w-2xl">
           <p className="eyebrow">Cómo reservar</p>
           <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-            De la compra a tu sesión, en cuatro pasos
+            En sólo cuatro pasos
           </h2>
         </div>
         <ol className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
