@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { CtaButton } from "./cta-button";
-import logoAsset from "@/assets/logo-mario-paredes.png.asset.json";
+import logoAsset from "@/assets/logo-mario-paredes-v2.png.asset.json";
 
 export function SiteHeader() {
   return (
