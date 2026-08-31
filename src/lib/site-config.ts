@@ -1,7 +1,7 @@
 /**
  * Configuración editable del sitio.
  */
-export const CHECKOUT_URL = "https://pay.hotmart.com/E107122530K";
+export const CHECKOUT_URL = "https://pay.hotmart.com/E107122530K?off=bn5bjjlg";
 
 export const SITE_URL = "https://caminoalinconsciente.cl";
 
