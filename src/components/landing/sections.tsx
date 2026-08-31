@@ -21,8 +21,6 @@ import {
   ShieldCheck,
   Video,
   UserRound,
-  Star,
-  PlayCircle,
   Check,
 } from "lucide-react";
 import { CtaButton } from "./cta-button";
