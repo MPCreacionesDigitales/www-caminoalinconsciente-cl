@@ -13,6 +13,6 @@ export const WHATSAPP_URL =
 
 export const SITE = {
   name: "Sesión Online de Biodescodificación",
-  price: "35 USD",
+  price: "$40.000 CLP",
   youtubeEmbedUrl: "", // Ej: "https://www.youtube.com/embed/XXXXXXXXXXX"
 };

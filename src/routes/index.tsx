@@ -9,7 +9,6 @@ import {
   Beneficios,
   ComoFunciona,
   Sobre,
-  Testimonios,
   VideoSection,
   Precio,
   Faq,
@@ -84,8 +83,8 @@ export const Route = createFileRoute("/")({
               },
               offers: {
                 "@type": "Offer",
-                price: "35",
-                priceCurrency: "USD",
+                price: "40000",
+                priceCurrency: "CLP",
                 url: CHECKOUT_URL,
                 availability: "https://schema.org/InStock",
               },
@@ -119,7 +118,6 @@ function Index() {
       <Beneficios />
       <ComoFunciona />
       <Sobre />
-      <Testimonios />
       <VideoSection />
       <Precio />
       <Faq />

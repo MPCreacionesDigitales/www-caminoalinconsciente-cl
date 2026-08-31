@@ -21,8 +21,6 @@ import {
   ShieldCheck,
   Video,
   UserRound,
-  Star,
-  PlayCircle,
   Check,
 } from "lucide-react";
 import { CtaButton } from "./cta-button";
@@ -310,55 +308,6 @@ export function Sobre() {
               biodescodificación.
             </p>
           </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------- Testimonios ------------------------------ */
-
-const testimonios = [
-  { nombre: "María P.", ciudad: "Santiago, Chile", texto: "Llegué a la sesión sin entender por qué mi ansiedad siempre volvía. En menos de una hora logramos identificar el origen de un conflicto que llevaba años repitiéndose. Salí con una claridad que no había sentido nunca." },
-  { nombre: "Carlos R.", ciudad: "Santiago, Chile", texto: "Tenía un dolor de espalda que ningún especialista lograba explicar. La sesión me ayudó a comprender el mensaje que mi cuerpo intentaba decirme. Hoy puedo decir que entiendo el verdadero origen de lo que vivía." },
-  { nombre: "Daniela M.", ciudad: "Santiago, Chile", texto: "Mi relación de pareja siempre terminaba de la misma forma. En la sesión descubrimos el patrón familiar que se repetía sin que yo lo viera. Fue transformador tener una hoja de ruta clara para comenzar a cambiarlo." },
-];
-
-export function Testimonios() {
-  return (
-    <section id="testimonios" className="py-20 sm:py-28">
-      <div className="section-shell">
-        <div className="max-w-2xl">
-          <p className="eyebrow">Testimonios</p>
-          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-            Historias que comenzaron con una sola sesión
-          </h2>
-        </div>
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {testimonios.map((t, i) => (
-            <figure key={i} className="rounded-2xl border border-border bg-card p-7 shadow-soft">
-              <div className="flex min-w-0 items-center gap-4">
-                <span
-                  className="grid size-12 shrink-0 place-items-center rounded-full bg-accent text-accent-foreground"
-                  aria-hidden="true"
-                >
-                  <UserRound className="size-5" />
-                </span>
-                <figcaption className="min-w-0">
-                  <p className="truncate font-medium">{t.nombre}</p>
-                  <p className="truncate text-sm text-muted-foreground">{t.ciudad}</p>
-                </figcaption>
-              </div>
-              <div className="mt-5 flex gap-1" aria-label="5 de 5 estrellas">
-                {Array.from({ length: 5 }).map((_, s) => (
-                  <Star key={s} className="size-4 fill-gold text-gold" aria-hidden="true" />
-                ))}
-              </div>
-              <blockquote className="mt-4 text-base leading-relaxed text-muted-foreground">
-                {t.texto}
-              </blockquote>
-            </figure>
-          ))}
         </div>
       </div>
     </section>
