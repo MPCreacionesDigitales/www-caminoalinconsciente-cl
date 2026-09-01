@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, MessageCircle } from "lucide-react";
+import { Mail, MessageCircle, Instagram } from "lucide-react";
 import { WHATSAPP_URL, SITE } from "@/lib/site-config";
 import logoAsset from "@/assets/logo-camino-inconsciente.png.asset.json";
 
