@@ -38,6 +38,11 @@ export function SiteFooter() {
               </a>
             </li>
             <li>
+              <a href="https://www.instagram.com/biocaminoalinconsciente/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 transition-colors hover:text-foreground">
+                <Instagram className="size-4" aria-hidden="true" /> Instagram
+              </a>
+            </li>
+            <li>
               <a href="mailto:mparedes@caminoalinconsciente.cl" className="inline-flex items-center gap-2 transition-colors hover:text-foreground">
                 <Mail className="size-4" aria-hidden="true" /> mparedes@caminoalinconsciente.cl
               </a>
