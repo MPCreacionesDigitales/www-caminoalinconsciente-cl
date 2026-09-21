@@ -98,14 +98,14 @@ export function QueEs() {
         <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted-foreground">
           <p>
             La Biodescodificación es un proceso de acompañamiento y entrenamiento mental profundo
-            orientado a explorar y comprender el posible origen emocional, biológico y psicológico
-            que una persona asocia con determinados síntomas, conflictos o situaciones que se
-            repiten en su vida.
+            orientado a explorar y comprender el origen emocional, biológico y psicológico que una
+            persona asocia con determinados síntomas y conflictos en sus relaciones, ya sea de
+            pareja, familiares, amigos, laborales, entre otros.
           </p>
           <p>
             Parte de una mirada integrativa: además de observar qué te está ocurriendo, busca
-            profundizar en qué experiencias, emociones, creencias y aprendizajes inconscientes
-            pueden estar relacionados con la manera en que estás viviendo ese conflicto.
+            profundizar cuáles son las experiencias, emociones, creencias y aprendizajes
+            inconscientes que se están repitiendo, generando estrés y un mal vivir.
           </p>
           <p>
             Desde esta perspectiva, aquello que hoy experimentas puede convertirse en una puerta
@@ -149,9 +149,9 @@ export function Problema() {
           ))}
         </ul>
         <p className="mt-12 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          Cuando algo se repite, casi nunca es casualidad. Detrás suele haber una emoción no
-          resuelta, una creencia aprendida o una historia familiar que sigue actuando sin que la
-          veamos.
+          Cuando algo se repite, nunca es casualidad. Detrás siempre hay al menos una emoción no
+          resuelta y una creencia limitante que opera en tu insconsicente, generando los mismos
+          resultados una y otra vez
         </p>
       </div>
     </section>
@@ -172,7 +172,7 @@ export function Solucion() {
           <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
             En un encuentro privado por videollamada revisamos juntos tu historia para encontrar
             el conflicto que dio origen a lo que hoy vives. No trabajamos sobre el síntoma:
-            trabajamos sobre su raíz.
+            trabajamos directamente en la causa.
           </p>
           <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
             
@@ -182,11 +182,11 @@ export function Solucion() {
           <h3 className="text-lg font-medium">Situaciones con las que se puede trabajar</h3>
           <ul className="mt-5 grid gap-4">
             {[
-              "Ansiedad, estrés sostenido y angustia",
-              "Síntomas físicos persistentes sin explicación clara",
-              "Relaciones de pareja que terminan siempre igual",
+              "Ansiedad, depresión, angustia y estrés sostenido",
+              "Malestares fisicos",
+              "Relaciones tóxicas",
               "Dificultades y bloqueos con el dinero",
-              "Historias familiares que se repiten entre generaciones",
+              "Historias familiares que se repiten y causan daño",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3 rounded-xl bg-accent/40 px-5 py-4">
                 <Check className="mt-0.5 size-5 shrink-0 text-accent-foreground" aria-hidden="true" />
@@ -304,8 +304,8 @@ export function Sobre() {
             </p>
             <p>
               Este aprendizaje me ha motivado a querer apoyar a personas que están viviendo en
-              estrés, y mi sueño es poder ser ese apoyo que necesitan a través de la
-              biodescodificación.
+              sufrimiento y mi sueño es poder participe de esa transformación que les permitirá
+              vivir en plenitud.
             </p>
           </div>
         </div>
