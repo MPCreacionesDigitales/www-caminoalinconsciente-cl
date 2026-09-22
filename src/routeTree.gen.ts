@@ -15,7 +15,6 @@ import { Route as GraciasRouteImport } from './routes/gracias'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as PoliticaDePrivacidadRouteImport } from './routes/politica-de-privacidad'
 import { Route as TerminosYCondicionesRouteImport } from './routes/terminos-y-condiciones'
-import { Route as TestRouteImport } from './routes/test'
 import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
 import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
@@ -50,11 +49,6 @@ const PoliticaDePrivacidadRoute = PoliticaDePrivacidadRouteImport.update({
 const TerminosYCondicionesRoute = TerminosYCondicionesRouteImport.update({
   id: '/terminos-y-condiciones',
   path: '/terminos-y-condiciones',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TestRoute = TestRouteImport.update({
-  id: '/test',
-  path: '/test',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Char91DotmcpChar93ListToolsRoute =
@@ -94,7 +88,6 @@ export interface FileRoutesByFullPath {
   '/mcp': typeof McpRoute
   '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/terminos-y-condiciones': typeof TerminosYCondicionesRoute
-  '/test': typeof TestRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
@@ -108,7 +101,6 @@ export interface FileRoutesByTo {
   '/mcp': typeof McpRoute
   '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/terminos-y-condiciones': typeof TerminosYCondicionesRoute
-  '/test': typeof TestRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
@@ -123,7 +115,6 @@ export interface FileRoutesById {
   '/mcp': typeof McpRoute
   '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/terminos-y-condiciones': typeof TerminosYCondicionesRoute
-  '/test': typeof TestRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
   '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
@@ -139,7 +130,6 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/politica-de-privacidad'
     | '/terminos-y-condiciones'
-    | '/test'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/.lovable/oauth/consent'
@@ -153,7 +143,6 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/politica-de-privacidad'
     | '/terminos-y-condiciones'
-    | '/test'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/.lovable/oauth/consent'
@@ -167,7 +156,6 @@ export interface FileRouteTypes {
     | '/mcp'
     | '/politica-de-privacidad'
     | '/terminos-y-condiciones'
-    | '/test'
     | '/.mcp/list-tools'
     | '/.well-known/oauth-protected-resource'
     | '/.lovable/oauth/consent'
@@ -182,7 +170,6 @@ export interface RootRouteChildren {
   McpRoute: typeof McpRoute
   PoliticaDePrivacidadRoute: typeof PoliticaDePrivacidadRoute
   TerminosYCondicionesRoute: typeof TerminosYCondicionesRoute
-  TestRoute: typeof TestRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
@@ -234,13 +221,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TerminosYCondicionesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/test': {
-      id: '/test'
-      path: '/test'
-      fullPath: '/test'
-      preLoaderRoute: typeof TestRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/.mcp/list-tools': {
       id: '/.mcp/list-tools'
       path: '/.mcp/list-tools'
@@ -286,7 +266,6 @@ const rootRouteChildren: RootRouteChildren = {
   McpRoute: McpRoute,
   PoliticaDePrivacidadRoute: PoliticaDePrivacidadRoute,
   TerminosYCondicionesRoute: TerminosYCondicionesRoute,
-  TestRoute: TestRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,

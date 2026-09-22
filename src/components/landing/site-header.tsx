@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { CtaButton } from "./cta-button";
 import logoAsset from "@/assets/logo-camino-inconsciente.png.asset.json";
 
@@ -14,13 +13,7 @@ export function SiteHeader() {
             loading="eager"
           />
         </a>
-        <div className="flex shrink-0 items-center gap-4">
-          <Link
-            to="/test"
-            className="text-xs font-medium text-muted-foreground transition-colors hover:text-foreground sm:text-sm"
-          >
-            Test de Preparación
-          </Link>
+        <div className="flex shrink-0 items-center">
           <CtaButton size="md" className="shrink-0">
             Agendar
           </CtaButton>
