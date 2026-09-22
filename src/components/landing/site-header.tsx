@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { CtaButton } from "./cta-button";
 import logoAsset from "@/assets/logo-camino-inconsciente.png.asset.json";
 
