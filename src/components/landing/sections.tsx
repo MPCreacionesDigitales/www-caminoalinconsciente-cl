@@ -403,7 +403,7 @@ export const faqs: { q: string; a: string }[] = [
   { q: "¿Necesito conocimientos previos?", a: "No. Yo te guío paso a paso con un lenguaje simple y cercano durante todo el proceso." },
   { q: "¿Qué ocurre después de comprar?", a: "Después de comprar a través de Hotmart recibirás un enlace a mi calendario para agendar tu sesión. Tienes 15 días desde la compra para solicitar reembolso si lo necesitas." },
   { q: "¿Sirve para cualquier conflicto?", a: "Si. Sólo se necesita que el consultante esté consciente y bajo ninguna influencia que afecte su capacidad de responder a las preguntas que se hacen en la sesión." },
-  { q: "¿Desde qué países puedo tomar la sesión?", a: "Atiendo desde Santiago de Chile y, al ser por videollamada, puedes conectarte desde cualquier región de Chile o desde el extranjero. Coordinamos el horario según tu zona horaria." },
+  { q: "¿Desde qué países puedo tomar la sesión?", a: "Cualquier país. Al ser una sesión online, la ubicación geográfica no es limitante." },
   { q: "¿La biodescodificación reemplaza un tratamiento médico o psicológico?", a: "No. Es un acompañamiento emocional complementario y no sustituye diagnóstico, tratamiento ni indicación de un profesional de la salud." },
   { q: "¿Qué pasa si tengo dudas?", a: "Si tienes dudas antes de reservar, completa el formulario con tus datos y me pondré en contacto contigo para orientarte." },
 ];
