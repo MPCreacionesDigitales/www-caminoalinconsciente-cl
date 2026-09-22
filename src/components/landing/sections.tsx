@@ -398,7 +398,7 @@ export function Precio() {
 /* ----------------------------------- FAQ ---------------------------------- */
 
 export const faqs: { q: string; a: string }[] = [
-  { q: "¿La sesión es online?", a: "Sí. Se realiza por videollamada, desde donde estés, solo necesitas conexión a internet y un lugar tranquilo." },
+  { q: "¿La sesión es online?", a: "Sí. Se realiza por videollamada, desde donde estés, solo necesitas conexión a internet y un lugar tranquilo. Sesiones presensiales dentro de Chile tienen costo adicional y se coordinan por whatsapp o correo." },
   { q: "¿Cuánto dura?", a: "La sesión dura entre 25 y 40 minutos, dependiendo de lo que esté experimentando el consultante. Es un encuentro privado 1 a 1 con el tiempo necesario para revisar tu historia y entregarte un protocolo práctico." },
   { q: "¿Necesito conocimientos previos?", a: "No. Yo te guío paso a paso con un lenguaje simple y cercano durante todo el proceso." },
   { q: "¿Qué ocurre después de comprar?", a: "Después de comprar a través de Hotmart recibirás un enlace a mi calendario para agendar tu sesión. Tienes 15 días desde la compra para solicitar reembolso si lo necesitas." },
