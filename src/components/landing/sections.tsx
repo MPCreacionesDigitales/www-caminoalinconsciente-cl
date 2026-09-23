@@ -435,13 +435,10 @@ export function Faq() {
   return (
     <section id="faq" className="bg-secondary/60 py-20 sm:py-28">
       <div className="section-shell max-w-3xl">
-        <Reveal>
-          <p className="eyebrow">Preguntas frecuentes</p>
-          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-            Resolvamos tus dudas
-          </h2>
-        </Reveal>
-        <Reveal delay={100}>
+        <p className="eyebrow">Preguntas frecuentes</p>
+        <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+          Resolvamos tus dudas
+        </h2>
         <Accordion type="single" collapsible className="mt-10">
           {faqs.map((f) => (
             <AccordionItem key={f.q} value={f.q}>
@@ -452,7 +449,6 @@ export function Faq() {
             </AccordionItem>
           ))}
         </Accordion>
-        </Reveal>
       </div>
     </section>
   );
@@ -512,27 +508,14 @@ export function Formulario() {
     <section id="contacto" className="py-20 sm:py-28">
       <div className="section-shell grid gap-12 lg:grid-cols-2 lg:gap-20">
         <div>
-          <Reveal>
-            <p className="eyebrow">¿Aún tienes dudas?</p>
-            <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-              Escríbeme y te oriento antes de reservar
-            </h2>
-            <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
-              Déjame tus datos y te contacto para responder todas tus preguntas sobre la sesión.
-            </p>
-          </Reveal>
-          <Reveal delay={150}>
-            <img
-              src={formularioImage.url}
-              alt="Escritorio cálido con notebook y té, preparado para una sesión online"
-              width={1024}
-              height={1024}
-              loading="lazy"
-              className="mt-10 aspect-[4/3] w-full rounded-[1.5rem] object-cover shadow-soft"
-            />
-          </Reveal>
+          <p className="eyebrow">¿Aún tienes dudas?</p>
+          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+            Escríbeme y te oriento antes de reservar
+          </h2>
+          <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
+            Déjame tus datos y te contacto para responder todas tus preguntas sobre la sesión.
+          </p>
         </div>
-        <Reveal delay={100}>
         <form onSubmit={onSubmit} noValidate className="grid gap-5 rounded-2xl border border-border bg-card p-7 shadow-soft sm:p-9">
           <div className="grid gap-2">
             <Label htmlFor="nombre">Nombre</Label>
@@ -595,7 +578,6 @@ export function Formulario() {
             {enviando ? "Enviando…" : "Quiero más información"}
           </button>
         </form>
-        </Reveal>
       </div>
     </section>
   );
@@ -607,22 +589,18 @@ export function CtaFinal() {
   return (
     <section className="bg-primary py-24 text-primary-foreground sm:py-32">
       <div className="section-shell max-w-3xl text-center">
-        <Reveal>
-          <h2 className="text-3xl leading-tight font-medium sm:text-5xl">
-            Todo cambio comienza cuando decides mirar el origen de tu historia
-          </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/80">
-            Tal vez llevas años intentando resolver el síntoma. Hoy puedes comenzar a comprender su
-            verdadero origen.
-          </p>
-        </Reveal>
-        <Reveal delay={100}>
+        <h2 className="text-3xl leading-tight font-medium sm:text-5xl">
+          Todo cambio comienza cuando decides mirar el origen de tu historia
+        </h2>
+        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/80">
+          Tal vez llevas años intentando resolver el síntoma. Hoy puedes comenzar a comprender su
+          verdadero origen.
+        </p>
         <div className="mt-10">
           <CtaButton variant="gold" size="xl">
             Agendar Mi Sesión Ahora
           </CtaButton>
         </div>
-        </Reveal>
       </div>
     </section>
   );
