@@ -187,6 +187,7 @@ export function Solucion() {
   return (
     <section id="solucion" className="py-20 sm:py-28">
       <div className="section-shell grid gap-14 lg:grid-cols-2 lg:gap-20">
+        <div>
           <Reveal>
             <p className="eyebrow">La solución</p>
             <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
