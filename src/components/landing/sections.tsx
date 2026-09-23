@@ -506,6 +506,7 @@ export function Faq() {
             </AccordionItem>
           ))}
         </Accordion>
+        </Reveal>
       </div>
     </section>
   );
@@ -565,14 +566,27 @@ export function Formulario() {
     <section id="contacto" className="py-20 sm:py-28">
       <div className="section-shell grid gap-12 lg:grid-cols-2 lg:gap-20">
         <div>
-          <p className="eyebrow">¿Aún tienes dudas?</p>
-          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-            Escríbeme y te oriento antes de reservar
-          </h2>
-          <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
-            Déjame tus datos y te contacto para responder todas tus preguntas sobre la sesión.
-          </p>
+          <Reveal>
+            <p className="eyebrow">¿Aún tienes dudas?</p>
+            <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+              Escríbeme y te oriento antes de reservar
+            </h2>
+            <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
+              Déjame tus datos y te contacto para responder todas tus preguntas sobre la sesión.
+            </p>
+          </Reveal>
+          <Reveal delay={150}>
+            <img
+              src={formularioImage}
+              alt="Escritorio cálido con notebook y té, preparado para una sesión online"
+              width={1024}
+              height={1024}
+              loading="lazy"
+              className="mt-10 aspect-[4/3] w-full rounded-[1.5rem] object-cover shadow-soft"
+            />
+          </Reveal>
         </div>
+        <Reveal delay={100}>
         <form onSubmit={onSubmit} noValidate className="grid gap-5 rounded-2xl border border-border bg-card p-7 shadow-soft sm:p-9">
           <div className="grid gap-2">
             <Label htmlFor="nombre">Nombre</Label>
