@@ -319,35 +319,31 @@ export function VideoSection() {
   return (
     <section className="bg-secondary/60 py-20 sm:py-28">
       <div className="section-shell max-w-3xl text-center">
-        <Reveal>
-          <p className="eyebrow">EL PROTOCOLO</p>
-          <h2 className="mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-            ¿Cómo es una sesión?
-          </h2>
-        </Reveal>
-        <Reveal delay={100}>
-          {embed ? (
-            <div className="mt-10 aspect-video overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
-              <iframe
-                src={youtubeEmbedSrc(embed)}
-                title="Video de presentación de la sesión de Biodescodificación"
-                className="h-full w-full"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                loading="lazy"
-              />
-            </div>
-          ) : (
-            <div className="relative mt-10 flex aspect-video flex-col items-center justify-center gap-5 overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-secondary via-card to-accent/60 shadow-soft">
-              <span className="flex size-16 items-center justify-center rounded-full bg-background shadow-elevated">
-                <Play className="size-6 translate-x-0.5 text-primary" aria-hidden="true" />
-              </span>
-              <span className="px-6 text-sm font-medium tracking-wide text-muted-foreground">
-                Video de presentación — disponible muy pronto
-              </span>
-            </div>
-          )}
-        </Reveal>
+        <p className="eyebrow">EL PROTOCOLO</p>
+        <h2 className="mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+          ¿Cómo es una sesión?
+        </h2>
+        {SITE.youtubeEmbedUrl ? (
+          <div className="mt-10 aspect-video overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
+            <iframe
+              src={youtubeEmbedSrc(SITE.youtubeEmbedUrl)}
+              title="Video de presentación de la sesión de Biodescodificación"
+              className="h-full w-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
+        ) : (
+          <div className="relative mt-10 flex aspect-video flex-col items-center justify-center gap-5 overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-secondary via-card to-accent/60 shadow-soft">
+            <span className="flex size-16 items-center justify-center rounded-full bg-background shadow-elevated">
+              <Play className="size-6 translate-x-0.5 text-primary" aria-hidden="true" />
+            </span>
+            <span className="px-6 text-sm font-medium tracking-wide text-muted-foreground">
+              Video de presentación — disponible muy pronto
+            </span>
+          </div>
+        )}
 
         <Reveal delay={100}>
         <div className="mt-10 overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
