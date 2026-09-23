@@ -358,13 +358,41 @@ export function Sobre() {
 /* ---------------------------------- Video --------------------------------- */
 
 export function VideoSection() {
+  const embed = SITE.youtubeEmbedUrl;
   return (
     <section className="bg-secondary/60 py-20 sm:py-28">
       <div className="section-shell max-w-3xl text-center">
-        <p className="eyebrow">EL PROTOCOLO</p>
-        <h2 className="mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-          ¿Cómo es una sesión?
-        </h2>
+        <Reveal>
+          <p className="eyebrow">EL PROTOCOLO</p>
+          <h2 className="mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+            ¿Cómo es una sesión?
+          </h2>
+        </Reveal>
+        <Reveal delay={100}>
+          {embed ? (
+            <div className="mt-10 aspect-video overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
+              <iframe
+                src={youtubeEmbedSrc(embed)}
+                title="Video de presentación de la sesión de Biodescodificación"
+                className="h-full w-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+          ) : (
+            <div className="relative mt-10 flex aspect-video flex-col items-center justify-center gap-5 overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-secondary via-card to-accent/60 shadow-soft">
+              <span className="flex size-16 items-center justify-center rounded-full bg-background shadow-elevated">
+                <Play className="size-6 translate-x-0.5 text-primary" aria-hidden="true" />
+              </span>
+              <span className="px-6 text-sm font-medium tracking-wide text-muted-foreground">
+                Video de presentación — disponible muy pronto
+              </span>
+            </div>
+          )}
+        </Reveal>
+
+        <Reveal delay={100}>
         <div className="mt-10 overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
           <img
             src={procesoAsset.url}
@@ -375,7 +403,9 @@ export function VideoSection() {
             className="w-full"
           />
         </div>
+        </Reveal>
 
+        <Reveal delay={100}>
         <ol className="mt-10 grid gap-4 text-left sm:grid-cols-2">
           {[
             { t: "Situación de estrés", d: "Identificamos el hecho concreto que hoy te tiene en conflicto." },
@@ -384,7 +414,10 @@ export function VideoSection() {
             { t: "Reimpronta", d: "Trabajamos una nueva impresión emocional frente al mismo hecho." },
             { t: "Seguimiento post sesión", d: "Te llevas un protocolo práctico para sostener el cambio." },
           ].map((p, i) => (
-            <li key={p.t} className="rounded-2xl border border-border bg-card p-6">
+            <li
+              key={p.t}
+              className="rounded-2xl border border-border bg-card p-6 transition-shadow duration-300 hover:shadow-soft"
+            >
               <span className="font-display text-sm tracking-[0.2em] text-gold">
                 0{i + 1}
               </span>
@@ -393,6 +426,7 @@ export function VideoSection() {
             </li>
           ))}
         </ol>
+        </Reveal>
       </div>
     </section>
   );
@@ -404,6 +438,7 @@ export function Precio() {
   return (
     <section id="precio" className="py-20 sm:py-28">
       <div className="section-shell max-w-2xl">
+        <Reveal>
         <div className="rounded-[1.75rem] border border-border bg-card p-9 text-center shadow-elevated sm:p-14">
           <p className="eyebrow">Tu inversión</p>
           <h2 className="mt-5 text-2xl font-medium sm:text-3xl">Sesión Online</h2>
@@ -431,6 +466,7 @@ export function Precio() {
             ))}
           </ul>
         </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -453,10 +489,13 @@ export function Faq() {
   return (
     <section id="faq" className="bg-secondary/60 py-20 sm:py-28">
       <div className="section-shell max-w-3xl">
-        <p className="eyebrow">Preguntas frecuentes</p>
-        <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-          Resolvamos tus dudas
-        </h2>
+        <Reveal>
+          <p className="eyebrow">Preguntas frecuentes</p>
+          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+            Resolvamos tus dudas
+          </h2>
+        </Reveal>
+        <Reveal delay={100}>
         <Accordion type="single" collapsible className="mt-10">
           {faqs.map((f) => (
             <AccordionItem key={f.q} value={f.q}>
