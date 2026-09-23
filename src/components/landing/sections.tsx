@@ -148,7 +148,7 @@ export function Problema() {
           </Reveal>
           <Reveal delay={150} className="justify-self-center lg:justify-self-end">
             <img
-              src={problemaImage}
+              src={problemaImage.url}
               alt="Persona reflexionando en calma junto a una ventana"
               width={1024}
               height={1024}
@@ -201,7 +201,7 @@ export function Solucion() {
           </Reveal>
           <Reveal delay={150}>
             <img
-              src={solucionImage}
+              src={solucionImage.url}
               alt="Persona en calma durante una sesión online por videollamada"
               width={1024}
               height={1024}
@@ -578,7 +578,7 @@ export function Formulario() {
           </Reveal>
           <Reveal delay={150}>
             <img
-              src={formularioImage}
+              src={formularioImage.url}
               alt="Escritorio cálido con notebook y té, preparado para una sesión online"
               width={1024}
               height={1024}
