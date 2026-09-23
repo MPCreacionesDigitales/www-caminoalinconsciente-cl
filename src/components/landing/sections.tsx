@@ -246,12 +246,15 @@ export function Beneficios() {
   return (
     <section id="beneficios" className="bg-secondary/60 py-20 sm:py-28">
       <div className="section-shell">
-        <div className="max-w-2xl">
-          <p className="eyebrow">Lo que te llevas</p>
-          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-            No es solo una sesión. Es el inicio de una transformación
-          </h2>
-        </div>
+        <Reveal>
+          <div className="max-w-2xl">
+            <p className="eyebrow">Lo que te llevas</p>
+            <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+              No es solo una sesión. Es el inicio de una transformación
+            </h2>
+          </div>
+        </Reveal>
+        <Reveal delay={100}>
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {beneficios.map(({ icon: Icon, title, text }) => (
             <article
@@ -266,6 +269,7 @@ export function Beneficios() {
             </article>
           ))}
         </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -284,12 +288,15 @@ export function ComoFunciona() {
   return (
     <section id="como-funciona" className="py-20 sm:py-28">
       <div className="section-shell">
-        <div className="max-w-2xl">
-          <p className="eyebrow">Cómo reservar</p>
-          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-            En sólo cuatro pasos
-          </h2>
-        </div>
+        <Reveal>
+          <div className="max-w-2xl">
+            <p className="eyebrow">Cómo reservar</p>
+            <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+              En sólo cuatro pasos
+            </h2>
+          </div>
+        </Reveal>
+        <Reveal delay={100}>
         <ol className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {pasos.map((p) => (
             <li key={p.n} className="border-t border-border pt-6">
@@ -299,6 +306,7 @@ export function ComoFunciona() {
             </li>
           ))}
         </ol>
+        </Reveal>
       </div>
     </section>
   );
@@ -319,10 +327,12 @@ export function Sobre() {
           className="aspect-[4/5] w-full rounded-[1.5rem] object-cover shadow-soft"
         />
         <div>
-          <p className="eyebrow">Quién te acompaña</p>
-          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-            Mario Paredes, acompañante en biodescodificación
-          </h2>
+          <Reveal>
+            <p className="eyebrow">Quién te acompaña</p>
+            <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+              Mario Paredes, acompañante en biodescodificación
+            </h2>
+          </Reveal>
           <div className="mt-8 space-y-6 text-lg leading-relaxed text-muted-foreground">
             <p>
               En mi constante búsqueda de sentido, sanar mis relaciones personales y problemas
