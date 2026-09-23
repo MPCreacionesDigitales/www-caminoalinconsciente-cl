@@ -649,6 +649,7 @@ export function Formulario() {
             {enviando ? "Enviando…" : "Quiero más información"}
           </button>
         </form>
+        </Reveal>
       </div>
     </section>
   );
@@ -660,18 +661,22 @@ export function CtaFinal() {
   return (
     <section className="bg-primary py-24 text-primary-foreground sm:py-32">
       <div className="section-shell max-w-3xl text-center">
-        <h2 className="text-3xl leading-tight font-medium sm:text-5xl">
-          Todo cambio comienza cuando decides mirar el origen de tu historia
-        </h2>
-        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/80">
-          Tal vez llevas años intentando resolver el síntoma. Hoy puedes comenzar a comprender su
-          verdadero origen.
-        </p>
+        <Reveal>
+          <h2 className="text-3xl leading-tight font-medium sm:text-5xl">
+            Todo cambio comienza cuando decides mirar el origen de tu historia
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/80">
+            Tal vez llevas años intentando resolver el síntoma. Hoy puedes comenzar a comprender su
+            verdadero origen.
+          </p>
+        </Reveal>
+        <Reveal delay={100}>
         <div className="mt-10">
           <CtaButton variant="gold" size="xl">
             Agendar Mi Sesión Ahora
           </CtaButton>
         </div>
+        </Reveal>
       </div>
     </section>
   );
