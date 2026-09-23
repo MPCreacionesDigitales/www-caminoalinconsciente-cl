@@ -22,13 +22,18 @@ import {
   Video,
   UserRound,
   Check,
+  Play,
 } from "lucide-react";
 import { CtaButton } from "./cta-button";
-import { SITE } from "@/lib/site-config";
+import { Reveal } from "./reveal";
+import { SITE, youtubeEmbedSrc } from "@/lib/site-config";
 import heroImage from "@/assets/hero.jpg.asset.json";
 import aboutAsset from "@/assets/mario-paredes.jpg.asset.json";
 import procesoAsset from "@/assets/proceso-sesion.jpg.asset.json";
 import logoAsset from "@/assets/logo-camino-inconsciente.png.asset.json";
+import solucionImage from "@/assets/solucion-sesion.jpg.asset.json";
+import problemaImage from "@/assets/problema-reflexion.jpg.asset.json";
+import formularioImage from "@/assets/formulario-contacto.jpg.asset.json";
 
 
 
@@ -70,7 +75,7 @@ export function Hero() {
           </ul>
         </div>
 
-        <div className="relative">
+        <div className="relative reveal">
           <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-accent/50 blur-2xl" aria-hidden="true" />
           <img
             src={heroImage.url}
@@ -91,10 +96,12 @@ export function QueEs() {
   return (
     <section id="que-es" className="border-y border-border bg-card py-20 sm:py-28">
       <div className="section-shell max-w-3xl">
-        <p className="eyebrow">Definición</p>
-        <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-          ¿Qué es la Biodescodificación?
-        </h2>
+          <Reveal>
+            <p className="eyebrow">Definición</p>
+            <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+              ¿Qué es la Biodescodificación?
+            </h2>
+          </Reveal>
         <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted-foreground">
           <p>
             La Biodescodificación es un proceso de acompañamiento y entrenamiento mental profundo
@@ -132,12 +139,25 @@ export function Problema() {
   return (
     <section className="bg-secondary/60 py-20 sm:py-28">
       <div className="section-shell">
-        <div className="max-w-2xl">
-          <p className="eyebrow">Quizás te suene familiar</p>
-          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-            A veces el problema no está donde creemos que está
-          </h2>
+        <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
+          <Reveal>
+            <p className="eyebrow">Quizás te suene familiar</p>
+            <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+              A veces el problema no está donde creemos que está
+            </h2>
+          </Reveal>
+          <Reveal delay={150} className="justify-self-center lg:justify-self-end">
+            <img
+              src={problemaImage.url}
+              alt="Persona reflexionando en calma junto a una ventana"
+              width={1024}
+              height={1024}
+              loading="lazy"
+              className="aspect-square w-full max-w-xs rounded-[1.5rem] object-cover shadow-soft"
+            />
+          </Reveal>
         </div>
+        <Reveal delay={100}>
         <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {problemas.map((p) => (
             <li
@@ -148,11 +168,14 @@ export function Problema() {
             </li>
           ))}
         </ul>
+        </Reveal>
+        <Reveal delay={100}>
         <p className="mt-12 max-w-2xl text-lg leading-relaxed text-muted-foreground">
           Cuando algo se repite, nunca es casualidad. Detrás siempre hay al menos una emoción no
           resuelta y una creencia limitante que opera en tu insconsicente, generando los mismos
           resultados una y otra vez
         </p>
+        </Reveal>
       </div>
     </section>
   );
@@ -165,20 +188,29 @@ export function Solucion() {
     <section id="solucion" className="py-20 sm:py-28">
       <div className="section-shell grid gap-14 lg:grid-cols-2 lg:gap-20">
         <div>
-          <p className="eyebrow">La solución</p>
-          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-            Una nueva lectura de tu propia historia
-          </h2>
-          <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
-            En un encuentro privado por videollamada revisamos juntos tu historia para encontrar
-            el conflicto que dio origen a lo que hoy vives. No trabajamos sobre el síntoma:
-            trabajamos directamente en la causa.
-          </p>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            
-          </p>
+          <Reveal>
+            <p className="eyebrow">La solución</p>
+            <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+              Una nueva lectura de tu propia historia
+            </h2>
+            <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
+              En un encuentro privado por videollamada revisamos juntos tu historia para encontrar
+              el conflicto que dio origen a lo que hoy vives. No trabajamos sobre el síntoma:
+              trabajamos directamente en la causa.
+            </p>
+          </Reveal>
+          <Reveal delay={150}>
+            <img
+              src={solucionImage.url}
+              alt="Persona en calma durante una sesión online por videollamada"
+              width={1024}
+              height={1024}
+              loading="lazy"
+              className="mt-10 aspect-square w-full max-w-md rounded-[1.5rem] object-cover shadow-soft"
+            />
+          </Reveal>
         </div>
-        <div className="self-center">
+        <Reveal delay={100} className="self-center">
           <h3 className="text-lg font-medium">Situaciones con las que se puede trabajar</h3>
           <ul className="mt-5 grid gap-4">
             {[
@@ -194,7 +226,7 @@ export function Solucion() {
               </li>
             ))}
           </ul>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -215,12 +247,15 @@ export function Beneficios() {
   return (
     <section id="beneficios" className="bg-secondary/60 py-20 sm:py-28">
       <div className="section-shell">
-        <div className="max-w-2xl">
-          <p className="eyebrow">Lo que te llevas</p>
-          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-            No es solo una sesión. Es el inicio de una transformación
-          </h2>
-        </div>
+        <Reveal>
+          <div className="max-w-2xl">
+            <p className="eyebrow">Lo que te llevas</p>
+            <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+              No es solo una sesión. Es el inicio de una transformación
+            </h2>
+          </div>
+        </Reveal>
+        <Reveal delay={100}>
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {beneficios.map(({ icon: Icon, title, text }) => (
             <article
@@ -235,6 +270,7 @@ export function Beneficios() {
             </article>
           ))}
         </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -253,12 +289,15 @@ export function ComoFunciona() {
   return (
     <section id="como-funciona" className="py-20 sm:py-28">
       <div className="section-shell">
-        <div className="max-w-2xl">
-          <p className="eyebrow">Cómo reservar</p>
-          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-            En sólo cuatro pasos
-          </h2>
-        </div>
+        <Reveal>
+          <div className="max-w-2xl">
+            <p className="eyebrow">Cómo reservar</p>
+            <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+              En sólo cuatro pasos
+            </h2>
+          </div>
+        </Reveal>
+        <Reveal delay={100}>
         <ol className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {pasos.map((p) => (
             <li key={p.n} className="border-t border-border pt-6">
@@ -268,6 +307,7 @@ export function ComoFunciona() {
             </li>
           ))}
         </ol>
+        </Reveal>
       </div>
     </section>
   );
@@ -288,10 +328,12 @@ export function Sobre() {
           className="aspect-[4/5] w-full rounded-[1.5rem] object-cover shadow-soft"
         />
         <div>
-          <p className="eyebrow">Quién te acompaña</p>
-          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-            Mario Paredes, acompañante en biodescodificación
-          </h2>
+          <Reveal>
+            <p className="eyebrow">Quién te acompaña</p>
+            <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+              Mario Paredes, acompañante en biodescodificación
+            </h2>
+          </Reveal>
           <div className="mt-8 space-y-6 text-lg leading-relaxed text-muted-foreground">
             <p>
               En mi constante búsqueda de sentido, sanar mis relaciones personales y problemas
@@ -317,13 +359,41 @@ export function Sobre() {
 /* ---------------------------------- Video --------------------------------- */
 
 export function VideoSection() {
+  const embed = SITE.youtubeEmbedUrl;
   return (
     <section className="bg-secondary/60 py-20 sm:py-28">
       <div className="section-shell max-w-3xl text-center">
-        <p className="eyebrow">EL PROTOCOLO</p>
-        <h2 className="mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-          ¿Cómo es una sesión?
-        </h2>
+        <Reveal>
+          <p className="eyebrow">EL PROTOCOLO</p>
+          <h2 className="mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+            ¿Cómo es una sesión?
+          </h2>
+        </Reveal>
+        <Reveal delay={100}>
+          {embed ? (
+            <div className="mt-10 aspect-video overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
+              <iframe
+                src={youtubeEmbedSrc(embed)}
+                title="Video de presentación de la sesión de Biodescodificación"
+                className="h-full w-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+          ) : (
+            <div className="relative mt-10 flex aspect-video flex-col items-center justify-center gap-5 overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-secondary via-card to-accent/60 shadow-soft">
+              <span className="flex size-16 items-center justify-center rounded-full bg-background shadow-elevated">
+                <Play className="size-6 translate-x-0.5 text-primary" aria-hidden="true" />
+              </span>
+              <span className="px-6 text-sm font-medium tracking-wide text-muted-foreground">
+                Video de presentación — disponible muy pronto
+              </span>
+            </div>
+          )}
+        </Reveal>
+
+        <Reveal delay={100}>
         <div className="mt-10 overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
           <img
             src={procesoAsset.url}
@@ -334,7 +404,9 @@ export function VideoSection() {
             className="w-full"
           />
         </div>
+        </Reveal>
 
+        <Reveal delay={100}>
         <ol className="mt-10 grid gap-4 text-left sm:grid-cols-2">
           {[
             { t: "Situación de estrés", d: "Identificamos el hecho concreto que hoy te tiene en conflicto." },
@@ -343,7 +415,10 @@ export function VideoSection() {
             { t: "Reimpronta", d: "Trabajamos una nueva impresión emocional frente al mismo hecho." },
             { t: "Seguimiento post sesión", d: "Te llevas un protocolo práctico para sostener el cambio." },
           ].map((p, i) => (
-            <li key={p.t} className="rounded-2xl border border-border bg-card p-6">
+            <li
+              key={p.t}
+              className="rounded-2xl border border-border bg-card p-6 transition-shadow duration-300 hover:shadow-soft"
+            >
               <span className="font-display text-sm tracking-[0.2em] text-gold">
                 0{i + 1}
               </span>
@@ -352,6 +427,7 @@ export function VideoSection() {
             </li>
           ))}
         </ol>
+        </Reveal>
       </div>
     </section>
   );
@@ -363,6 +439,7 @@ export function Precio() {
   return (
     <section id="precio" className="py-20 sm:py-28">
       <div className="section-shell max-w-2xl">
+        <Reveal>
         <div className="rounded-[1.75rem] border border-border bg-card p-9 text-center shadow-elevated sm:p-14">
           <p className="eyebrow">Tu inversión</p>
           <h2 className="mt-5 text-2xl font-medium sm:text-3xl">Sesión Online</h2>
@@ -390,6 +467,7 @@ export function Precio() {
             ))}
           </ul>
         </div>
+        </Reveal>
       </div>
     </section>
   );
@@ -412,10 +490,13 @@ export function Faq() {
   return (
     <section id="faq" className="bg-secondary/60 py-20 sm:py-28">
       <div className="section-shell max-w-3xl">
-        <p className="eyebrow">Preguntas frecuentes</p>
-        <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-          Resolvamos tus dudas
-        </h2>
+        <Reveal>
+          <p className="eyebrow">Preguntas frecuentes</p>
+          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+            Resolvamos tus dudas
+          </h2>
+        </Reveal>
+        <Reveal delay={100}>
         <Accordion type="single" collapsible className="mt-10">
           {faqs.map((f) => (
             <AccordionItem key={f.q} value={f.q}>
@@ -426,6 +507,7 @@ export function Faq() {
             </AccordionItem>
           ))}
         </Accordion>
+        </Reveal>
       </div>
     </section>
   );
@@ -485,14 +567,27 @@ export function Formulario() {
     <section id="contacto" className="py-20 sm:py-28">
       <div className="section-shell grid gap-12 lg:grid-cols-2 lg:gap-20">
         <div>
-          <p className="eyebrow">¿Aún tienes dudas?</p>
-          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-            Escríbeme y te oriento antes de reservar
-          </h2>
-          <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
-            Déjame tus datos y te contacto para responder todas tus preguntas sobre la sesión.
-          </p>
+          <Reveal>
+            <p className="eyebrow">¿Aún tienes dudas?</p>
+            <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+              Escríbeme y te oriento antes de reservar
+            </h2>
+            <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
+              Déjame tus datos y te contacto para responder todas tus preguntas sobre la sesión.
+            </p>
+          </Reveal>
+          <Reveal delay={150}>
+            <img
+              src={formularioImage.url}
+              alt="Escritorio cálido con notebook y té, preparado para una sesión online"
+              width={1024}
+              height={1024}
+              loading="lazy"
+              className="mt-10 aspect-[4/3] w-full rounded-[1.5rem] object-cover shadow-soft"
+            />
+          </Reveal>
         </div>
+        <Reveal delay={100}>
         <form onSubmit={onSubmit} noValidate className="grid gap-5 rounded-2xl border border-border bg-card p-7 shadow-soft sm:p-9">
           <div className="grid gap-2">
             <Label htmlFor="nombre">Nombre</Label>
@@ -555,6 +650,7 @@ export function Formulario() {
             {enviando ? "Enviando…" : "Quiero más información"}
           </button>
         </form>
+        </Reveal>
       </div>
     </section>
   );
@@ -566,18 +662,22 @@ export function CtaFinal() {
   return (
     <section className="bg-primary py-24 text-primary-foreground sm:py-32">
       <div className="section-shell max-w-3xl text-center">
-        <h2 className="text-3xl leading-tight font-medium sm:text-5xl">
-          Todo cambio comienza cuando decides mirar el origen de tu historia
-        </h2>
-        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/80">
-          Tal vez llevas años intentando resolver el síntoma. Hoy puedes comenzar a comprender su
-          verdadero origen.
-        </p>
+        <Reveal>
+          <h2 className="text-3xl leading-tight font-medium sm:text-5xl">
+            Todo cambio comienza cuando decides mirar el origen de tu historia
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/80">
+            Tal vez llevas años intentando resolver el síntoma. Hoy puedes comenzar a comprender su
+            verdadero origen.
+          </p>
+        </Reveal>
+        <Reveal delay={100}>
         <div className="mt-10">
           <CtaButton variant="gold" size="xl">
             Agendar Mi Sesión Ahora
           </CtaButton>
         </div>
+        </Reveal>
       </div>
     </section>
   );
