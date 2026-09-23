@@ -25,15 +25,11 @@ import {
   Play,
 } from "lucide-react";
 import { CtaButton } from "./cta-button";
-import { Reveal } from "./reveal";
 import { SITE, youtubeEmbedSrc } from "@/lib/site-config";
 import heroImage from "@/assets/hero.jpg.asset.json";
 import aboutAsset from "@/assets/mario-paredes.jpg.asset.json";
 import procesoAsset from "@/assets/proceso-sesion.jpg.asset.json";
 import logoAsset from "@/assets/logo-camino-inconsciente.png.asset.json";
-import solucionImage from "@/assets/solucion-sesion.jpg.asset.json";
-import problemaImage from "@/assets/problema-reflexion.jpg.asset.json";
-import formularioImage from "@/assets/formulario-contacto.jpg.asset.json";
 
 
 
@@ -75,7 +71,7 @@ export function Hero() {
           </ul>
         </div>
 
-        <div className="relative reveal">
+        <div className="relative">
           <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-accent/50 blur-2xl" aria-hidden="true" />
           <img
             src={heroImage.url}
@@ -96,12 +92,10 @@ export function QueEs() {
   return (
     <section id="que-es" className="border-y border-border bg-card py-20 sm:py-28">
       <div className="section-shell max-w-3xl">
-          <Reveal>
-            <p className="eyebrow">Definición</p>
-            <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-              ¿Qué es la Biodescodificación?
-            </h2>
-          </Reveal>
+          <p className="eyebrow">Definición</p>
+          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+            ¿Qué es la Biodescodificación?
+          </h2>
         <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted-foreground">
           <p>
             La Biodescodificación es un proceso de acompañamiento y entrenamiento mental profundo
@@ -139,25 +133,12 @@ export function Problema() {
   return (
     <section className="bg-secondary/60 py-20 sm:py-28">
       <div className="section-shell">
-        <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16">
-          <Reveal>
-            <p className="eyebrow">Quizás te suene familiar</p>
-            <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-              A veces el problema no está donde creemos que está
-            </h2>
-          </Reveal>
-          <Reveal delay={150} className="justify-self-center lg:justify-self-end">
-            <img
-              src={problemaImage.url}
-              alt="Persona reflexionando en calma junto a una ventana"
-              width={1024}
-              height={1024}
-              loading="lazy"
-              className="aspect-square w-full max-w-xs rounded-[1.5rem] object-cover shadow-soft"
-            />
-          </Reveal>
+        <div className="max-w-2xl">
+          <p className="eyebrow">Quizás te suene familiar</p>
+          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+            A veces el problema no está donde creemos que está
+          </h2>
         </div>
-        <Reveal delay={100}>
         <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {problemas.map((p) => (
             <li
@@ -168,14 +149,11 @@ export function Problema() {
             </li>
           ))}
         </ul>
-        </Reveal>
-        <Reveal delay={100}>
         <p className="mt-12 max-w-2xl text-lg leading-relaxed text-muted-foreground">
           Cuando algo se repite, nunca es casualidad. Detrás siempre hay al menos una emoción no
           resuelta y una creencia limitante que opera en tu insconsicente, generando los mismos
           resultados una y otra vez
         </p>
-        </Reveal>
       </div>
     </section>
   );
@@ -188,29 +166,17 @@ export function Solucion() {
     <section id="solucion" className="py-20 sm:py-28">
       <div className="section-shell grid gap-14 lg:grid-cols-2 lg:gap-20">
         <div>
-          <Reveal>
-            <p className="eyebrow">La solución</p>
-            <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-              Una nueva lectura de tu propia historia
-            </h2>
-            <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
-              En un encuentro privado por videollamada revisamos juntos tu historia para encontrar
-              el conflicto que dio origen a lo que hoy vives. No trabajamos sobre el síntoma:
-              trabajamos directamente en la causa.
-            </p>
-          </Reveal>
-          <Reveal delay={150}>
-            <img
-              src={solucionImage.url}
-              alt="Persona en calma durante una sesión online por videollamada"
-              width={1024}
-              height={1024}
-              loading="lazy"
-              className="mt-10 aspect-square w-full max-w-md rounded-[1.5rem] object-cover shadow-soft"
-            />
-          </Reveal>
+          <p className="eyebrow">La solución</p>
+          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+            Una nueva lectura de tu propia historia
+          </h2>
+          <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
+            En un encuentro privado por videollamada revisamos juntos tu historia para encontrar
+            el conflicto que dio origen a lo que hoy vives. No trabajamos sobre el síntoma:
+            trabajamos directamente en la causa.
+          </p>
         </div>
-        <Reveal delay={100} className="self-center">
+        <div className="self-center">
           <h3 className="text-lg font-medium">Situaciones con las que se puede trabajar</h3>
           <ul className="mt-5 grid gap-4">
             {[
@@ -226,7 +192,7 @@ export function Solucion() {
               </li>
             ))}
           </ul>
-        </Reveal>
+        </div>
       </div>
     </section>
   );
