@@ -315,7 +315,6 @@ export function Sobre() {
 /* ---------------------------------- Video --------------------------------- */
 
 export function VideoSection() {
-  const embed = SITE.youtubeEmbedUrl;
   return (
     <section className="bg-secondary/60 py-20 sm:py-28">
       <div className="section-shell max-w-3xl text-center">
@@ -345,7 +344,6 @@ export function VideoSection() {
           </div>
         )}
 
-        <Reveal delay={100}>
         <div className="mt-10 overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
           <img
             src={procesoAsset.url}
@@ -356,9 +354,7 @@ export function VideoSection() {
             className="w-full"
           />
         </div>
-        </Reveal>
 
-        <Reveal delay={100}>
         <ol className="mt-10 grid gap-4 text-left sm:grid-cols-2">
           {[
             { t: "Situación de estrés", d: "Identificamos el hecho concreto que hoy te tiene en conflicto." },
@@ -379,7 +375,6 @@ export function VideoSection() {
             </li>
           ))}
         </ol>
-        </Reveal>
       </div>
     </section>
   );
@@ -391,7 +386,6 @@ export function Precio() {
   return (
     <section id="precio" className="py-20 sm:py-28">
       <div className="section-shell max-w-2xl">
-        <Reveal>
         <div className="rounded-[1.75rem] border border-border bg-card p-9 text-center shadow-elevated sm:p-14">
           <p className="eyebrow">Tu inversión</p>
           <h2 className="mt-5 text-2xl font-medium sm:text-3xl">Sesión Online</h2>
@@ -419,7 +413,6 @@ export function Precio() {
             ))}
           </ul>
         </div>
-        </Reveal>
       </div>
     </section>
   );
