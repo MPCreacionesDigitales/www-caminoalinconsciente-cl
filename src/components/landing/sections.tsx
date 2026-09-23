@@ -187,21 +187,29 @@ export function Solucion() {
   return (
     <section id="solucion" className="py-20 sm:py-28">
       <div className="section-shell grid gap-14 lg:grid-cols-2 lg:gap-20">
-        <div>
-          <p className="eyebrow">La solución</p>
-          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
-            Una nueva lectura de tu propia historia
-          </h2>
-          <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
-            En un encuentro privado por videollamada revisamos juntos tu historia para encontrar
-            el conflicto que dio origen a lo que hoy vives. No trabajamos sobre el síntoma:
-            trabajamos directamente en la causa.
-          </p>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-            
-          </p>
+          <Reveal>
+            <p className="eyebrow">La solución</p>
+            <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+              Una nueva lectura de tu propia historia
+            </h2>
+            <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
+              En un encuentro privado por videollamada revisamos juntos tu historia para encontrar
+              el conflicto que dio origen a lo que hoy vives. No trabajamos sobre el síntoma:
+              trabajamos directamente en la causa.
+            </p>
+          </Reveal>
+          <Reveal delay={150}>
+            <img
+              src={solucionImage}
+              alt="Persona en calma durante una sesión online por videollamada"
+              width={1024}
+              height={1024}
+              loading="lazy"
+              className="mt-10 aspect-square w-full max-w-md rounded-[1.5rem] object-cover shadow-soft"
+            />
+          </Reveal>
         </div>
-        <div className="self-center">
+        <Reveal delay={100} className="self-center">
           <h3 className="text-lg font-medium">Situaciones con las que se puede trabajar</h3>
           <ul className="mt-5 grid gap-4">
             {[
@@ -217,7 +225,7 @@ export function Solucion() {
               </li>
             ))}
           </ul>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
