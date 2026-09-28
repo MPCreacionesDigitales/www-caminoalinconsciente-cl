@@ -1,18 +1,21 @@
-# Video de presentación en "¿Cómo es una sesión?"
+# Video de presentación + botón de tu mini app
 
-## Enlace recibido
-`https://youtu.be/dDWakpv4T8o` — asegúrate de que en YouTube esté como **Público** u **Oculto / No listado** (no "Privado").
+## 1. Video en "¿Cómo es una sesión?"
+Enlace recibido: `https://youtu.be/dDWakpv4T8o` (en YouTube debe estar como Público u Oculto/No listado, no "Privado").
 
-La persona lo verá **directamente en tu sitio**, dentro del marco que ya está listo, sin salir de caminoalinconsciente.cl.
+- Tu video se verá directamente en tu sitio, dentro del marco que ya está listo.
+- Carga ligera: al abrir la página solo aparece la portada del video con el botón de play. El reproductor de YouTube se carga recién al presionar play, así la página abre igual de rápido que hoy.
+- Modo de mayor privacidad de YouTube y sin videos sugeridos de otros canales al final, en lo posible.
 
-## Qué haré yo
-- Pegar tu enlace en la configuración del sitio.
-- Cambiar el marco para que cargue de forma **ligera**: al abrir la página solo se muestra la portada de tu video con el botón de play (una imagen liviana). El reproductor de YouTube se carga recién cuando la persona presiona play. Así la página abre igual de rápido que hoy.
-- Usar el modo de YouTube con mayor privacidad (sin cookies hasta reproducir) y ocultar videos sugeridos de otros canales al final, en lo posible.
-- Revisar que se vea bien en celular y computador.
+## 2. Botón "Test y Diccionario de Enfermedades"
+- En la barra superior, al lado de "Agendar".
+- Abre https://caminoalinconsciente.netlify.app/ en una pestaña nueva.
+- Estilo con borde (secundario) para que "Agendar" siga siendo el botón principal. En celular ambos caben en la barra; si no hay espacio, bajan a una segunda línea ordenada.
 
-No se tocan textos, precios, enlaces ni el orden de las secciones.
+No se tocan textos, precios ni el orden de las secciones.
 
 ## Detalles técnicos
-- `src/lib/site-config.ts`: `youtubeEmbedUrl` con el enlace; añadir helper para obtener el ID.
-- `VideoSection` en `src/components/landing/sections.tsx`: patrón "facade" — `<button>` con miniatura `https://i.ytimg.com/vi/{id}/hqdefault.jpg` (lazy) + icono Play; al clic, se monta `<iframe src="https://www.youtube-nocookie.com/embed/{id}?autoplay=1&rel=0">`. Placeholder actual se mantiene si el enlace está vacío.
+- `src/lib/site-config.ts`: `youtubeEmbedUrl = "https://youtu.be/dDWakpv4T8o"`, añadir `MINI_APP_URL`.
+- `VideoSection` (`sections.tsx`): facade — botón con miniatura `i.ytimg.com/vi/{id}/hqdefault.jpg` (lazy) + Play; al clic monta iframe `youtube-nocookie.com/embed/{id}?autoplay=1&rel=0`.
+- `site-header.tsx`: `CtaButton variant="outline" size="md" href={MINI_APP_URL}` antes de "Agendar" (ya abre en pestaña nueva).
+- Verificar en escritorio y móvil.
