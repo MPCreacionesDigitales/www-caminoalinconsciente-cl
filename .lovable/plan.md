@@ -1,8 +1,7 @@
 # Video de presentación en "¿Cómo es una sesión?"
 
-## Qué debes hacer tú
-1. Sube el video a YouTube (puede ser **Público** u **Oculto / No listado**; no uses "Privado", porque así nadie podría verlo).
-2. Copia el enlace (ej: `https://youtu.be/XXXXXXXXXXX`) y pégalo aquí en el chat.
+## Enlace recibido
+`https://youtu.be/dDWakpv4T8o` — asegúrate de que en YouTube esté como **Público** u **Oculto / No listado** (no "Privado").
 
 La persona lo verá **directamente en tu sitio**, dentro del marco que ya está listo, sin salir de caminoalinconsciente.cl.
 
