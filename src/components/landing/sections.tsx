@@ -25,7 +25,7 @@ import {
   Play,
 } from "lucide-react";
 import { CtaButton } from "./cta-button";
-import { SITE, youtubeEmbedSrc } from "@/lib/site-config";
+import { SITE, youtubeId } from "@/lib/site-config";
 import heroImage from "@/assets/hero.jpg.asset.json";
 import aboutAsset from "@/assets/mario-paredes.jpg.asset.json";
 import procesoAsset from "@/assets/proceso-sesion.jpg.asset.json";
@@ -314,6 +314,44 @@ export function Sobre() {
 
 /* ---------------------------------- Video --------------------------------- */
 
+function VideoLigero({ url }: { url: string }) {
+  const [activo, setActivo] = useState(false);
+  const id = youtubeId(url);
+  if (!id) return null;
+  return (
+    <div className="relative mt-10 aspect-video overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
+      {activo ? (
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`}
+          title="Video de presentación de la sesión de Biodescodificación"
+          className="h-full w-full"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
+      ) : (
+        <button
+          type="button"
+          onClick={() => setActivo(true)}
+          aria-label="Reproducir video de presentación"
+          className="group relative block h-full w-full"
+        >
+          <img
+            src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}
+            alt="Portada del video de presentación de Mario Paredes"
+            loading="lazy"
+            className="h-full w-full object-cover"
+          />
+          <span className="absolute inset-0 flex items-center justify-center bg-foreground/10 transition-colors group-hover:bg-foreground/20">
+            <span className="flex size-16 items-center justify-center rounded-full bg-background shadow-elevated transition-transform group-hover:scale-105 sm:size-20">
+              <Play className="size-7 translate-x-0.5 text-primary" aria-hidden="true" />
+            </span>
+          </span>
+        </button>
+      )}
+    </div>
+  );
+}
+
 export function VideoSection() {
   return (
     <section className="bg-secondary/60 py-20 sm:py-28">
@@ -323,16 +361,7 @@ export function VideoSection() {
           ¿Cómo es una sesión?
         </h2>
         {SITE.youtubeEmbedUrl ? (
-          <div className="mt-10 aspect-video overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
-            <iframe
-              src={youtubeEmbedSrc(SITE.youtubeEmbedUrl)}
-              title="Video de presentación de la sesión de Biodescodificación"
-              className="h-full w-full"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-              loading="lazy"
-            />
-          </div>
+          <VideoLigero url={SITE.youtubeEmbedUrl} />
         ) : (
           <div className="relative mt-10 flex aspect-video flex-col items-center justify-center gap-5 overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-secondary via-card to-accent/60 shadow-soft">
             <span className="flex size-16 items-center justify-center rounded-full bg-background shadow-elevated">

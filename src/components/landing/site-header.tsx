@@ -1,4 +1,5 @@
 import { CtaButton } from "./cta-button";
+import { MINI_APP_URL } from "@/lib/site-config";
 import logoAsset from "@/assets/logo-camino-inconsciente.png.asset.json";
 
 export function SiteHeader() {
@@ -13,7 +14,15 @@ export function SiteHeader() {
             loading="eager"
           />
         </a>
-        <div className="flex shrink-0 items-center">
+        <div className="flex flex-wrap items-center justify-end gap-2">
+          <CtaButton
+            variant="outline"
+            size="md"
+            href={MINI_APP_URL}
+            className="px-4 text-center text-xs sm:px-6 sm:text-sm"
+          >
+            Test y Diccionario de Enfermedades
+          </CtaButton>
           <CtaButton size="md" className="shrink-0">
             Agendar
           </CtaButton>
