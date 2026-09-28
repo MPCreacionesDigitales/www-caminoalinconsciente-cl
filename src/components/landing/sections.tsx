@@ -383,27 +383,6 @@ export function VideoSection() {
             className="w-full"
           />
         </div>
-
-        <ol className="mt-10 grid gap-4 text-left sm:grid-cols-2">
-          {[
-            { t: "Situación de estrés", d: "Identificamos el hecho concreto que hoy te tiene en conflicto." },
-            { t: "Sentimiento y emoción oculta", d: "Reconocemos qué emoción quedó atrapada bajo esa situación." },
-            { t: "Creencia limitante", d: "Descubrimos la idea aprendida que sostiene ese modo de reaccionar." },
-            { t: "Reimpronta", d: "Trabajamos una nueva impresión emocional frente al mismo hecho." },
-            { t: "Seguimiento post sesión", d: "Te llevas un protocolo práctico para sostener el cambio." },
-          ].map((p, i) => (
-            <li
-              key={p.t}
-              className="rounded-2xl border border-border bg-card p-6 transition-shadow duration-300 hover:shadow-soft"
-            >
-              <span className="font-display text-sm tracking-[0.2em] text-gold">
-                0{i + 1}
-              </span>
-              <h3 className="mt-2 text-base font-medium">{p.t}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.d}</p>
-            </li>
-          ))}
-        </ol>
       </div>
     </section>
   );
