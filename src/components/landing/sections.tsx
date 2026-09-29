@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 import { CtaButton } from "./cta-button";
 import { SITE, youtubeId } from "@/lib/site-config";
-import heroImage from "@/assets/hero.jpg.asset.json";
+import heroImage from "@/assets/hero-mujer.jpg.asset.json";
 import aboutAsset from "@/assets/mario-paredes.jpg.asset.json";
 import procesoAsset from "@/assets/proceso-sesion.jpg.asset.json";
 import logoAsset from "@/assets/logo-camino-inconsciente.png.asset.json";

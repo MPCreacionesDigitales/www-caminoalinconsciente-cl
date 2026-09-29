@@ -17,7 +17,7 @@ import {
   CtaFinal,
 } from "@/components/landing/sections";
 import { SiteFooter } from "@/components/landing/site-footer";
-import heroImage from "@/assets/hero.jpg.asset.json";
+import heroImage from "@/assets/hero-mujer.jpg.asset.json";
 
 const title = "Biodescodificación Online en Chile | Sesión 1 a 1 con Mario Paredes";
 const description =
