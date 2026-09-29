@@ -75,10 +75,11 @@ export function Hero() {
           <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-accent/50 blur-2xl" aria-hidden="true" />
           <img
             src={heroImage.url}
-            alt="Persona en calma durante una sesión online de biodescodificación"
-            width={1280}
-            height={1600}
-            className="aspect-[4/5] w-full rounded-[1.75rem] object-cover shadow-elevated"
+            alt="Mujer de espaldas con los brazos abiertos frente a un amplio paisaje, símbolo de liberación emocional"
+            width={1600}
+            height={1067}
+            fetchPriority="high"
+            className="aspect-[4/3] w-full rounded-[1.75rem] object-cover object-[50%_40%] shadow-elevated"
           />
         </div>
       </div>
