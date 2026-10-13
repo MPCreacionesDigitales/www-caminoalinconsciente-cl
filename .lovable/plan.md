@@ -4,11 +4,11 @@
 Vercel ya importó tu repositorio de GitHub y detectó "TanStack Start" automáticamente. Eso está correcto: **no cambies nada de esa pantalla** (ni Build Command, ni Output Directory, ni Install Command). Los valores que muestra son los correctos.
 
 ## Paso 1 — Variables de entorno (antes de presionar Deploy)
-En la misma pantalla de importación, baja hasta la sección **Environment Variables** y agrega estas tres (se copian del archivo de configuración del proyecto):
+En la misma pantalla de importación, baja hasta la sección **Environment Variables** y agrega estas tres, tal cual (nombre = valor):
 
-- `VITE_SUPABASE_URL` = la dirección del backend (está en el archivo .env del proyecto)
-- `VITE_SUPABASE_PUBLISHABLE_KEY` = la clave pública (también en .env)
-- `VITE_SUPABASE_PROJECT_ID` = el identificador del proyecto (también en .env)
+- `VITE_SUPABASE_URL` = `https://cfvuysclonhaevconnfq.supabase.co`
+- `VITE_SUPABASE_PUBLISHABLE_KEY` = `sb_publishable_dH8zg067Rw55Ti3WRMN45A_k55QnjGs`
+- `VITE_SUPABASE_PROJECT_ID` = `cfvuysclonhaevconnfq`
 
 Sin estas variables, el formulario de contacto no funcionará en el sitio publicado.
 
