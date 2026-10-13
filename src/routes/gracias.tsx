@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Sparkles, MessageCircle, Mail, CalendarCheck } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/site-config";
 import { SiteFooter } from "@/components/landing/site-footer";
-import logoAsset from "@/assets/logo-camino-inconsciente.png.asset.json";
+import logoAsset from "@/assets/logo-camino-inconsciente.png";
 
 const title = "¡Bienvenido! Tu transformación empieza ahora | Mario Paredes";
 const description =
@@ -52,7 +52,7 @@ function Gracias() {
         <div className="section-shell flex items-center justify-center py-8">
           <a href="/" className="inline-flex items-center" aria-label="Inicio">
             <img
-              src={logoAsset.url}
+              src={logoAsset}
               alt="Mario Paredes Biodescodificación"
               className="h-20 max-w-[24rem] object-contain"
               loading="eager"

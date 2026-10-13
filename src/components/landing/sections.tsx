@@ -26,14 +26,14 @@ import {
 } from "lucide-react";
 import { CtaButton } from "./cta-button";
 import { SITE, youtubeId } from "@/lib/site-config";
-import heroImage from "@/assets/hero-mujer.jpg.asset.json";
-import aboutAsset from "@/assets/mario-paredes.jpg.asset.json";
-import procesoAsset from "@/assets/proceso-sesion.jpg.asset.json";
-import logoAsset from "@/assets/logo-camino-inconsciente.png.asset.json";
+import heroImage from "@/assets/hero-mujer.jpg";
+import aboutAsset from "@/assets/mario-paredes.jpg";
+import procesoAsset from "@/assets/proceso-sesion.jpg";
+import logoAsset from "@/assets/logo-camino-inconsciente.png";
 
 
 
-const aboutImage = aboutAsset.url;
+const aboutImage = aboutAsset;
 
 /* ---------------------------------- Hero --------------------------------- */
 
@@ -43,7 +43,7 @@ export function Hero() {
       <div className="section-shell grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
         <div className="reveal">
           <img
-            src={logoAsset.url}
+            src={logoAsset}
             alt="Mario Paredes · Biodescodificación"
             className="mb-8 h-28 w-auto object-contain sm:h-36 lg:h-44"
             loading="eager"
@@ -74,7 +74,7 @@ export function Hero() {
         <div className="relative">
           <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-accent/50 blur-2xl" aria-hidden="true" />
           <img
-            src={heroImage.url}
+            src={heroImage}
             alt="Mujer de espaldas con los brazos abiertos frente a un amplio paisaje, símbolo de liberación emocional"
             width={1600}
             height={1067}
@@ -376,7 +376,7 @@ export function VideoSection() {
 
         <div className="mt-10 overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
           <img
-            src={procesoAsset.url}
+            src={procesoAsset}
             alt="Proceso de la sesión en 5 pasos: identificación de la situación de estrés, sentimiento y emoción oculta, creencia limitante, reimpronta y seguimiento post sesión"
             width={1600}
             height={912}

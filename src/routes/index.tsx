@@ -17,12 +17,12 @@ import {
   CtaFinal,
 } from "@/components/landing/sections";
 import { SiteFooter } from "@/components/landing/site-footer";
-import heroImage from "@/assets/hero-mujer.jpg.asset.json";
+import heroImage from "@/assets/hero-mujer.jpg";
 
 const title = "Biodescodificación Online en Chile | Sesión 1 a 1 con Mario Paredes";
 const description =
   "Sesión online de biodescodificación 1 a 1 desde Santiago de Chile para descubrir el origen emocional de tus síntomas, ansiedad y patrones que se repiten. Agenda hoy.";
-const ogImage = `${SITE_URL}${heroImage.url}`;
+const ogImage = `${SITE_URL}${heroImage}`;
 
 export const Route = createFileRoute("/")({
   head: () => ({
