@@ -39,18 +39,36 @@ function validateAndClean(data: unknown) {
 export const enviarContacto = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => validateAndClean(data))
   .handler(async ({ data }) => {
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    // Cliente con llave pública: funciona en cualquier hosting (Vercel incluido).
+    // La base de datos solo permite INSERTAR contactos, nunca leerlos.
+    const { createClient } = await import("@supabase/supabase-js");
+    const url = process.env["SUPABASE_URL"] || process.env["VITE_SUPABASE_URL"] || import.meta.env.VITE_SUPABASE_URL;
+    const key =
+      process.env["SUPABASE_PUBLISHABLE_KEY"] ||
+      process.env["VITE_SUPABASE_PUBLISHABLE_KEY"] ||
+      import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+    if (!url || !key) throw new Error("Configuración incompleta del servidor");
 
-    const { data: lead, error } = await supabaseAdmin
-      .from("leads")
-      .insert({
-        nombre: data.nombre,
-        correo: data.email,
-        whatsapp: data.whatsapp,
-        pagina_de_origen: data.paginaDeOrigen ?? null,
-      })
-      .select("id")
-      .single();
+    const supabase = createClient(url, key, {
+      auth: { storage: undefined, persistSession: false, autoRefreshToken: false },
+      global: {
+        fetch: (input, init) => {
+          const headers = new Headers(init?.headers);
+          if (key.startsWith("sb_")) {
+            headers.set("apikey", key);
+            if (headers.get("Authorization") === `Bearer ${key}`) headers.delete("Authorization");
+          }
+          return fetch(input, { ...init, headers });
+        },
+      },
+    });
+
+    const { error } = await supabase.from("leads").insert({
+      nombre: data.nombre,
+      correo: data.email,
+      whatsapp: data.whatsapp,
+      pagina_de_origen: data.paginaDeOrigen ?? null,
+    });
 
     if (error) {
       console.error("[leads] error al guardar", error);
@@ -59,16 +77,12 @@ export const enviarContacto = createServerFn({ method: "POST" })
 
     // Aviso por correo — nunca debe romper el registro del lead.
     try {
-      const { sendTemplateEmail } = await import("@/lib/email-templates/send-email");
-      await sendTemplateEmail("nuevo-lead", "contacto@caminoalinconsciente.cl", {
-        templateData: {
-          nombre: data.nombre,
-          correo: data.email,
-          whatsapp: data.whatsapp,
-          paginaDeOrigen: data.paginaDeOrigen ?? "—",
-          fecha: new Date().toLocaleString("es-CL", { timeZone: "America/Santiago" }),
-        },
-        idempotencyKey: `nuevo-lead-${lead?.id ?? data.email}`,
+      const { enviarAvisoResend } = await import("@/lib/aviso-resend");
+      await enviarAvisoResend({
+        nombre: data.nombre,
+        correo: data.email,
+        whatsapp: data.whatsapp,
+        paginaDeOrigen: data.paginaDeOrigen ?? "—",
       });
     } catch (e) {
       console.error("[leads] no se pudo enviar el aviso por correo", e);
