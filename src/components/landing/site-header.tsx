@@ -1,6 +1,6 @@
 import { CtaButton } from "./cta-button";
 import { MINI_APP_URL } from "@/lib/site-config";
-import logoAsset from "@/assets/logo-camino-inconsciente.png.asset.json";
+import logoAsset from "@/assets/logo-camino-inconsciente.png";
 
 export function SiteHeader() {
   return (
@@ -8,7 +8,7 @@ export function SiteHeader() {
       <div className="section-shell flex flex-wrap items-center justify-between gap-x-4 gap-y-2 py-3 sm:py-4">
         <a href="/" className="flex min-w-0 items-center" aria-label="Inicio">
           <img
-            src={logoAsset.url}
+            src={logoAsset}
             alt="Mario Paredes · Biodescodificación"
             className="h-9 w-auto max-w-[11rem] object-contain sm:h-10 sm:max-w-[14rem]"
             loading="eager"
