@@ -1,0 +1,1 @@
+DELETE FROM public.leads WHERE correo = 'prueba@test.cl' AND nombre = 'Prueba Agente';
