@@ -3,14 +3,16 @@
 ## Dónde estás ahora
 Vercel ya importó tu repositorio de GitHub y detectó "TanStack Start" automáticamente. Eso está correcto: **no cambies nada de esa pantalla** (ni Build Command, ni Output Directory, ni Install Command). Los valores que muestra son los correctos.
 
-## Paso 1 — Variables de entorno (antes de presionar Deploy)
-En la misma pantalla de importación, baja hasta la sección **Environment Variables** y agrega estas tres, tal cual (nombre = valor):
+## Paso 1 — Variables de entorno
+Ojo: la pantalla "Environments" (con el botón "Create Environment") NO es donde se agregan. La pantalla correcta es **Settings → Environment Variables** (menú lateral del proyecto).
+
+Ahí se agrega cada variable con un campo **Key** (nombre) y **Value** (valor), marcando los tres ambientes (Production, Preview, Development) y presionando Save. Las tres variables, tal cual:
 
 - `VITE_SUPABASE_URL` = `https://cfvuysclonhaevconnfq.supabase.co`
 - `VITE_SUPABASE_PUBLISHABLE_KEY` = `sb_publishable_dH8zg067Rw55Ti3WRMN45A_k55QnjGs`
 - `VITE_SUPABASE_PROJECT_ID` = `cfvuysclonhaevconnfq`
 
-Sin estas variables, el formulario de contacto no funcionará en el sitio publicado.
+Si el proyecto ya se desplegó sin las variables, ir a **Deployments → Redeploy** después de guardarlas. Sin estas variables, el formulario de contacto no funcionará en el sitio publicado.
 
 ## Paso 2 — Deploy
 Presiona el botón **Deploy**. Vercel construirá la página (tarda 1-3 minutos). Si termina en verde, el sitio queda publicado en una dirección temporal tipo `tu-proyecto.vercel.app`. Ábrela y revisa que se vea igual que antes.
