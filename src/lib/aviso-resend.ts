@@ -26,17 +26,23 @@ export async function enviarAvisoResend(datos: {
     .map(([k, v]) => `<tr><td style="padding:6px 12px;color:#555"><b>${k}</b></td><td style="padding:6px 12px">${escapar(v)}</td></tr>`)
     .join("");
 
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-    body: JSON.stringify({
-      from: "Camino al Inconsciente <avisos@caminoalinconsciente.cl>",
-      to: ["contacto@caminoalinconsciente.cl"],
-      reply_to: datos.correo,
-      subject: `Nuevo contacto: ${datos.nombre}`,
-      html: `<div style="font-family:Arial,sans-serif"><h2 style="color:#1f4e5a">Nuevo contacto desde la web</h2><table>${filas}</table></div>`,
-    }),
-  });
+  const correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(datos.correo);
+  const enviar = (conReplyTo: boolean) =>
+    fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        from: "Camino al Inconsciente <avisos@caminoalinconsciente.cl>",
+        to: ["contacto@caminoalinconsciente.cl"],
+        ...(conReplyTo ? { reply_to: datos.correo } : {}),
+        subject: `Nuevo contacto: ${datos.nombre}`,
+        html: `<div style="font-family:Arial,sans-serif"><h2 style="color:#1f4e5a">Nuevo contacto desde la web</h2><table>${filas}</table></div>`,
+      }),
+    });
+
+  let res = await enviar(correoValido);
+  // Si Resend rechaza el "responder a", reintenta sin él para no perder el aviso.
+  if (!res.ok && res.status === 422 && correoValido) res = await enviar(false);
   if (!res.ok) {
     throw new Error(`Resend [${res.status}]: ${await res.text()}`);
   }
