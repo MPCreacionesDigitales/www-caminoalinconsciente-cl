@@ -83,19 +83,13 @@ export function QueEs() {
           </h2>
         <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted-foreground">
           <p>
-            La Biodescodificación es un proceso de acompañamiento y entrenamiento mental profundo
-            orientado a explorar y comprender el origen emocional, biológico y psicológico que una
-            persona asocia con determinados síntomas y conflictos en sus relaciones, ya sea de
-            pareja, familiares, amigos, laborales, entre otros.
+            La Biodescodificación es un proceso de acompañamiento y entrenamiento mental profundo, en donde te ayudo a explorar y comprender las experiencias traumáticas que te impactaron psicoemocionalmente y que incoscientemente te han llevado a repetir patrones, generando conflictos en tus relaciones, en tu trabajo y en tu salud.
           </p>
           <p>
-            Parte de una mirada integrativa: además de observar qué te está ocurriendo, busca
-            profundizar cuáles son las experiencias, emociones, creencias y aprendizajes
-            inconscientes que se están repitiendo, generando estrés y un mal vivir.
+            A través de una mirada integrativa, te ayudo a buscar y profundizar en situaciones específicas que viviste a lo largo de tu vida, las que te generaron bloqueos emocionales, creencias limitantes y que de manera inconsciente gobiernan tu vida y tus resultados., causandote una vida llena de estrés.
           </p>
           <p>
-            Desde esta perspectiva, aquello que hoy experimentas puede convertirse en una puerta
-            de entrada para conocerte con mayor profundidad.
+            Todo lo que experimentes hoy es resultado de tus creencias, pensamientos, emociones y acciones del pasado. Si quieres crear una vida distinta, tienes que cambiar lo que la origina.
           </p>
         </div>
       </div>
@@ -156,9 +150,7 @@ export function Solucion() {
             Una nueva lectura de tu propia historia
           </h2>
           <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
-            En un encuentro privado por videollamada revisamos juntos tu historia para encontrar
-            el conflicto que dio origen a lo que hoy vives. No trabajamos sobre el síntoma:
-            trabajamos directamente en la causa.
+            En un encuentro privado por videollamada revisamos juntos tu historia para encontrar el conflicto que dio origen a lo que hoy vives. Sin buscar culpables, sin emitir jucios. Utilizamos el pasado para aprender y comenzar a construir esa vida que tanto sueñas.
           </p>
         </div>
         <div className="self-center">
@@ -191,7 +183,7 @@ const beneficios = [
   { icon: Activity, title: "Otra relación con tu cuerpo", text: "Dejas de pelear con el síntoma y empiezas a escuchar lo que expresa." },
   { icon: Brain, title: "Decisiones más libres", text: "Al ver las creencias heredadas, dejas de decidir en piloto automático." },
   { icon: Repeat, title: "El ciclo deja de repetirse", text: "Reconoces la señal a tiempo y puedes elegir una respuesta distinta." },
-  { icon: HeartHandshake, title: "Un espacio seguro y sin juicio", text: "Un encuentro confidencial donde puedes hablar con total libertad." },
+  { icon: HeartHandshake, title: "Un espacio seguro y sin juicio", text: "Un encuentro confidencial donde puedes hablar y expresarte con total libertad." },
 ];
 
 export function Beneficios() {
@@ -281,14 +273,10 @@ export function Sobre() {
               económicos, llegué a la biodescodificación.
             </p>
             <p>
-              Dentro de todo lo que he estudiado y aprendido, siento que es el método más efectivo y
-              directo para transformar la forma en que pensamos. Gracias a las herramientas que
-              aporta, se pueden generar cambios desde el minuto 1.
+              Luego de años de tratamientos, terapias, cursos de coaching y todo lo que te puedas imaginar, creo que la biodescodificación es el método más efectivo y directo para transformar tu vida. Con herramientas prácticas, puedes inciar tu sanación desde el minuto 1.
             </p>
             <p>
-              Este aprendizaje me ha motivado a querer apoyar a personas que están viviendo en
-              sufrimiento y mi sueño es poder participe de esa transformación que les permitirá
-              vivir en plenitud.
+              Es por esta experiencia que decidí transformar mi vida. Resolver mis mayores conflictos, atravesar mis miedos para finalmente dedicarme 100% a mi sueño, que es ser ese apoyo que muchas personas que están viviendo en sufrimiento necesitan
             </p>
           </div>
         </div>
