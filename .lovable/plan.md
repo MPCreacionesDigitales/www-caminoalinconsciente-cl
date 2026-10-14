@@ -6,7 +6,7 @@ Tu captura de Resend muestra el error: **"Invalid reply_to"**. El aviso usa el c
 Tu llave, tu dominio, SPF y DMARC están bien: Resend recibió el pedido y lo identificó con tu llave "API Formulario".
 
 ## Cambios (yo)
-1. **Formulario más estricto:** exigirá un correo con formato real (`nombre@dominio.cl`). Si no lo es, mostrará "Ingresa un correo válido" antes de enviar.
+1. **Formulario más estricto:** se aceptan correos personales (Gmail, Hotmail, Outlook, Yahoo, etc.) y corporativos. Solo se rechazan correos mal escritos, como `juan@`, `juan@gmail` o con espacios; en ese caso aparece "Ingresa un correo válido" antes de enviar.
 2. **El aviso nunca se pierde:** si por cualquier motivo el correo del visitante no sirve como "responder a", el aviso se envía igual a contacto@caminoalinconsciente.cl, solo que sin esa opción.
 3. Te dejo los 2 archivos actualizados (`aviso-resend.ts` y `contacto.functions.ts`) listos para descargar.
 
