@@ -17,7 +17,7 @@ export function SiteFooter() {
             />
           </a>
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">
-            Acompañamiento privado para comprender el origen emocional y biológico de lo que hoy
+            Acompañamiento privado para comprender el origen emocional y sentido biológico de lo que hoy
             te limita.
           </p>
         </div>
