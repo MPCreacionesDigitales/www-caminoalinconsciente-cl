@@ -1,21 +1,24 @@
-# Formulario: la publicación en Vercel falló después de subir los archivos
+# Aviso por correo: el formulario guarda, pero no llega el email
 
-## Qué pasó
-- Los 2 archivos **sí quedaron en GitHub** (commit "Add files via upload").
-- La **✗ roja** al lado significa que Vercel intentó publicar esa versión y **falló**. Tu sitio sigue mostrando la versión anterior, por eso el formulario aún no funciona.
-- SPF y DMARC ya están listos.
+## Estado
+- El formulario ya funciona y guarda los datos.
+- SPF y DMARC están listos.
+- Falta que llegue el aviso a contacto@caminoalinconsciente.cl. La página intenta enviarlo por Resend, y si Resend lo rechaza, igual muestra "se registraron los datos". Por eso no ves el error.
 
-## Paso 1 — Mostrarme el error (tú)
-1. En GitHub, haz clic en la **✗ roja** → **Details** (te lleva a Vercel).
-   - O en Vercel → **Deployments** → abre el despliegue con estado **Error**.
-2. Baja hasta **Build Logs** y mándame una captura de las líneas en rojo, sobre todo las últimas.
+## Paso 1 — Revisar spam (30 segundos)
+Busca en la carpeta **Spam** de contacto@caminoalinconsciente.cl un correo "Nuevo contacto: ...". Como DMARC está recién en quarantine, puede caer ahí.
 
-## Paso 2 — Corregirlo (yo)
-- Según el error, te preparo el archivo corregido para que lo subas igual que antes (**Add file → Upload files**, en la carpeta que te indique).
-- Si el error se debe a que en GitHub faltan otros cambios de hoy, te paso esos archivos también, en un solo paquete.
+## Paso 2 — Revisar Resend → Emails (o "Logs")
+Entra a resend.com → menú **Emails** (o **Logs**) y fíjate si aparece un intento de envío a la hora de tu prueba:
+- **No aparece nada:** la página no está usando tu llave. En Vercel → Environments → Production, revisa que exista `RESEND_API_KEY`, escrita exacta y sin espacios. Después haz un despliegue nuevo, porque las variables solo se aplican a despliegues hechos después de agregarlas.
+- **Aparece con error (rojo):** mándame captura del mensaje. Lo más común es que el dominio no esté "Verified" en Resend → Domains, o que la llave no tenga permiso para ese dominio.
+- **Aparece como "Delivered":** Resend lo entregó. Revisa spam y los filtros de Gmail.
 
-## Paso 3 — Probar
-- Cuando el despliegue quede en verde en Vercel, pruebo el formulario y confirmo que el aviso llegue a contacto@caminoalinconsciente.cl.
+## Paso 3 — Si sigue sin verse claro
+En Vercel → tu proyecto → **Logs**, filtra por la hora de la prueba y busca el texto `aviso`. Mándame captura de lo que aparezca.
+
+## Paso 4 — Corrección y prueba
+Según lo que salga, te digo el ajuste exacto (en Vercel, Resend o el archivo del aviso). Después enviamos una prueba y confirmamos que el aviso llega.
 
 ## Notas
-- No cambia nada visible de la página: textos, precios, enlaces y diseño quedan iguales.
+- No cambia nada visible de la página.
