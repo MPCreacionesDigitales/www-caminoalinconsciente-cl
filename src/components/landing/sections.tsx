@@ -29,7 +29,7 @@ import heroImage from "@/assets/hero-mujer.jpg";
 import aboutAsset from "@/assets/mario-chaqueta.webp.asset.json";
 import { Button } from "@/components/ui/button";
 import procesoAsset from "@/assets/proceso-sesion.jpg";
-import logoAsset from "@/assets/logo-camino-inconsciente.png";
+import logoAsset from "@/assets/logo-camino-inconsciente-nuevo.png";
 
 
 
@@ -53,8 +53,8 @@ export function Hero() {
         <div className="max-w-2xl">
           <img
             src={logoAsset}
-            alt="Mario Paredes · Biodescodificación"
-            className="marca-sello mb-6 size-28 object-contain sm:size-32"
+            alt="Camino al Inconsciente · Biodescodificación"
+            className="mb-6 h-40 w-auto object-contain drop-shadow-[0_10px_40px_rgba(209,173,104,0.35)] sm:h-60"
             loading="eager"
           />
           <p className="eyebrow">{SITE.name}</p>
