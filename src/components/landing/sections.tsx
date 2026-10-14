@@ -299,8 +299,8 @@ export function VideoSection() {
           <img
             src={procesoAsset}
             alt="Proceso de la sesión en 5 pasos: identificación de la situación de estrés, sentimiento y emoción oculta, creencia limitante, reimpronta y seguimiento post sesión"
-            width={1600}
-            height={912}
+            width={1024}
+            height={572}
             loading="lazy"
             className="w-full"
           />
