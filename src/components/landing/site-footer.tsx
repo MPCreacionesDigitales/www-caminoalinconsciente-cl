@@ -5,14 +5,14 @@ import logoAsset from "@/assets/logo-camino-inconsciente.png";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-background py-14">
+    <footer className="border-t border-border bg-card py-14">
       <div className="section-shell grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <a href="/" aria-label="Inicio">
             <img
               src={logoAsset}
               alt="Mario Paredes Biodescodificación"
-              className="h-9 max-w-[12rem] object-contain"
+              className="marca-sello size-20 object-contain"
               loading="lazy"
             />
           </a>

@@ -22,65 +22,49 @@ import {
   Video,
   UserRound,
   Check,
-  Play,
 } from "lucide-react";
 import { CtaButton } from "./cta-button";
-import { SITE, youtubeId } from "@/lib/site-config";
+import { SITE } from "@/lib/site-config";
 import heroImage from "@/assets/hero-mujer.jpg";
-import aboutAsset from "@/assets/mario-paredes.jpg";
+import aboutAsset from "@/assets/mario-chaqueta.webp.asset.json";
+import { Button } from "@/components/ui/button";
 import procesoAsset from "@/assets/proceso-sesion.jpg";
 import logoAsset from "@/assets/logo-camino-inconsciente.png";
 
 
 
-const aboutImage = aboutAsset;
+const aboutImage = new URL(aboutAsset.url, "https://www-caminoalinconsciente-cl.lovable.app").href;
 
 /* ---------------------------------- Hero --------------------------------- */
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-background pt-16 pb-20 sm:pt-24 sm:pb-28">
-      <div className="section-shell grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
-        <div className="reveal">
+    <section className="relative isolate overflow-hidden border-b border-border bg-background">
+      <img
+        src={heroImage}
+        alt="Mujer de espaldas con los brazos abiertos frente a un amplio paisaje, símbolo de liberación emocional"
+        width={1600}
+        height={1067}
+        fetchPriority="high"
+        className="absolute inset-0 -z-20 h-full w-full object-cover object-[65%_40%]"
+      />
+      <div className="portada-sombra absolute inset-0 -z-10" aria-hidden="true" />
+      <div className="section-shell py-12 sm:py-16 lg:py-20">
+        <div className="max-w-2xl">
           <img
             src={logoAsset}
             alt="Mario Paredes · Biodescodificación"
-            className="mb-8 h-28 w-auto object-contain sm:h-36 lg:h-44"
+            className="marca-sello mb-6 size-28 object-contain sm:size-32"
             loading="eager"
           />
           <p className="eyebrow">{SITE.name}</p>
-          <h1 className="mt-6 text-4xl leading-[1.08] font-medium text-foreground sm:text-5xl lg:text-6xl">
+          <h1 className="mt-5 max-w-xl text-4xl leading-[1.12] font-semibold text-foreground sm:text-5xl lg:text-6xl">
             Descubre el origen emocional de lo que hoy limita tu vida
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+          <p className="mt-6 max-w-lg text-lg leading-relaxed text-foreground/85">
             Una sesión privada 1 a 1 donde te acompaño a encontrar la raíz emocional y biológica
             de aquello que te genera estrés, síntomas o patrones inconscientes repetidos.
           </p>
-
-          <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
-            {[
-              { icon: ShieldCheck, label: "" },
-              { icon: Video, label: "" },
-              { icon: UserRound, label: "" },
-            ].map(({ icon: Icon, label }) => (
-              <li key={label} className="flex items-center gap-2">
-                <Icon className="size-4 shrink-0 text-sage" aria-hidden="true" />
-                {label}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="relative">
-          <div className="absolute -inset-4 -z-10 rounded-[2rem] bg-accent/50 blur-2xl" aria-hidden="true" />
-          <img
-            src={heroImage}
-            alt="Mujer de espaldas con los brazos abiertos frente a un amplio paisaje, símbolo de liberación emocional"
-            width={1600}
-            height={1067}
-            fetchPriority="high"
-            className="aspect-[4/3] w-full rounded-[1.75rem] object-cover object-[50%_40%] shadow-elevated"
-          />
         </div>
       </div>
     </section>
@@ -94,7 +78,7 @@ export function QueEs() {
     <section id="que-es" className="border-y border-border bg-card py-20 sm:py-28">
       <div className="section-shell max-w-3xl">
           <p className="eyebrow">Definición</p>
-          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+          <h2 className="rule-gold mt-5 text-3xl leading-tight font-semibold sm:text-4xl">
             ¿Qué es la Biodescodificación?
           </h2>
         <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted-foreground">
@@ -132,11 +116,11 @@ const problemas = [
 
 export function Problema() {
   return (
-    <section className="bg-secondary/60 py-20 sm:py-28">
+    <section className="bg-secondary/50 py-20 sm:py-28">
       <div className="section-shell">
         <div className="max-w-2xl">
           <p className="eyebrow">Quizás te suene familiar</p>
-          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+          <h2 className="rule-gold mt-5 text-3xl leading-tight font-semibold sm:text-4xl">
             A veces el problema no está donde creemos que está
           </h2>
         </div>
@@ -144,7 +128,7 @@ export function Problema() {
           {problemas.map((p) => (
             <li
               key={p}
-              className="rounded-2xl border border-border bg-card p-6 text-base leading-relaxed text-card-foreground transition-shadow duration-300 hover:shadow-soft"
+              className="rounded-lg border border-border bg-card p-6 text-base leading-relaxed text-card-foreground transition-shadow duration-300 hover:shadow-soft"
             >
               {p}
             </li>
@@ -168,7 +152,7 @@ export function Solucion() {
       <div className="section-shell grid gap-14 lg:grid-cols-2 lg:gap-20">
         <div>
           <p className="eyebrow">La solución</p>
-          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+          <h2 className="rule-gold mt-5 text-3xl leading-tight font-semibold sm:text-4xl">
             Una nueva lectura de tu propia historia
           </h2>
           <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
@@ -187,7 +171,7 @@ export function Solucion() {
               "Dificultades y bloqueos con el dinero",
               "Historias familiares que se repiten y causan daño",
             ].map((item) => (
-              <li key={item} className="flex items-start gap-3 rounded-xl bg-accent/40 px-5 py-4">
+              <li key={item} className="flex items-start gap-3 rounded-md bg-accent/40 px-5 py-4">
                 <Check className="mt-0.5 size-5 shrink-0 text-accent-foreground" aria-hidden="true" />
                 <span className="text-base text-foreground">{item}</span>
               </li>
@@ -212,11 +196,11 @@ const beneficios = [
 
 export function Beneficios() {
   return (
-    <section id="beneficios" className="bg-secondary/60 py-20 sm:py-28">
+    <section id="beneficios" className="bg-secondary/50 py-20 sm:py-28">
       <div className="section-shell">
         <div className="max-w-2xl">
           <p className="eyebrow">Lo que te llevas</p>
-          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+          <h2 className="rule-gold mt-5 text-3xl leading-tight font-semibold sm:text-4xl">
             No es solo una sesión. Es el inicio de una transformación
           </h2>
         </div>
@@ -224,9 +208,9 @@ export function Beneficios() {
           {beneficios.map(({ icon: Icon, title, text }) => (
             <article
               key={title}
-              className="group rounded-2xl border border-border bg-card p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-soft"
+              className="group rounded-lg border border-border bg-card p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-soft"
             >
-              <span className="inline-flex size-11 items-center justify-center rounded-xl bg-accent text-accent-foreground">
+              <span className="inline-flex size-11 items-center justify-center rounded-md bg-accent text-accent-foreground">
                 <Icon className="size-5" aria-hidden="true" />
               </span>
               <h3 className="mt-5 text-lg font-medium text-card-foreground">{title}</h3>
@@ -254,7 +238,7 @@ export function ComoFunciona() {
       <div className="section-shell">
         <div className="max-w-2xl">
           <p className="eyebrow">Cómo reservar</p>
-          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+          <h2 className="rule-gold mt-5 text-3xl leading-tight font-semibold sm:text-4xl">
             En sólo cuatro pasos
           </h2>
         </div>
@@ -276,19 +260,19 @@ export function ComoFunciona() {
 
 export function Sobre() {
   return (
-    <section id="sobre-mi" className="bg-secondary/60 py-20 sm:py-28">
+    <section id="sobre-mi" className="bg-secondary/50 py-20 sm:py-28">
       <div className="section-shell grid items-center gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
         <img
           src={aboutImage}
           alt="Mario Paredes, acompañante en biodescodificación en Santiago de Chile"
           loading="lazy"
-          width={1024}
-          height={1280}
-          className="aspect-[4/5] w-full rounded-[1.5rem] object-cover shadow-soft"
+          width={972}
+          height={1296}
+          className="aspect-[3/4] w-full max-w-md rounded-lg border border-gold/35 object-cover object-top shadow-elevated"
         />
         <div>
           <p className="eyebrow">Quién te acompaña</p>
-          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+          <h2 className="rule-gold mt-5 text-3xl leading-tight font-semibold sm:text-4xl">
             Mario Paredes, acompañante en biodescodificación
           </h2>
           <div className="mt-8 space-y-6 text-lg leading-relaxed text-muted-foreground">
@@ -315,66 +299,15 @@ export function Sobre() {
 
 /* ---------------------------------- Video --------------------------------- */
 
-function VideoLigero({ url }: { url: string }) {
-  const [activo, setActivo] = useState(false);
-  const id = youtubeId(url);
-  if (!id) return null;
-  return (
-    <div className="relative mt-10 aspect-video overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
-      {activo ? (
-        <iframe
-          src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`}
-          title="Video de presentación de la sesión de Biodescodificación"
-          className="h-full w-full"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        />
-      ) : (
-        <button
-          type="button"
-          onClick={() => setActivo(true)}
-          aria-label="Reproducir video de presentación"
-          className="group relative block h-full w-full"
-        >
-          <img
-            src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}
-            alt="Portada del video de presentación de Mario Paredes"
-            loading="lazy"
-            className="h-full w-full object-cover"
-          />
-          <span className="absolute inset-0 flex items-center justify-center bg-foreground/10 transition-colors group-hover:bg-foreground/20">
-            <span className="flex size-16 items-center justify-center rounded-full bg-background shadow-elevated transition-transform group-hover:scale-105 sm:size-20">
-              <Play className="size-7 translate-x-0.5 text-primary" aria-hidden="true" />
-            </span>
-          </span>
-        </button>
-      )}
-    </div>
-  );
-}
-
 export function VideoSection() {
   return (
-    <section className="bg-secondary/60 py-20 sm:py-28">
+    <section className="bg-secondary/50 py-20 sm:py-28">
       <div className="section-shell max-w-3xl text-center">
         <p className="eyebrow">EL PROTOCOLO</p>
-        <h2 className="mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+        <h2 className="mt-5 text-3xl leading-tight font-semibold sm:text-4xl">
           ¿Cómo es una sesión?
         </h2>
-        {SITE.youtubeEmbedUrl ? (
-          <VideoLigero url={SITE.youtubeEmbedUrl} />
-        ) : (
-          <div className="relative mt-10 flex aspect-video flex-col items-center justify-center gap-5 overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-secondary via-card to-accent/60 shadow-soft">
-            <span className="flex size-16 items-center justify-center rounded-full bg-background shadow-elevated">
-              <Play className="size-6 translate-x-0.5 text-primary" aria-hidden="true" />
-            </span>
-            <span className="px-6 text-sm font-medium tracking-wide text-muted-foreground">
-              Video de presentación — disponible muy pronto
-            </span>
-          </div>
-        )}
-
-        <div className="mt-10 overflow-hidden rounded-2xl border border-border bg-card shadow-soft">
+        <div className="mt-10 overflow-hidden rounded-lg border border-border bg-card shadow-soft">
           <img
             src={procesoAsset}
             alt="Proceso de la sesión en 5 pasos: identificación de la situación de estrés, sentimiento y emoción oculta, creencia limitante, reimpronta y seguimiento post sesión"
@@ -395,7 +328,7 @@ export function Precio() {
   return (
     <section id="precio" className="py-20 sm:py-28">
       <div className="section-shell max-w-2xl">
-        <div className="rounded-[1.75rem] border border-border bg-card p-9 text-center shadow-elevated sm:p-14">
+        <div className="border-y border-gold/40 py-10 text-center sm:py-14">
           <p className="eyebrow">Tu inversión</p>
           <h2 className="mt-5 text-2xl font-medium sm:text-3xl">Sesión Online</h2>
           <p className="font-display mt-6 text-5xl font-medium text-primary sm:text-6xl">
@@ -442,10 +375,10 @@ export const faqs: { q: string; a: string }[] = [
 
 export function Faq() {
   return (
-    <section id="faq" className="bg-secondary/60 py-20 sm:py-28">
+    <section id="faq" className="bg-secondary/50 py-20 sm:py-28">
       <div className="section-shell max-w-3xl">
         <p className="eyebrow">Preguntas frecuentes</p>
-        <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+        <h2 className="rule-gold mt-5 text-3xl leading-tight font-semibold sm:text-4xl">
           Resolvamos tus dudas
         </h2>
         <Accordion type="single" collapsible className="mt-10">
@@ -518,14 +451,14 @@ export function Formulario() {
       <div className="section-shell grid gap-12 lg:grid-cols-2 lg:gap-20">
         <div>
           <p className="eyebrow">¿Aún tienes dudas?</p>
-          <h2 className="rule-gold mt-5 text-3xl leading-tight font-medium sm:text-4xl">
+          <h2 className="rule-gold mt-5 text-3xl leading-tight font-semibold sm:text-4xl">
             Escríbeme y te oriento antes de reservar
           </h2>
           <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
             Déjame tus datos y te contacto para responder todas tus preguntas sobre la sesión.
           </p>
         </div>
-        <form onSubmit={onSubmit} noValidate className="grid gap-5 rounded-2xl border border-border bg-card p-7 shadow-soft sm:p-9">
+        <form onSubmit={onSubmit} noValidate className="grid gap-5 rounded-lg border border-border bg-card p-7 shadow-soft sm:p-9">
           <div className="grid gap-2">
             <Label htmlFor="nombre">Nombre</Label>
             <Input
@@ -579,13 +512,13 @@ export function Formulario() {
               onChange={(e) => setWebsite(e.target.value)}
             />
           </div>
-          <button
+          <Button
             type="submit"
             disabled={enviando}
-            className="mt-2 inline-flex min-h-12 items-center justify-center rounded-full bg-primary px-8 text-sm font-medium text-primary-foreground shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:shadow-elevated focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-60"
+            className="mt-2 inline-flex min-h-12 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:shadow-elevated focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-60"
           >
             {enviando ? "Enviando…" : "Quiero más información"}
-          </button>
+          </Button>
         </form>
       </div>
     </section>
@@ -596,12 +529,12 @@ export function Formulario() {
 
 export function CtaFinal() {
   return (
-    <section className="bg-primary py-24 text-primary-foreground sm:py-32">
+    <section className="banda-vino border-y border-gold/30 py-24 text-foreground sm:py-32">
       <div className="section-shell max-w-3xl text-center">
         <h2 className="text-3xl leading-tight font-medium sm:text-5xl">
           Todo cambio comienza cuando decides mirar el origen de tu historia
         </h2>
-        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/80">
+        <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-foreground/80">
           Tal vez llevas años intentando resolver el síntoma. Hoy puedes comenzar a comprender su
           verdadero origen.
         </p>
