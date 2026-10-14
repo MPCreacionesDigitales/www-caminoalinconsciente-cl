@@ -1,24 +1,20 @@
-# Aviso por correo: el formulario guarda, pero no llega el email
+# Aviso por correo: Resend rechaza el envío por el correo del visitante
 
-## Estado
-- El formulario ya funciona y guarda los datos.
-- SPF y DMARC están listos.
-- Falta que llegue el aviso a contacto@caminoalinconsciente.cl. La página intenta enviarlo por Resend, y si Resend lo rechaza, igual muestra "se registraron los datos". Por eso no ves el error.
+## Qué encontré
+Tu captura de Resend muestra el error: **"Invalid reply_to"**. El aviso usa el correo que escribe el visitante como "responder a", para que puedas contestarle directo. En tu prueba ese correo no tenía un formato válido completo (por ejemplo `algo@` o con espacios). El formulario lo aceptó porque solo revisaba que tuviera "@", y entonces Resend rechazó todo el aviso.
 
-## Paso 1 — Revisar spam (30 segundos)
-Busca en la carpeta **Spam** de contacto@caminoalinconsciente.cl un correo "Nuevo contacto: ...". Como DMARC está recién en quarantine, puede caer ahí.
+Tu llave, tu dominio, SPF y DMARC están bien: Resend recibió el pedido y lo identificó con tu llave "API Formulario".
 
-## Paso 2 — Revisar Resend → Emails (o "Logs")
-Entra a resend.com → menú **Emails** (o **Logs**) y fíjate si aparece un intento de envío a la hora de tu prueba:
-- **No aparece nada:** la página no está usando tu llave. En Vercel → Environments → Production, revisa que exista `RESEND_API_KEY`, escrita exacta y sin espacios. Después haz un despliegue nuevo, porque las variables solo se aplican a despliegues hechos después de agregarlas.
-- **Aparece con error (rojo):** mándame captura del mensaje. Lo más común es que el dominio no esté "Verified" en Resend → Domains, o que la llave no tenga permiso para ese dominio.
-- **Aparece como "Delivered":** Resend lo entregó. Revisa spam y los filtros de Gmail.
+## Cambios (yo)
+1. **Formulario más estricto:** exigirá un correo con formato real (`nombre@dominio.cl`). Si no lo es, mostrará "Ingresa un correo válido" antes de enviar.
+2. **El aviso nunca se pierde:** si por cualquier motivo el correo del visitante no sirve como "responder a", el aviso se envía igual a contacto@caminoalinconsciente.cl, solo que sin esa opción.
+3. Te dejo los 2 archivos actualizados (`aviso-resend.ts` y `contacto.functions.ts`) listos para descargar.
 
-## Paso 3 — Si sigue sin verse claro
-En Vercel → tu proyecto → **Logs**, filtra por la hora de la prueba y busca el texto `aviso`. Mándame captura de lo que aparezca.
-
-## Paso 4 — Corrección y prueba
-Según lo que salga, te digo el ajuste exacto (en Vercel, Resend o el archivo del aviso). Después enviamos una prueba y confirmamos que el aviso llega.
+## Pasos (tú) — igual que la vez anterior
+1. Descarga los 2 archivos nuevos.
+2. GitHub → `src` → `lib` → **Add file → Upload files** → arrastra los 2 → **Commit changes** (reemplazan a los anteriores).
+3. Espera a que Vercel quede en verde (Deployments).
+4. Envía el formulario con un correo real tuyo. Debe llegarte el aviso a contacto@caminoalinconsciente.cl. Puedes confirmarlo en Resend → Logs: debe salir **200** en vez de 422.
 
 ## Notas
-- No cambia nada visible de la página.
+- No cambia nada visible de la página, salvo el mensaje de "correo no válido" cuando corresponda.
