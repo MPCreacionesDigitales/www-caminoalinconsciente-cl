@@ -1,24 +1,36 @@
-# Quitar el aviso "sitio no seguro" en www.caminoalinconsciente.cl
+# Dejar el formulario funcionando (Resend) y configurar DMARC en quarantine
 
-## Qué pasó
-Al poner el CNAME de `www` en "DNS only" (nube gris), el tráfico va directo a Vercel. Vercel emite el certificado SSL (el candado) automáticamente, pero tarda unos minutos. Mientras tanto el navegador muestra el aviso. No es un error tuyo ni de la página.
+## 1. Formulario de contacto con Resend
 
-## Pasos
+El código del sitio ya envía el aviso por Resend cuando existe la llave `RESEND_API_KEY`. Falta la configuración:
 
-1. **Esperar 5-15 minutos** y recargar `https://www.caminoalinconsciente.cl` (probar también en una ventana de incógnito, porque el navegador a veces guarda el aviso viejo).
+1. **Verificar el dominio en Resend**: en resend.com → Domains, `caminoalinconsciente.cl` debe salir **Verified**. Si sale Pending, agregar en Cloudflare los registros que Resend muestra (nube gris) y presionar Verify.
+2. **Crear la API Key**: Resend → API Keys → Create API Key → copiar la llave (empieza con `re_`).
+3. **Agregarla en Vercel**: proyecto → Environments → Production → Add:
+   - Type: Secret
+   - Key: `RESEND_API_KEY`
+   - Value: la llave copiada
+   - Marcar Production, Preview y Development → Save
+4. **Redeploy**: Deployments → ⋯ del último despliegue → Redeploy.
+5. **Probar**: enviar el formulario desde https://www.caminoalinconsciente.cl con datos reales y confirmar que llega el aviso a contacto@caminoalinconsciente.cl.
 
-2. **Revisar en Vercel** → Settings → Domains:
-   - `www.caminoalinconsciente.cl` debe salir sin errores (sin "Invalid Configuration").
-   - Si sigue en error después de 15 minutos: quitar el dominio (Remove) y volver a agregarlo (Add) para forzar que Vercel emita el certificado de nuevo.
+## 2. DMARC en quarantine (Cloudflare)
 
-3. **Revisar en Cloudflare** → SSL/TLS:
-   - El modo debe estar en **Full** (no "Flexible"). Con nube gris esto importa menos, pero conviene dejarlo en Full.
+Agregar un registro TXT en Cloudflare → DNS:
 
-4. **Verificación final:**
-   - `https://www.caminoalinconsciente.cl` carga con candado.
-   - `https://caminoalinconsciente.cl` redirige a www con candado.
-   - El formulario envía y llega el aviso por correo (Resend verificado + `RESEND_API_KEY` en Vercel + Redeploy).
+- Type: `TXT`
+- Name: `_dmarc`
+- Content: `v=DMARC1; p=quarantine; rua=mailto:contacto@caminoalinconsciente.cl`
+- TTL: Auto
+
+Esto indica a los correos destinatarios que envíen a cuarentena (spam) los mensajes que fallen las verificaciones, y te manda reportes a tu correo. No afecta el envío de Gmail ni de Resend ya configurados (SPF y DKIM siguen igual).
+
+## Verificación final
+
+- Formulario envía, guarda el registro y llega el aviso por correo.
+- `https://www.caminoalinconsciente.cl` carga con candado y `caminoalinconsciente.cl` redirige a www.
+- DMARC visible con una herramienta como dnschecker.org buscando TXT `_dmarc.caminoalinconsciente.cl`.
 
 ## Notas
-- No hay cambios de código en este plan; todo es configuración en Vercel y Cloudflare.
-- No tocar los registros de correo (MX, SPF, DKIM, DMARC) ni el de Resend.
+- No hay cambios de código; el sitio ya quedó listo para Resend. Todo es configuración en Resend, Vercel y Cloudflare.
+- No tocar los registros MX, SPF ni DKIM de Gmail.
