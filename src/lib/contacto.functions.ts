@@ -23,7 +23,8 @@ function validateAndClean(data: unknown) {
   const website = clean.website ? clean.website.trim() : "";
 
   if (nombre.length < 2 || nombre.length > 100) throw new Error("Ingresa tu nombre");
-  if (!email.includes("@") || email.length > 255) throw new Error("Ingresa un correo válido");
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || email.length > 255)
+    throw new Error("Ingresa un correo válido");
   if (whatsapp.length < 6 || whatsapp.length > 30) throw new Error("Ingresa un número válido");
   if (website.length > 0) throw new Error("Spam detectado");
 
