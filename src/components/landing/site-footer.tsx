@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, MessageCircle, Instagram } from "lucide-react";
 import { WHATSAPP_URL, SITE } from "@/lib/site-config";
-import logoAsset from "@/assets/logo-camino-inconsciente.png";
+import logoAsset from "@/assets/logo-camino-inconsciente-nuevo.png";
 
 export function SiteFooter() {
   return (
@@ -11,8 +11,8 @@ export function SiteFooter() {
           <a href="/" aria-label="Inicio">
             <img
               src={logoAsset}
-              alt="Mario Paredes Biodescodificación"
-              className="marca-sello size-20 object-contain"
+              alt="Camino al Inconsciente · Biodescodificación"
+              className="h-24 w-auto object-contain"
               loading="lazy"
             />
           </a>
