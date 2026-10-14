@@ -54,7 +54,7 @@ function Gracias() {
             <img
               src={logoAsset}
               alt="Mario Paredes Biodescodificación"
-              className="h-20 max-w-[24rem] object-contain"
+              className="marca-sello size-28 object-contain"
               loading="eager"
             />
           </a>
@@ -64,7 +64,7 @@ function Gracias() {
 
 
       <main className="relative overflow-hidden py-16 sm:py-24">
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-accent/40 via-background to-background" />
+        <div className="pointer-events-none absolute inset-0 -z-10 banda-vino" />
         <div className="section-shell max-w-3xl text-center">
           <span className="inline-flex size-20 items-center justify-center rounded-full bg-gold/15 text-gold shadow-soft">
             <Sparkles className="size-10" aria-hidden="true" />
@@ -88,7 +88,7 @@ function Gracias() {
             {pasos.map((paso, i) => (
               <li
                 key={paso.title}
-                className="rounded-2xl border border-border bg-card p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated"
+                className="rounded-lg border border-border bg-card p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated"
               >
                 <paso.icon className="size-6 text-primary" aria-hidden="true" />
                 <p className="mt-4 text-sm font-medium">
@@ -104,7 +104,7 @@ function Gracias() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-primary px-10 text-base font-medium text-primary-foreground shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:shadow-elevated"
+              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-md bg-primary px-10 text-base font-medium text-primary-foreground shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:shadow-elevated"
             >
               <MessageCircle className="size-5 text-primary-foreground" aria-hidden="true" />
               Agendar mi sesión por WhatsApp
