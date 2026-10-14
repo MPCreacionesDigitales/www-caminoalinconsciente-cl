@@ -1,36 +1,40 @@
-# Dejar el formulario funcionando (Resend) y configurar DMARC en quarantine
+# Formulario: Vercel está publicando una versión antigua del sitio
 
-## 1. Formulario de contacto con Resend
+## Qué encontré
+Envié una prueba en https://www.caminoalinconsciente.cl. El formulario responde con un error que pertenece a la **versión antigua** del sitio (la que dependía de Lovable). La versión actual del proyecto ya no tiene ese problema: guarda el contacto con la llave pública y avisa por Resend.
 
-El código del sitio ya envía el aviso por Resend cuando existe la llave `RESEND_API_KEY`. Falta la configuración:
+Conclusión: Vercel no está tomando los últimos cambios. Las causas más probables:
+- **"Redeploy" vuelve a publicar el mismo código viejo**: repite la versión de ese despliegue y no trae cambios nuevos de GitHub.
+- El repositorio de GitHub que usa Vercel no está recibiendo los cambios de este proyecto (por ejemplo, si es un repositorio distinto al conectado aquí).
 
-1. **Verificar el dominio en Resend**: en resend.com → Domains, `caminoalinconsciente.cl` debe salir **Verified**. Si sale Pending, agregar en Cloudflare los registros que Resend muestra (nube gris) y presionar Verify.
-2. **Crear la API Key**: Resend → API Keys → Create API Key → copiar la llave (empieza con `re_`).
-3. **Agregarla en Vercel**: proyecto → Environments → Production → Add:
-   - Type: Secret
-   - Key: `RESEND_API_KEY`
-   - Value: la llave copiada
-   - Marcar Production, Preview y Development → Save
-4. **Redeploy**: Deployments → ⋯ del último despliegue → Redeploy.
-5. **Probar**: enviar el formulario desde https://www.caminoalinconsciente.cl con datos reales y confirmar que llega el aviso a contacto@caminoalinconsciente.cl.
+La llave de Resend y la configuración de correo no son el problema: el error ocurre antes de llegar a esa parte.
 
-## 2. DMARC en quarantine (Cloudflare)
+## Pasos
 
-Agregar un registro TXT en Cloudflare → DNS:
+1. **Revisar GitHub**: abre tu repositorio y mira el archivo `src/lib/aviso-resend.ts`.
+   - Si **existe**: el código está bien en GitHub, sigue al paso 2.
+   - Si **no existe**: GitHub no recibe los cambios. En este editor, ve a GitHub (arriba a la derecha) y confirma que está conectado a **ese mismo repositorio** que importaste en Vercel. Si es otro, dime el nombre de cada uno y te guío.
 
+2. **Publicar la versión nueva en Vercel** (no usar "Redeploy" sobre un despliegue viejo):
+   - Vercel → tu proyecto → **Deployments**. El despliegue de arriba debe mostrar el último cambio (commit) de GitHub, con fecha de hoy.
+   - Si no aparece uno nuevo, ve a **Settings → Git** y revisa que la rama de producción sea `main` (o la rama que usa tu repositorio).
+   - Para forzar una publicación nueva: en el último despliegue → ⋯ → **Redeploy** y **desmarca "Use existing Build Cache"**. Revisa también que el commit que muestra sea el más reciente.
+
+3. **Revisar variables en Vercel** (Environments → Production): deben estar estas 4:
+   - `VITE_SUPABASE_URL`
+   - `VITE_SUPABASE_PUBLISHABLE_KEY`
+   - `VITE_SUPABASE_PROJECT_ID`
+   - `RESEND_API_KEY`
+
+4. **Probar**: cuando el despliegue nuevo termine en verde, envía el formulario. Debe mostrar el mensaje de éxito y llegar el aviso a contacto@caminoalinconsciente.cl. Yo puedo repetir la prueba para confirmarlo.
+
+## DMARC en quarantine (pendiente del mensaje anterior)
+Cloudflare → DNS → Add record:
 - Type: `TXT`
 - Name: `_dmarc`
 - Content: `v=DMARC1; p=quarantine; rua=mailto:contacto@caminoalinconsciente.cl`
-- TTL: Auto
-
-Esto indica a los correos destinatarios que envíen a cuarentena (spam) los mensajes que fallen las verificaciones, y te manda reportes a tu correo. No afecta el envío de Gmail ni de Resend ya configurados (SPF y DKIM siguen igual).
-
-## Verificación final
-
-- Formulario envía, guarda el registro y llega el aviso por correo.
-- `https://www.caminoalinconsciente.cl` carga con candado y `caminoalinconsciente.cl` redirige a www.
-- DMARC visible con una herramienta como dnschecker.org buscando TXT `_dmarc.caminoalinconsciente.cl`.
+Si ya existe un `_dmarc`, edítalo en vez de crear otro (solo puede haber uno).
 
 ## Notas
-- No hay cambios de código; el sitio ya quedó listo para Resend. Todo es configuración en Resend, Vercel y Cloudflare.
-- No tocar los registros MX, SPF ni DKIM de Gmail.
+- No hay cambios de código: el proyecto ya está listo. Todo se arregla en GitHub y Vercel.
+- Mi envío de prueba no quedó guardado (falló antes de guardarse).
