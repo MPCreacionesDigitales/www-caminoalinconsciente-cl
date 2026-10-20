@@ -12,7 +12,7 @@ export function SiteHeader() {
             href={MINI_APP_URL}
             className="px-4 text-center text-xs sm:px-6 sm:text-sm"
           >
-            Test y Diccionario de Enfermedades
+            Diccionario de Enfermedades
           </CtaButton>
           <CtaButton size="md" className="shrink-0">
             Agendar
