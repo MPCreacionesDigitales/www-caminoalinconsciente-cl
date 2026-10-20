@@ -194,10 +194,12 @@ export function Sobre() {
               Luego de años de tratamientos, terapias, cursos de coaching y todo lo que encontré, llegue a la biodescodificación en 2023, que fue lo que realmente me cambio la vida.
             </p>
             <p>
-              Comencé a ver la vida a partir del perdón. A ver la vida con inocencia Fue gracias a esta experiencia que decidí llevar mi vida al siguiente nivel. Cambié mi identidad, me enfoqué en crecer, en expandirme y en tener la valentiía de decidir según mis propias reglas lo que quería en mi vida, y no en las malinterpretaciones que hice de mi pasado y que sostuve por muchos años, limitando mi potencial
+              Comencé a ver la vida a partir del perdón. A ver la vida con inocencia Fue gracias a esta experiencia que decidí llevar mi vida al siguiente nivel. Cambié mi identidad, me enfoqué en crecer, en expandirme y en tener la valentiía de decidir según mis propias reglas lo que quería en mi vida, y no en las malinterpretaciones que hice de mi pasado y que sostuve por muchos años, limitando mi potencial.
 
 
-              <span>Es este gran cambio de consciencia, lo que me llevó a decidir convertirme en biodescodificador y entregarme de lleno a apoyar a los demás en su propio proceso de sanación y crecimiento.</span>
+              <span>.
+
+Fue este gran cambio de consciencia, lo que me llevó a decidir convertirme en biodescodificador y entregarme de lleno a apoyar a los demás en su propio proceso de sanación y crecimiento.</span>
             </p>
           </div>
         </div>
