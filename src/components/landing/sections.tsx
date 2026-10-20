@@ -57,13 +57,12 @@ export function Hero() {
             className="mb-6 h-40 w-auto object-contain drop-shadow-[0_10px_40px_rgba(209,173,104,0.35)] sm:h-60"
             loading="eager"
           />
-          <p className="eyebrow">{SITE.name}</p>
+          <p className="eyebrow">{"\n"}</p>
           <h1 className="mt-5 max-w-xl text-4xl leading-[1.12] font-semibold text-foreground sm:text-5xl lg:text-6xl">
             Descubre el origen emocional de lo que hoy limita tu vida
           </h1>
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-foreground/85">
-            Una sesión privada 1 a 1 donde te acompaño a encontrar la raíz emocional y biológica
-            de aquello que te genera estrés, síntomas o patrones inconscientes repetidos.
+            Para poder desbloquear algún área de tu vida, es esencial encontrar la raíz emocional y biológica de aquello que te genera estrés, síntomas o patrones inconscientes repetidos.
           </p>
         </div>
       </div>
@@ -83,7 +82,7 @@ export function QueEs() {
           </h2>
         <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted-foreground">
           <p>
-            La Biodescodificación es un proceso de acompañamiento y entrenamiento mental profundo, en donde te ayudo a explorar y comprender las experiencias traumáticas que te impactaron psicoemocionalmente y que incoscientemente te han llevado a repetir patrones, generando conflictos en tus relaciones, en tu trabajo y en tu salud.
+            La Biodescodificación es un proceso de acompañamiento y entrenamiento mental profundo, en donde te ayudo a explorar y comprender las experiencias traumáticas que te impactaron psicoemocionalmente y que incoscientemente te han llevado a repetir patrones negativos de pensamientos, emociones y conductas, generando conflictos en tus relaciones, en tu trabajo y en tu salud.
           </p>
           <p>
             A través de una mirada integrativa, te ayudo a buscar y profundizar en situaciones específicas que viviste a lo largo de tu vida, las que te generaron bloqueos emocionales, creencias limitantes y que de manera inconsciente gobiernan tu vida y tus resultados., causandote una vida llena de estrés.
