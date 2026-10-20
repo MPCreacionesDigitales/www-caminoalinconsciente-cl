@@ -28,7 +28,6 @@ import { SITE } from "@/lib/site-config";
 import heroImage from "@/assets/hero-mujer.jpg";
 import aboutAsset from "@/assets/mario-chaqueta.webp.asset.json";
 import { Button } from "@/components/ui/button";
-import procesoAsset from "@/assets/proceso-sesion.jpg";
 import logoAsset from "@/assets/logo-camino-inconsciente-nuevo.png";
 
 
@@ -207,30 +206,6 @@ export function Sobre() {
   );
 }
 
-/* ---------------------------------- Video --------------------------------- */
-
-export function VideoSection() {
-  return (
-    <section className="bg-secondary/50 py-20 sm:py-28">
-      <div className="section-shell max-w-3xl text-center">
-        <p className="eyebrow">EL PROTOCOLO</p>
-        <h2 className="mt-5 text-3xl leading-tight font-semibold sm:text-4xl">
-          ¿Cómo es una sesión?
-        </h2>
-        <div className="mt-10 overflow-hidden rounded-lg border border-border bg-card shadow-soft">
-          <img
-            src={procesoAsset}
-            alt="Proceso de la sesión en 5 pasos: identificación de la situación de estrés, sentimiento y emoción oculta, creencia limitante, reimpronta y seguimiento post sesión"
-            width={1024}
-            height={572}
-            loading="lazy"
-            className="w-full"
-          />
-        </div>
-      </div>
-    </section>
-  );
-}
 
 /* --------------------------------- Precio --------------------------------- */
 
