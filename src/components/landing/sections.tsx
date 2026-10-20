@@ -62,8 +62,8 @@ export function Hero() {
             Descubre el origen emocional de lo que hoy limita tu vida
           </h1>
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-foreground/85">
-            Una sesión privada 1 a 1 para explorar tu historia, comprender cómo vives tus emociones
-            y reconocer patrones que quieres cambiar. Un espacio para escucharte y elegir tu siguiente paso.
+            Una sesión privada 1 a 1 donde te acompaño a encontrar la raíz emocional y biológica
+            de aquello que te genera estrés, síntomas o patrones inconscientes repetidos.
           </p>
         </div>
       </div>
@@ -83,13 +83,13 @@ export function QueEs() {
           </h2>
         <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted-foreground">
           <p>
-            La biodescodificación propone explorar la relación que una persona percibe entre su historia, sus emociones y lo que vive hoy. En mi sesión, el foco está en escucharte, reconocer creencias y revisar patrones en tus relaciones, tu trabajo y tu vida cotidiana.
+            La Biodescodificación es un proceso de acompañamiento y entrenamiento mental profundo, en donde te ayudo a explorar y comprender las experiencias traumáticas que te impactaron psicoemocionalmente y que incoscientemente te han llevado a repetir patrones, generando conflictos en tus relaciones, en tu trabajo y en tu salud.
           </p>
           <p>
-            Algunas corrientes utilizan las llamadas 5 leyes biológicas como marco de interpretación. Aquí puedes conocer qué proponen y distinguir esas hipótesis de lo que sí hacemos en el acompañamiento: conversar sobre tu experiencia, sin imponer una explicación ni atribuir enfermedades a conflictos emocionales.
+            A través de una mirada integrativa, te ayudo a buscar y profundizar en situaciones específicas que viviste a lo largo de tu vida, las que te generaron bloqueos emocionales, creencias limitantes y que de manera inconsciente gobiernan tu vida y tus resultados., causandote una vida llena de estrés.
           </p>
           <p>
-            Tu salud y tus circunstancias dependen de muchos factores, no solo de tus emociones. Este espacio de reflexión no es un tratamiento sanitario ni promete curación; puede ayudarte a poner en palabras lo que sientes y definir cambios personales que deseas intentar.
+            Todo lo que experimentes hoy es resultado de tus creencias, pensamientos, emociones y acciones del pasado. Si quieres crear una vida distinta, tienes que cambiar lo que la origina.
           </p>
         </div>
       </div>
@@ -102,7 +102,7 @@ export function QueEs() {
 const problemas = [
   "¿Has intentado mejorar pero siempre vuelves al mismo lugar?",
   "¿Sientes que algo se repite una y otra vez?",
-  "¿Una preocupación por tu salud te genera miedo?",
+  "¿Tu cuerpo te habla mediante síntomas?",
   "¿Las relaciones siempre terminan igual?",
   "¿El dinero nunca alcanza?",
   "¿Vives con ansiedad o estrés?",
@@ -129,9 +129,9 @@ export function Problema() {
           ))}
         </ul>
         <p className="mt-12 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          Cuando algo se repite, vale la pena detenerse a observarlo. Explorar tus emociones,
-          tu contexto y tus creencias puede abrir nuevas preguntas, sin reducir todo lo que
-          vives a una única causa ni culparte por ello.
+          Cuando algo se repite, nunca es casualidad. Detrás siempre hay al menos una emoción no
+          resuelta y una creencia limitante que opera en tu insconsicente, generando los mismos
+          resultados una y otra vez
         </p>
       </div>
     </section>
@@ -145,22 +145,21 @@ export function Solucion() {
     <section id="solucion" className="py-20 sm:py-28">
       <div className="section-shell grid gap-14 lg:grid-cols-2 lg:gap-20">
         <div>
-          <p className="eyebrow">Del conocimiento a tu experiencia</p>
+          <p className="eyebrow">La solución</p>
           <h2 className="rule-gold mt-5 text-3xl leading-tight font-semibold sm:text-4xl">
             Una nueva lectura de tu propia historia
           </h2>
           <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
-            En un encuentro privado por videollamada partimos de una situación concreta que quieras explorar. Revisamos cómo la viviste, qué emociones aparecen y qué creencias reconoces. No buscamos culpables ni un conflicto que explique un diagnóstico: buscamos claridad sobre tu experiencia y un siguiente paso que tenga sentido para ti.
+            En un encuentro privado por videollamada revisamos juntos tu historia para encontrar el conflicto que dio origen a lo que hoy vives. Sin buscar culpables, sin emitir jucios. Utilizamos el pasado para aprender y comenzar a construir esa vida que tanto sueñas.
           </p>
-          <p className="mt-5 text-base leading-relaxed text-muted-foreground">No necesitas estudiar las cinco leyes ni aceptar sus postulados para participar. Las preguntas se adaptan a tu relato; no asignamos significados fijos a órganos o síntomas.</p>
         </div>
         <div className="self-center">
-          <h3 className="text-lg font-medium">Lo que puedes traer a la conversación</h3>
+          <h3 className="text-lg font-medium">Situaciones con las que se puede trabajar</h3>
           <ul className="mt-5 grid gap-4">
             {[
-              "Una situación de estrés que te cuesta poner en palabras",
-              "Las emociones que acompañan una preocupación por tu salud",
-              "Patrones que quieres revisar en tus relaciones",
+              "Ansiedad, depresión, angustia y estrés sostenido",
+              "Malestares fisicos",
+              "Relaciones tóxicas",
               "Dificultades y bloqueos con el dinero",
               "Historias familiares que se repiten y causan daño",
             ].map((item) => (
@@ -179,11 +178,11 @@ export function Solucion() {
 /* ------------------------------- Beneficios ------------------------------- */
 
 const beneficios = [
-  { icon: Sparkles, title: "Poner tu historia en palabras", text: "Un espacio para ordenar lo vivido y reconocer qué te gustaría explorar." },
+  { icon: Sparkles, title: "Claridad sobre lo que te ocurre", text: "Sales con una lectura ordenada y comprensible de tu propia historia." },
   { icon: Compass, title: "Un protocolo concreto", text: "Herramientas prácticas para aplicar desde el mismo día de la sesión." },
-  { icon: Activity, title: "Más atención a tu bienestar", text: "Exploras cómo te sientes sin convertir tus síntomas en un diagnóstico emocional." },
-  { icon: Brain, title: "Revisar tus creencias", text: "Identificas ideas que influyen en tus decisiones y que deseas cuestionar." },
-  { icon: Repeat, title: "Reconocer lo que se repite", text: "Observas tus respuestas habituales y consideras alternativas para tu día a día." },
+  { icon: Activity, title: "Otra relación con tu cuerpo", text: "Dejas de pelear con el síntoma y empiezas a escuchar lo que expresa." },
+  { icon: Brain, title: "Decisiones más libres", text: "Al ver las creencias heredadas, dejas de decidir en piloto automático." },
+  { icon: Repeat, title: "El ciclo deja de repetirse", text: "Reconoces la señal a tiempo y puedes elegir una respuesta distinta." },
   { icon: HeartHandshake, title: "Un espacio seguro y sin juicio", text: "Un encuentro confidencial donde puedes hablar y expresarte con total libertad." },
 ];
 
@@ -194,7 +193,7 @@ export function Beneficios() {
         <div className="max-w-2xl">
           <p className="eyebrow">Lo que te llevas</p>
           <h2 className="rule-gold mt-5 text-3xl leading-tight font-semibold sm:text-4xl">
-            Claridad, reflexión y un siguiente paso
+            No es solo una sesión. Es el inicio de una transformación
           </h2>
         </div>
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -274,7 +273,7 @@ export function Sobre() {
               económicos, llegué a la biodescodificación.
             </p>
             <p>
-              Luego de años de tratamientos, terapias y cursos de coaching, encontré en la biodescodificación una forma de reflexionar sobre mi historia. Esa experiencia personal me inspira a acompañar a otros; no es una prueba de eficacia médica ni una promesa de que todos vivirán el mismo proceso.
+              Luego de años de tratamientos, terapias, cursos de coaching y todo lo que te puedas imaginar, creo que la biodescodificación es el método más efectivo y directo para transformar tu vida. Con herramientas prácticas, puedes inciar tu sanación desde el minuto 1.
             </p>
             <p>
               Es por esta experiencia que decidí transformar mi vida. Resolver mis mayores conflictos, atravesar mis miedos para finalmente dedicarme 100% a mi sueño, que es ser ese apoyo que muchas personas que están viviendo en sufrimiento necesitan
@@ -296,7 +295,6 @@ export function VideoSection() {
         <h2 className="mt-5 text-3xl leading-tight font-semibold sm:text-4xl">
           ¿Cómo es una sesión?
         </h2>
-        <p className="mt-6 text-lg leading-relaxed text-muted-foreground">Partimos de lo que te preocupa hoy y avanzamos hacia tus emociones, creencias y alternativas. La imagen resume el recorrido de reflexión; no son las cinco leyes ni un protocolo médico.</p>
         <div className="mt-10 overflow-hidden rounded-lg border border-border bg-card shadow-soft">
           <img
             src={procesoAsset}
@@ -325,7 +323,7 @@ export function Precio() {
             {SITE.price}
           </p>
           <p className="mt-4 text-base text-muted-foreground">
-            Entre 25 y 40 minutos, en privado y por videollamada. Incluye herramientas prácticas para continuar tu reflexión personal.
+            Sesión privada 1 a 1 por videollamada, con protocolo práctico incluido.
           </p>
           <div className="mt-9">
             <CtaButton size="xl" className="w-full sm:w-auto">
@@ -357,9 +355,7 @@ export const faqs: { q: string; a: string }[] = [
   { q: "¿Cuánto dura?", a: "La sesión dura entre 25 y 40 minutos, dependiendo de lo que esté experimentando el consultante. Es un encuentro privado 1 a 1 con el tiempo necesario para revisar tu historia y entregarte un protocolo práctico." },
   { q: "¿Necesito conocimientos previos?", a: "No. Yo te guío paso a paso con un lenguaje simple y cercano durante todo el proceso." },
   { q: "¿Qué ocurre después de comprar?", a: "Después de comprar a través de Hotmart recibirás un enlace a mi calendario para agendar tu sesión. Tienes 15 días desde la compra para solicitar reembolso si lo necesitas." },
-  { q: "¿Se puede trabajar cualquier situación?", a: "Podemos explorar experiencias y patrones personales, pero no todas las necesidades corresponden a este espacio. Si necesitas diagnóstico, tratamiento de un trastorno o apoyo ante una crisis, acude a un profesional de la salud. La sesión no garantiza resolver un conflicto." },
-  { q: "¿Las 5 leyes biológicas están demostradas científicamente?", a: "No. Son postulados asociados a Ryke Geerd Hamer y la Nueva Medicina Germánica, no leyes científicas reconocidas. Aquí se explican con sus límites; no se utilizan para diagnosticar, atribuir enfermedades a emociones ni indicar tratamientos." },
-  { q: "¿La sesión es un curso sobre las cinco leyes?", a: "No. Es un encuentro individual de acompañamiento emocional. La explicación de esta página es introductoria; en la sesión nos centramos en tu experiencia y en preguntas personales, no en analizar órganos, tejidos o fases de una enfermedad." },
+  { q: "¿Sirve para cualquier conflicto?", a: "Si. Sólo se necesita que el consultante esté consciente y bajo ninguna influencia que afecte su capacidad de responder a las preguntas que se hacen en la sesión." },
   { q: "¿Desde qué países puedo tomar la sesión?", a: "Cualquier país. Al ser una sesión online, la ubicación geográfica no es limitante." },
   { q: "¿La biodescodificación reemplaza un tratamiento médico o psicológico?", a: "No. Es un acompañamiento emocional complementario y no sustituye diagnóstico, tratamiento ni indicación de un profesional de la salud." },
   { q: "¿Qué pasa si tengo dudas?", a: "Si tienes dudas antes de reservar, completa el formulario con tus datos y me pondré en contacto contigo para orientarte." },
@@ -527,8 +523,8 @@ export function CtaFinal() {
           Todo cambio comienza cuando decides mirar el origen de tu historia
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-foreground/80">
-          No necesitas tener todas las respuestas para empezar. Podemos explorar juntos lo que
-          estás viviendo, sin juicios y sin promesas de curación.
+          Tal vez llevas años intentando resolver el síntoma. Hoy puedes comenzar a comprender su
+          verdadero origen.
         </p>
         <div className="mt-10">
           <CtaButton variant="gold" size="xl">

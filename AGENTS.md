@@ -14,4 +14,3 @@
 - Keep shared brand colors in semantic tokens in src/styles.css so all content pages inherit the same identity.
 - Keep the portrait CDN pointer as the source of its path and resolve it against the public Lovable asset host so external Vercel deployments can load it without a local asset proxy.
 - Keep presentation edits separate from contact server functions so visual changes do not affect saved leads or email notifications.
-- Keep the five-law educational module separate from session sections and attribute unvalidated health hypotheses explicitly; this keeps educational content maintainable without presenting it as medical advice.

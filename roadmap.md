@@ -1,6 +1,4 @@
 # Renovación visual
-- [x] Incorporar una explicación educativa de las cinco leyes, sus límites y el acompañamiento emocional, conservando todas las fotos.
-- [x] Revisar la lectura en computador y celular y el recorrido hacia la reserva.
 - [x] Aplicar grafito, vino y oro manteniendo textos, precios, enlaces y orden.
 - [x] Sustituir foto de Mario y retirar video conservando imagen del proceso.
 - [x] Reemplazar la imagen del proceso de la sesión por la nueva infografía de 5 pasos.
