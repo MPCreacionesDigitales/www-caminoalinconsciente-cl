@@ -60,7 +60,7 @@ export function Hero() {
             Descubre el origen emocional de lo que hoy limita tu vida
           </h1>
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-foreground/85">
-            Para que sanes un gran conflicto, el primer paso y que pocos hacen es encontrar la raíz emocional y biológica de aquello que te genera estrés, síntomas fisicos o patrones inconscientes que te hacen vivir esa situación TODOS LOS DÍAS
+            Para que puedas sanar cualquier tipo de conflicto, el primer gran paso que puedes dar, es encontrar la raíz emocional y biológica de aquello que te genera estrés, síntomas fisicos o patrones inconscientes que te hacen repetir esa situación TODOS LOS DÍAS y limitan tu verdadero potencial
           </p>
         </div>
       </div>
