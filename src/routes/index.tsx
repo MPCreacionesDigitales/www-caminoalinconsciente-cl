@@ -17,10 +17,11 @@ import {
   CtaFinal,
 } from "@/components/landing/sections";
 import { SiteFooter } from "@/components/landing/site-footer";
+import { CincoLeyes } from "@/components/landing/cinco-leyes";
 
 const title = "Biodescodificación Online en Chile | Sesión 1 a 1 con Mario Paredes";
 const description =
-  "Sesión online de biodescodificación 1 a 1 desde Santiago de Chile para descubrir el origen emocional de tus síntomas, ansiedad y patrones que se repiten. Agenda hoy.";
+  "Conoce las 5 leyes biológicas y sus límites. Explora tu historia y patrones en una sesión online de acompañamiento emocional con Mario Paredes. Reserva en Chile.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -109,6 +110,7 @@ function Index() {
 
       <Hero />
       <QueEs />
+      <CincoLeyes />
       <Problema />
       <Solucion />
       <Beneficios />
