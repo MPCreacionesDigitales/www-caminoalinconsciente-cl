@@ -4,9 +4,6 @@ import { SiteHeader } from "@/components/landing/site-header";
 import {
   Hero,
   QueEs,
-  Problema,
-  Solucion,
-  Beneficios,
   ComoFunciona,
   Sobre,
   VideoSection,
@@ -109,12 +106,9 @@ function Index() {
 
       <Hero />
       <QueEs />
-      <Problema />
-      <Solucion />
-      <Beneficios />
-      <ComoFunciona />
       <Sobre />
       <VideoSection />
+      <ComoFunciona />
       <Precio />
       <Faq />
       <Formulario />

@@ -73,6 +73,14 @@ export function Hero() {
 
 /* ------------------------- ¿Qué es la Biodescodificación? ------------------------ */
 
+const aplicacion = [
+  { t: "Exploración del caso", d: "conocer el síntoma o diagnóstico, su contexto y los antecedentes relevantes de la persona." },
+  { t: "Identificación de vivencias significativas", d: "explorar acontecimientos, relaciones y experiencias emocionales que puedan tener relevancia para la persona." },
+  { t: "Análisis emocional", d: "reconocer emociones, patrones de comportamiento y creencias que influyen en su manera de interpretar y afrontar determinadas situaciones." },
+  { t: "Estudio desde las 5 Leyes Biológicas", d: "revisar, dentro de este modelo, el órgano o tejido implicado, la capa embrionaria, las fases descritas y el sentido biológico propuesto para el caso." },
+  { t: "Integración y toma de conciencia", d: "relacionar los elementos explorados para favorecer una mayor comprensión de la propia historia y de las formas de afrontar los conflictos personales." },
+];
+
 export function QueEs() {
   return (
     <section id="que-es" className="border-y border-border bg-card py-20 sm:py-28">
@@ -82,138 +90,52 @@ export function QueEs() {
             ¿Qué es la Biodescodificación?
           </h2>
         <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted-foreground">
-          <p>
-            La Biodescodificación es un proceso de acompañamiento y entrenamiento mental profundo, en donde te ayudo a explorar y comprender las experiencias traumáticas que te impactaron psicoemocionalmente y que incoscientemente te han llevado a repetir patrones, generando conflictos en tus relaciones, en tu trabajo y en tu salud.
+          <p className="font-display text-xl text-foreground">
+            Biodescodificación: comprender el síntoma desde una nueva perspectiva
           </p>
           <p>
-            A través de una mirada integrativa, te ayudo a buscar y profundizar en situaciones específicas que viviste a lo largo de tu vida, las que te generaron bloqueos emocionales, creencias limitantes y que de manera inconsciente gobiernan tu vida y tus resultados., causandote una vida llena de estrés.
+            Cada síntoma, diagnóstico o experiencia personal puede explorarse desde la biodescodificación, relacionando la vivencia de la persona con sus emociones, su historia y la manera en que ha experimentado determinadas situaciones.
           </p>
           <p>
-            Todo lo que experimentes hoy es resultado de tus creencias, pensamientos, emociones y acciones del pasado. Si quieres crear una vida distinta, tienes que cambiar lo que la origina.
+            A través de este enfoque, trabajamos con el síntoma o diagnóstico que la persona desea comprender, explorando su contexto, los acontecimientos significativos de su historia y los conflictos emocionales que podrían estar relacionados con su experiencia.
+          </p>
+          <p>
+            El proceso integra la exploración de las vivencias personales, la identificación de patrones emocionales y creencias, y el estudio del órgano o tejido implicado desde el marco de las 5 Leyes Biológicas.
           </p>
         </div>
-      </div>
-    </section>
-  );
-}
 
-/* -------------------------------- Problema -------------------------------- */
-
-const problemas = [
-  "¿Has intentado mejorar pero siempre vuelves al mismo lugar?",
-  "¿Sientes que algo se repite una y otra vez?",
-  "¿Tu cuerpo te habla mediante síntomas?",
-  "¿Las relaciones siempre terminan igual?",
-  "¿El dinero nunca alcanza?",
-  "¿Vives con ansiedad o estrés?",
-];
-
-export function Problema() {
-  return (
-    <section className="bg-secondary/50 py-20 sm:py-28">
-      <div className="section-shell">
-        <div className="max-w-2xl">
-          <p className="eyebrow">Quizás te suene familiar</p>
-          <h2 className="rule-gold mt-5 text-3xl leading-tight font-semibold sm:text-4xl">
-            A veces el problema no está donde creemos que está
-          </h2>
+        <h3 className="mt-14 text-2xl font-semibold">¿Cómo se aplica la biodescodificación?</h3>
+        <div className="mt-6 space-y-5 text-lg leading-relaxed text-muted-foreground">
+          <p>
+            El trabajo se desarrolla a partir de los casos, síntomas, diagnósticos o situaciones que cada persona presenta. Mediante una exploración ordenada, se busca comprender los distintos elementos que forman parte de su experiencia.
+          </p>
+          <p>Durante el proceso se trabaja en:</p>
+          <ul className="space-y-4">
+            {aplicacion.map((a) => (
+              <li key={a.t} className="border-l-2 border-gold/60 pl-4">
+                <span className="font-medium text-gold">{a.t}:</span> {a.d}
+              </li>
+            ))}
+          </ul>
         </div>
-        <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {problemas.map((p) => (
-            <li
-              key={p}
-              className="rounded-lg border border-border bg-card p-6 text-base leading-relaxed text-card-foreground transition-shadow duration-300 hover:shadow-soft"
-            >
-              {p}
-            </li>
-          ))}
-        </ul>
-        <p className="mt-12 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          Cuando algo se repite, nunca es casualidad. Detrás siempre hay al menos una emoción no
-          resuelta y una creencia limitante que opera en tu insconsicente, generando los mismos
-          resultados una y otra vez
+
+        <h3 className="mt-14 text-2xl font-semibold">Un espacio de exploración y aprendizaje</h3>
+        <div className="mt-6 space-y-5 text-lg leading-relaxed text-muted-foreground">
+          <p>
+            Este proceso está dirigido a personas que desean profundizar en la comprensión de sus experiencias, así como a terapeutas, acompañantes y estudiantes interesados en conocer la aplicación de la biodescodificación al análisis de casos.
+          </p>
+          <p>
+            El objetivo es ofrecer una metodología de exploración que permita abordar cada caso con estructura, profundidad y atención a sus particularidades, facilitando la identificación de patrones emocionales y nuevas perspectivas para afrontar la vida cotidiana.
+          </p>
+        </div>
+        <p className="mt-10 text-sm leading-relaxed text-muted-foreground/80">
+          La biodescodificación se plantea como un enfoque complementario de exploración personal y no sustituye el diagnóstico, el tratamiento ni el seguimiento de los profesionales de la salud.
         </p>
       </div>
     </section>
   );
 }
 
-/* -------------------------------- Solución -------------------------------- */
-
-export function Solucion() {
-  return (
-    <section id="solucion" className="py-20 sm:py-28">
-      <div className="section-shell grid gap-14 lg:grid-cols-2 lg:gap-20">
-        <div>
-          <p className="eyebrow">La solución</p>
-          <h2 className="rule-gold mt-5 text-3xl leading-tight font-semibold sm:text-4xl">
-            Una nueva lectura de tu propia historia
-          </h2>
-          <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
-            En un encuentro privado por videollamada revisamos juntos tu historia para encontrar el conflicto que dio origen a lo que hoy vives. Sin buscar culpables, sin emitir jucios. Utilizamos el pasado para aprender y comenzar a construir esa vida que tanto sueñas.
-          </p>
-        </div>
-        <div className="self-center">
-          <h3 className="text-lg font-medium">Situaciones con las que se puede trabajar</h3>
-          <ul className="mt-5 grid gap-4">
-            {[
-              "Ansiedad, depresión, angustia y estrés sostenido",
-              "Malestares fisicos",
-              "Relaciones tóxicas",
-              "Dificultades y bloqueos con el dinero",
-              "Historias familiares que se repiten y causan daño",
-            ].map((item) => (
-              <li key={item} className="flex items-start gap-3 rounded-md bg-accent/40 px-5 py-4">
-                <Check className="mt-0.5 size-5 shrink-0 text-accent-foreground" aria-hidden="true" />
-                <span className="text-base text-foreground">{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------- Beneficios ------------------------------- */
-
-const beneficios = [
-  { icon: Sparkles, title: "Claridad sobre lo que te ocurre", text: "Sales con una lectura ordenada y comprensible de tu propia historia." },
-  { icon: Compass, title: "Un protocolo concreto", text: "Herramientas prácticas para aplicar desde el mismo día de la sesión." },
-  { icon: Activity, title: "Otra relación con tu cuerpo", text: "Dejas de pelear con el síntoma y empiezas a escuchar lo que expresa." },
-  { icon: Brain, title: "Decisiones más libres", text: "Al ver las creencias heredadas, dejas de decidir en piloto automático." },
-  { icon: Repeat, title: "El ciclo deja de repetirse", text: "Reconoces la señal a tiempo y puedes elegir una respuesta distinta." },
-  { icon: HeartHandshake, title: "Un espacio seguro y sin juicio", text: "Un encuentro confidencial donde puedes hablar y expresarte con total libertad." },
-];
-
-export function Beneficios() {
-  return (
-    <section id="beneficios" className="bg-secondary/50 py-20 sm:py-28">
-      <div className="section-shell">
-        <div className="max-w-2xl">
-          <p className="eyebrow">Lo que te llevas</p>
-          <h2 className="rule-gold mt-5 text-3xl leading-tight font-semibold sm:text-4xl">
-            No es solo una sesión. Es el inicio de una transformación
-          </h2>
-        </div>
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {beneficios.map(({ icon: Icon, title, text }) => (
-            <article
-              key={title}
-              className="group rounded-lg border border-border bg-card p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-soft"
-            >
-              <span className="inline-flex size-11 items-center justify-center rounded-md bg-accent text-accent-foreground">
-                <Icon className="size-5" aria-hidden="true" />
-              </span>
-              <h3 className="mt-5 text-lg font-medium text-card-foreground">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{text}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 /* ------------------------------ Cómo funciona ----------------------------- */
 
