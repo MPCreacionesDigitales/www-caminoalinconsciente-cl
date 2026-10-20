@@ -79,7 +79,7 @@ export function CincoLeyes() {
           </Accordion>
         </div>
         <div className="mt-12 flex flex-col justify-between gap-5 border-t border-border pt-6 sm:flex-row sm:items-center">
-          <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">Para contrastar este enfoque: <a className="underline underline-offset-4 hover:text-foreground" href="https://www.krebsgesellschaft.de/onko-internetportal/basis-informationen-krebs/basis-informationen-krebs-allgemeine-informationen/neue-medizin-nach-hamer.html" target="_blank" rel="noopener noreferrer">información de la Sociedad Alemana del Cáncer sobre Hamer</a>.</p>
+          <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">Para contrastar este enfoque: <a className="underline underline-offset-4 hover:text-foreground" href="https://www.krebsgesellschaft.de/media/positionen/alle-wissenschaftlichen-stellungnahmen/neue-germanische-medizin-2" target="_blank" rel="noopener noreferrer">información de la Sociedad Alemana del Cáncer sobre Hamer</a>.</p>
           <Button variant="outline" asChild className="h-auto min-h-11 whitespace-normal py-3">
             <a href="#solucion">Del conocimiento a tu sesión<ArrowDown className="size-4 shrink-0" aria-hidden="true" /></a>
           </Button>
