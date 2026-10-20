@@ -57,13 +57,11 @@ export function Hero() {
             className="mb-6 h-40 w-auto object-contain drop-shadow-[0_10px_40px_rgba(209,173,104,0.35)] sm:h-60"
             loading="eager"
           />
-          <p className="eyebrow">{SITE.name}</p>
           <h1 className="mt-5 max-w-xl text-4xl leading-[1.12] font-semibold text-foreground sm:text-5xl lg:text-6xl">
             Descubre el origen emocional de lo que hoy limita tu vida
           </h1>
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-foreground/85">
-            Una sesión privada 1 a 1 donde te acompaño a encontrar la raíz emocional y biológica
-            de aquello que te genera estrés, síntomas o patrones inconscientes repetidos.
+            El primer gran paso es encontrar la raíz emocional y biológica de aquello que te genera estrés, síntomas o patrones inconscientes repetidos.
           </p>
         </div>
       </div>
@@ -191,14 +189,16 @@ export function Sobre() {
           </h2>
           <div className="mt-8 space-y-6 text-lg leading-relaxed text-muted-foreground">
             <p>
-              En mi constante búsqueda de sentido, sanar mis relaciones personales y problemas
-              económicos, llegué a la biodescodificación.
+              Desde niño tuve una infancía que me dolio mucho. Crecí en un entorno en donde afortunadamente tuve todo lo material, pero emocionalmente fue dura . Vi violencia, abuso de alcohol,  situaciones de rechazo, de no sentirme suficiente para absolutamente nada, lo que me impactó hasta casi los 30 años, que fue cuando comprendí que tenía muchos asuntos sin resolver con mi familia y eran para mi los causantes de mis fracazos económicos y en mis relaciones.
             </p>
             <p>
-              Luego de años de tratamientos, terapias, cursos de coaching y todo lo que te puedas imaginar, creo que la biodescodificación es el método más efectivo y directo para transformar tu vida. Con herramientas prácticas, puedes inciar tu sanación desde el minuto 1.
+              Luego de años de tratamientos, terapias, cursos de coaching y todo lo que encontré, llegue a la biodescodificación en 2023, que fue lo que realmente me cambio la vida.
             </p>
             <p>
-              Es por esta experiencia que decidí transformar mi vida. Resolver mis mayores conflictos, atravesar mis miedos para finalmente dedicarme 100% a mi sueño, que es ser ese apoyo que muchas personas que están viviendo en sufrimiento necesitan
+              Comencé a ver la vida a partir del perdón. A ver la vida con inocencia Fue gracias a esta experiencia que decidí llevar mi vida al siguiente nivel. Cambié mi identidad, me enfoqué en crecer, en expandirme y en tener la valentiía de decidir según mis propias reglas lo que quería en mi vida, y no en las malinterpretaciones que hice de mi pasado y que sostuve por muchos años, limitando mi potencial
+
+
+              <span>Es este gran cambio de consciencia, lo que me llevó a decidir convertirme en biodescodificador y entregarme de lleno a apoyar a los demás en su propio proceso de sanación y crecimiento.</span>
             </p>
           </div>
         </div>
