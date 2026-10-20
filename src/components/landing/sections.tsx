@@ -60,7 +60,7 @@ export function Hero() {
             Descubre el origen emocional de lo que hoy limita tu vida
           </h1>
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-foreground/85">
-            El primer gran paso es encontrar la raíz emocional y biológica de aquello que te genera estrés, síntomas o patrones inconscientes repetidos.
+            Para que sanes un gran conflicto, el primer paso y que pocos hacen es encontrar la raíz emocional y biológica de aquello que te genera estrés, síntomas fisicos o patrones inconscientes que te hacen vivir esa situación TODOS LOS DÍAS
           </p>
         </div>
       </div>
@@ -197,9 +197,7 @@ export function Sobre() {
               Comencé a ver la vida a partir del perdón. A ver la vida con inocencia Fue gracias a esta experiencia que decidí llevar mi vida al siguiente nivel. Cambié mi identidad, me enfoqué en crecer, en expandirme y en tener la valentiía de decidir según mis propias reglas lo que quería en mi vida, y no en las malinterpretaciones que hice de mi pasado y que sostuve por muchos años, limitando mi potencial.
 
 
-              <span>.
-
-Fue este gran cambio de consciencia, lo que me llevó a decidir convertirme en biodescodificador y entregarme de lleno a apoyar a los demás en su propio proceso de sanación y crecimiento.</span>
+              <span>{"\u00a0Fue este gran cambio de consciencia, lo que me llevó a decidir convertirme en biodescodificador y entregarme de lleno a apoyar a los demás en su propio proceso de sanación y crecimiento."}</span>
             </p>
           </div>
         </div>
