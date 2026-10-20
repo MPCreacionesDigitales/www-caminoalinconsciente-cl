@@ -20,7 +20,7 @@ export const SITE = {
   youtubeEmbedUrl: "https://youtu.be/dDWakpv4T8o",
 };
 
-/** Enlace a la mini app "Test y Diccionario de Enfermedades". */
+/** Enlace a la mini app "Diccionario de Enfermedades". */
 export const MINI_APP_URL = "https://caminoalinconsciente.netlify.app/";
 
 /** Extrae el ID de cualquier enlace de YouTube (watch, youtu.be, shorts, embed). */
