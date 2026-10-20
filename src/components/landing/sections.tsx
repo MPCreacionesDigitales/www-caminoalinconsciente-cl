@@ -88,23 +88,25 @@ export function QueEs() {
           </h2>
         <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted-foreground">
           <p className="font-display text-xl text-foreground">
-            Biodescodificación: comprender el síntoma desde una nueva perspectiva
+            Biodescodificación: comprender el conflicto desde una nueva perspectiva
           </p>
           <p>
-            Cada síntoma, diagnóstico o experiencia personal puede explorarse desde la biodescodificación, relacionando la vivencia de la persona con sus emociones, su historia y la manera en que ha experimentado determinadas situaciones.
+            La Biodescodificación es un entrenamiento mental que te permite comprender desde un nuevo paradigma la situación que te mantiene en estrés, ya sea una enfermedad, una relación o tu situación económica.
+            <br /><br />
+            Cada síntoma, diagnóstico o experiencia personal la exploramos a profundiad, relacionando tus emociones, tu historia y la manera en que has experimentado determinadas situaciones.
           </p>
           <p>
-            A través de este enfoque, trabajamos con el síntoma o diagnóstico que la persona desea comprender, explorando su contexto, los acontecimientos significativos de su historia y los conflictos emocionales que podrían estar relacionados con su experiencia.
+            A través de este enfoque, trabajamos directamente con el conflicto que te genera malestar y a partir de ahí, vamos desbloqueando lo que realmente está oculto y limitando tus resultados.
           </p>
           <p>
-            El proceso integra la exploración de las vivencias personales, la identificación de patrones emocionales y creencias, y el estudio del órgano o tejido implicado desde el marco de las 5 Leyes Biológicas.
+            Para compreder las enfermedades, el proceso incorpora el estudio del órgano o tejido implicado desde el marco de las 5 Leyes Biológicas. Es requisito contar con diagnóstico médico.
           </p>
         </div>
 
         <h3 className="mt-14 text-2xl font-semibold">¿Cómo se aplica la biodescodificación?</h3>
         <div className="mt-6 space-y-5 text-lg leading-relaxed text-muted-foreground">
           <p>
-            El trabajo se desarrolla a partir de los casos, síntomas, diagnósticos o situaciones que cada persona presenta. Mediante una exploración ordenada, se busca comprender los distintos elementos que forman parte de su experiencia.
+            El trabajo se desarrolla a partir de los casos, síntomas, diagnósticos o situaciones que cada persona presenta. Mediante un Protocolo de Biodescodificación, se busca comprender los distintos elementos que forman parte de su experiencia.
           </p>
           <p>Durante el proceso se trabaja en:</p>
           <ul className="space-y-4">
