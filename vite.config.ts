@@ -22,11 +22,13 @@ export default defineConfig({
   vite: {
     plugins: [mcpPlugin()],
     resolve: {
-      alias: {
-        "entities/lib/decode.js": path.resolve(process.cwd(), "node_modules/entities/lib/decode.js"),
-        "entities/lib/encode.js": path.resolve(process.cwd(), "node_modules/entities/lib/encode.js"),
-        entities: path.resolve(process.cwd(), "node_modules/entities"),
-      },
+      // Only exact matches: a bare "entities" alias also captured subpaths like
+      // "entities/decode" and broke the Vercel build.
+      alias: [
+        { find: /^entities\/lib\/decode\.js$/, replacement: path.resolve(process.cwd(), "node_modules/entities/lib/decode.js") },
+        { find: /^entities\/lib\/encode\.js$/, replacement: path.resolve(process.cwd(), "node_modules/entities/lib/encode.js") },
+        { find: /^entities$/, replacement: path.resolve(process.cwd(), "node_modules/entities") },
+      ],
     },
   },
 });
