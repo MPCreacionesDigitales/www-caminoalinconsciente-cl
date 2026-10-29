@@ -501,6 +501,18 @@ export function VideoSection() {
             </button>
           )}
         </div>
+        <p className="mt-4 text-sm text-muted-foreground">
+          ¿No se reproduce?{" "}
+          <a
+            href={`https://www.youtube.com/watch?v=${id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gold underline underline-offset-4 hover:opacity-80"
+          >
+            Míralo directo en YouTube
+          </a>
+          .
+        </p>
       </div>
     </section>
   );
