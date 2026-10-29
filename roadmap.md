@@ -5,3 +5,4 @@
 - [x] Verificar carga de imágenes, navegación, campos del formulario y ausencia de desbordamientos en escritorio y celular.
 - [x] Renombrar el botón superior a "Diccionario de Enfermedades".
 - [x] Confirmar la nueva versión publicada en Vercel: caminoalinconsciente.cl ya sirve la identidad oscura, el orden de secciones actual, el botón "Diccionario de Enfermedades" y el precio $40.000.
+- [x] Agregar el video de YouTube "¿Cómo es una sesión?" antes de "Cómo reservar", con portada ligera y reproducción en el sitio.
