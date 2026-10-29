@@ -1,19 +1,15 @@
-# Por qué no aparece el video en caminoalinconsciente.cl
+# Arreglar la publicación en Vercel para que aparezca el video
 
-## Lo que encontré
-- YouTube no es el problema: tu video funciona.
-- El cambio sí llegó a GitHub (hoy 17:55 hora Chile).
-- **Vercel intentó publicarlo y falló** ("Deployment has failed"). Por eso tu sitio sigue mostrando la versión anterior, sin el video.
-- Aquí en la vista previa el sitio funciona bien con el video, así que la falla es algo propio de Vercel que no puedo ver desde aquí.
+## Qué pasó
+Tu captura lo muestra claro: el video está bien; lo que falla es la "armada" del sitio en Vercel. Una pieza interna de herramientas (la que arma los correos de aviso) busca un archivo con un nombre que Vercel no encuentra, porque un ajuste antiguo del proyecto la redirige a un lugar equivocado. En la vista previa no falla, pero en Vercel sí, y por eso nada nuevo se publica (ni el video ni otros cambios recientes).
 
-## Lo que necesito de ti (2 minutos)
-1. Entra a vercel.com → tu proyecto → **Deployments**.
-2. Abre el más reciente (marcado en rojo, "Error").
-3. Envíame una captura de la parte **Build Logs**, sobre todo las últimas líneas en rojo.
+## Qué haré
+- Corregir ese ajuste para que solo afecte a los nombres exactos que lo necesitan y deje pasar los demás (como el que falla en tu captura).
+- No toco textos, video, precio, formulario ni avisos por correo.
 
-## Lo que haré después
-- Leer el error y corregirlo aquí; el arreglo se sube solo a GitHub y Vercel vuelve a publicar.
-- Comprobar en caminoalinconsciente.cl que el video aparece antes de "Cómo reservar" y se reproduce al hacer clic.
-- No cambio textos, precio, formulario ni nada más.
+## Después
+- El arreglo se sube solo a GitHub y Vercel vuelve a intentar la publicación.
+- Reviso caminoalinconsciente.cl hasta confirmar que el video aparece antes de "Cómo reservar". Si Vercel muestra otro error, te pediré una nueva captura.
 
-Atajo opcional: en ese mismo despliegue fallido, el botón **Redeploy** a veces lo resuelve si fue una falla pasajera de Vercel. Si lo pruebas y queda en verde ("Ready"), avísame y lo verifico.
+## Detalle técnico
+En `vite.config.ts`, el alias `entities: path.resolve(node_modules/entities)` también captura subrutas como `entities/decode` (exportadas por la versión de `entities` que instala npm en Vercel) y las apunta a una carpeta inexistente. Cambiarlo a `{ find: /^entities$/, replacement: ... }` (manteniendo los alias exactos de `entities/lib/decode.js` y `entities/lib/encode.js`), o quitarlo si el build local sigue OK sin él.
