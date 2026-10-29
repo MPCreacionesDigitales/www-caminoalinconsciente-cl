@@ -22,9 +22,10 @@ import {
   Video,
   UserRound,
   Check,
+  Play,
 } from "lucide-react";
 import { CtaButton } from "./cta-button";
-import { SITE } from "@/lib/site-config";
+import { SITE, youtubeId } from "@/lib/site-config";
 import heroImage from "@/assets/hero-mujer.jpg";
 import aboutAsset from "@/assets/mario-chaqueta.webp.asset.json";
 import { Button } from "@/components/ui/button";
@@ -429,6 +430,76 @@ export function CtaFinal() {
           <CtaButton variant="gold" size="xl">
             Agendar Mi Sesión Ahora
           </CtaButton>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------- ¿Cómo es una sesión? (video) ------------------------ */
+
+export function VideoSection() {
+  const id = youtubeId(SITE.youtubeEmbedUrl);
+  const [reproduciendo, setReproduciendo] = useState(false);
+  const [portada, setPortada] = useState(
+    `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`,
+  );
+
+  if (!id) return null;
+
+  return (
+    <section id="video" className="border-y border-border bg-card py-20 sm:py-28">
+      <div className="section-shell max-w-4xl">
+        <div className="max-w-2xl">
+          <p className="eyebrow">¿Cómo es una sesión?</p>
+          <h2 className="rule-gold mt-5 text-3xl leading-tight font-semibold sm:text-4xl">
+            Míralo antes de reservar
+          </h2>
+          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+            Antes de reservar, mira cómo es el encuentro: un espacio privado por videollamada
+            donde revisamos tu historia para encontrar el origen de lo que hoy te limita.
+          </p>
+        </div>
+
+        <div className="relative mt-10 aspect-video overflow-hidden rounded-lg border border-gold/30 shadow-elevated">
+          {reproduciendo ? (
+            <iframe
+              className="absolute inset-0 size-full"
+              src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1`}
+              title="¿Cómo es una Sesión de Biodescodificación?"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          ) : (
+            <button
+              type="button"
+              onClick={() => setReproduciendo(true)}
+              aria-label="Reproducir el video: ¿Cómo es una Sesión de Biodescodificación?"
+              className="group absolute inset-0 size-full cursor-pointer"
+            >
+              <img
+                src={portada}
+                alt="Portada del video: ¿Cómo es una Sesión de Biodescodificación?"
+                width={1280}
+                height={720}
+                loading="lazy"
+                decoding="async"
+                onError={() => setPortada(`https://i.ytimg.com/vi/${id}/hqdefault.jpg`)}
+                className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+              />
+              <span
+                className="absolute inset-0 bg-background/45 transition-colors duration-300 group-hover:bg-background/25"
+                aria-hidden="true"
+              />
+              <span
+                className="absolute left-1/2 top-1/2 grid size-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-primary text-primary-foreground shadow-elevated transition-transform duration-300 group-hover:scale-110 sm:size-20"
+                aria-hidden="true"
+              >
+                <Play className="size-6 fill-current sm:size-8" />
+              </span>
+            </button>
+          )}
         </div>
       </div>
     </section>

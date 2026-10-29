@@ -6,6 +6,7 @@ import {
   QueEs,
   ComoFunciona,
   Sobre,
+  VideoSection,
   Precio,
   Faq,
   faqs,
@@ -106,6 +107,7 @@ function Index() {
       <Hero />
       <QueEs />
       <Sobre />
+      <VideoSection />
       <ComoFunciona />
       <Precio />
       <Faq />

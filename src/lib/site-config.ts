@@ -16,8 +16,8 @@ export const SITE = {
   price: "$40.000 CLP",
   // Pega aquí el enlace de tu video de YouTube (ej: "https://youtu.be/XXXXXXXXXXX")
   // y aparecerá automáticamente en la sección "¿Cómo es una sesión?".
-  // Mientras esté vacío, se muestra un marco de reproductor de espera.
-  youtubeEmbedUrl: "https://youtu.be/dDWakpv4T8o",
+  // Mientras esté vacío, esa sección no se muestra.
+  youtubeEmbedUrl: "https://youtu.be/Zw4C3kYiAq0",
 };
 
 /** Enlace a la mini app "Diccionario de Enfermedades". */
