@@ -217,11 +217,7 @@ export function Precio() {
     <section id="precio" className="py-20 sm:py-28">
       <div className="section-shell max-w-2xl">
         <div className="border-y border-gold/40 py-10 text-center sm:py-14">
-          <p className="eyebrow">Tu inversión</p>
-          <h2 className="mt-5 text-2xl font-medium sm:text-3xl">Sesión Online</h2>
-          <p className="font-display mt-6 text-5xl font-medium text-primary sm:text-6xl">
-            {SITE.price}
-          </p>
+          <h2 className="text-2xl font-medium sm:text-3xl">Sesión Online</h2>
           <p className="mt-4 text-base text-muted-foreground">
             Sesión privada 1 a 1 por videollamada, con protocolo práctico incluido.
           </p>

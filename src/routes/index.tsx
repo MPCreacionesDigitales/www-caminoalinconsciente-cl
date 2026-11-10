@@ -74,13 +74,6 @@ export const Route = createFileRoute("/")({
                 serviceUrl: CHECKOUT_URL,
                 serviceLocation: { "@type": "VirtualLocation", url: `${SITE_URL}/` },
               },
-              offers: {
-                "@type": "Offer",
-                price: "40000",
-                priceCurrency: "CLP",
-                url: CHECKOUT_URL,
-                availability: "https://schema.org/InStock",
-              },
             },
             {
               "@type": "FAQPage",
