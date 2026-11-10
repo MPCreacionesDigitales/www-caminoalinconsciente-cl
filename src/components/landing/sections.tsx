@@ -61,7 +61,7 @@ export function Hero() {
             Descubre el origen emocional de lo que hoy limita tu vida
           </h1>
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-foreground/85">
-            Para que puedas sanar cualquier tipo de conflicto, el primer gran paso que puedes dar, es encontrar la raíz emocional y biológica de aquello que te genera estrés, síntomas fisicos o patrones inconscientes que te hacen revivir esa situación TODOS LOS DÍAS y limitan tu verdadero potencial
+            La realidad que vivimos es creada por nuestra mente. En el 95% de los casos, esto se hace en piloto automático, con nuestras  creencias, pensamientos, emociones y hábitos de los que no somos consciente y nos generan resultados que no queremos, afectando nuestra calidad de vida en terminos de salud, dinero y relaciones. Descubrir el origen y transformar nuestra mente, es el único camino para pasar al siguiente nivel en nuestra vida.
           </p>
         </div>
       </div>
@@ -100,7 +100,7 @@ export function QueEs() {
             A través de este enfoque, trabajamos directamente con el conflicto que te genera malestar y a partir de ahí, vamos desbloqueando lo que realmente está oculto y limitando tus resultados.
           </p>
           <p>
-            Para compreder las enfermedades, el proceso incorpora el estudio del órgano o tejido implicado desde el marco de las 5 Leyes Biológicas. Es requisito contar con diagnóstico médico.
+            Para comprender las enfermedades, el proceso incorpora el estudio del órgano o tejido implicado desde el marco de las 5 Leyes Biológicas. Es requisito contar con diagnóstico médico.
           </p>
         </div>
 
@@ -200,7 +200,7 @@ export function Sobre() {
               Comencé a ver la vida a partir del perdón. A ver la vida con inocencia Fue gracias a esta experiencia que decidí llevar mi vida al siguiente nivel. Cambié mi identidad, me enfoqué en crecer, en expandirme y en tener la valentiía de decidir según mis propias reglas lo que quería en mi vida, y no en las malinterpretaciones que hice de mi pasado, el que sostuve por muchos años sin siquiera darme cuenta, limitando mi potencial. 
 
 
-              <span>{"Fue este gran cambio de consciencia, lo que me llevó a decidir convertirme en biodescodificador y entregarme de lleno a apoyar a los demás en su propio proceso de sanación y crecimiento."}</span>
+              <span>{" Fue este gran cambio de consciencia, lo que me llevó a decidir convertirme en biodescodificador y entregarme de lleno a apoyar a los demás en su propio proceso de sanación y crecimiento."}</span>
             </p>
           </div>
         </div>
